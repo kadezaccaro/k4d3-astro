@@ -1,0 +1,88 @@
+---
+interface Props {
+  currentYear?: number;
+}
+
+const { currentYear = new Date().getFullYear() } = Astro.props;
+
+import Container from "./Container.astro";
+---
+
+<footer class="container-xl">
+  <Container>
+    <div class="container footerContent">
+      <div class="footerSection">
+        <h2>K4D3&trade;</h2>
+        <p>
+          A graphic designer & coder passionate about well-designed experiences
+          with close attention href detail.
+        </p>
+      </div>
+
+      <div class="footerSection">
+        <h3>Navigation</h3>
+        <ul>
+          <li>
+            <a href="/">Home</a>
+          </li>
+          <li>
+            <a href="/about">About</a>
+          </li>
+          <li>
+            <a href="/blog">Blog</a>
+          </li>
+          <li>
+            <a href="/contact">Contact</a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="footerSection">
+        <h3>Social</h3>
+        <div class="social-icons">
+          <ul>
+            <li>
+              <a
+                href="https://www.github.com/"
+                target="_blank"
+                rel="noopener"
+                aria-label="Visit github.com (opens in a new tab)"
+              >
+                GitHub
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://www.instagram.com/"
+                target="_blank"
+                rel="noopener"
+                aria-label="Visit instagram.com (opens in a new tab)"
+              >
+                Instagram
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://www.linkedin.com/"
+                target="_blank"
+                rel="noopener"
+                aria-label="Visit linkedin.com (opens in a new tab)"
+              >
+                LinkedIn
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </Container>
+
+  <div class="container-xl footer-bottom">
+    <Container>
+      <div class="container footer-bottom-content">
+        <p>K4D3 &copy; {currentYear}</p>
+        <p>Coded with passion ❤</p>
+      </div>
+    </Container>
+  </div>
+</footer>

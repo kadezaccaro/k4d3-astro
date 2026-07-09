@@ -1,0 +1,73 @@
+---
+import Container from "./Container.astro";
+import NavLink from "./NavLink.astro";
+---
+
+<header>
+  <Container>
+    <nav id="navbar">
+      <a href="/">
+        <span id="logo">K4D3&trade;</span>
+      </a>
+
+      <div id="nav-links">
+        <ul>
+          <li><NavLink href="/" label="Home" /></li>
+          <li><NavLink href="/about" label="About" /></li>
+          <li><NavLink href="/blog" label="Blog" /></li>
+          <li><NavLink href="/contact" label="Contact" /></li>
+        </ul>
+      </div>
+    </nav>
+  </Container>
+</header>
+
+<style>
+  /* || NAV BAR */
+
+  #navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--space-lg);
+    padding-top: var(--space-md);
+    margin-bottom: var(--space-xxl);
+  }
+
+  .nav-button {
+    justify-self: end;
+  }
+
+  #logo {
+    font-family: "Satoshi", sans-serif;
+    font-size: var(--font-size-level-6);
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+
+  #nav-links {
+    justify-self: center;
+  }
+
+  #nav-links ul {
+    list-style: none;
+    display: flex;
+    gap: var(--space-lg);
+  }
+
+  .menu-button,
+  .close-menu-button {
+    display: none;
+    border: none;
+    font-size: var(--font-size-level-3);
+    padding: 0;
+    background: none;
+    color: var(--color-primary);
+  }
+
+  .contact-button {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+</style>

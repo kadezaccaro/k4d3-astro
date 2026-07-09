@@ -1,0 +1,46 @@
+---
+import "../styles/global.css";
+import NavBar from "../components/NavBar.astro";
+import Footer from "../components/Footer.astro";
+import EmailCTA from "../components/EmailCTA.astro";
+import { ClientRouter, fade, slide } from "astro:transitions";
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="generator" content={Astro.generator} />
+    <ClientRouter fallback="animate" />
+    <title>K4D3</title>
+  </head>
+  <body>
+    <NavBar />
+    <slot />
+    <EmailCTA />
+    <Footer />
+  </body>
+</html>
+
+<style>
+  body {
+    font-family: "Satoshi", sans-serif;
+    background-color: var(--color-bg);
+    color: var(--color-text-level-1);
+    overflow-x: hidden;
+
+    border-top: 4px solid;
+    border-bottom: 4px solid;
+    border-image: linear-gradient(
+        to left,
+
+        var(--color-secondary),
+        var(--color-tertiary),
+        var(--color-primary)
+      )
+      1;
+  }
+</style>

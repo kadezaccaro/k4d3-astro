@@ -1,0 +1,294 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Container from "../components/Container.astro";
+import ProjectCard from "../components/ProjectCard.astro";
+import HireStatus from "../components/HireStatus.astro";
+import { Image } from "astro:assets";
+import selfPortrait from "../assets/images/portrait-placeholder.jpg";
+import tempHomeLab from "../assets/images/temp-homelab.jpg";
+import logoThumbnail from "../assets/images/logos/zero-v2.svg";
+
+// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
+// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+---
+
+<Layout title="Home">
+  <Container>
+    <header>
+      <h1>
+        I'm Kade, a <strong>Designer</strong> with a passion for{" "}
+        <strong>Cybersecurity.</strong>
+      </h1>
+
+      <div class="home-hero-flex">
+        <div class="home-hero-grid-content">
+          <p class="intro-text">
+            I'm currently{" "}
+            <span class="text-highlight-color">
+              transitioning into IT/Security
+            </span>{" "}
+            with a creative background in Graphic Design and Front-End Web Development.
+          </p>
+
+          <HireStatus />
+        </div>
+
+        <figure class="portrait-container">
+          <Image src={selfPortrait} alt="temp self portrait" loading="eager" />
+        </figure>
+      </div>
+    </header>
+
+    <main class="container projects" id="#projects">
+      <section>
+        <header class="header-section">
+          <h2>Projects</h2>
+        </header>
+        <hr />
+
+        <header class="header-subsection">
+          <div class="section-label">
+            <!-- <Router class="icon text-highlight-color" /> -->
+            <h3>IT/Security</h3>
+          </div>
+        </header>
+
+        <div class="grid-auto-fit">
+          <ProjectCard
+            href="/home-lab"
+            title="Home Lab"
+            description="Design and implementation of a secure home network using OPNsense, focusing on VLAN segmentation."
+            image={tempHomeLab}
+            imageAlt="temp Home lab"
+            tag="Networking"
+            isAboveFold
+          />
+
+          <ProjectCard
+            href="/active-directory"
+            title="Active Directory"
+            description="Setup and administration of an Active Directory environment,
+                  managing users, groups, and group policies in a Windows Server
+                  domain."
+            image={tempHomeLab}
+            imageAlt="temp Home lab"
+            tag="Systems Administration"
+            isAboveFold
+          />
+        </div>
+      </section>
+
+      <section>
+        <header class="header-subsection">
+          <div class="section-label">
+            <!-- <PenTool class="icon text-highlight-color" /> -->
+            <h3>Graphic Design</h3>
+          </div>
+        </header>
+
+        <div class="grid-auto-fit">
+          <ProjectCard
+            href="/grand-place"
+            title="Grand Place"
+            description="A new brand identity system and website for a luxury real estate
+              team."
+            image={tempHomeLab}
+            imageAlt="GP monogram inside a rectangular border"
+            tag="Branding, Web Development"
+          />
+
+          <ProjectCard
+            href="/lettering"
+            title="Lettering Collection"
+            description="Select hand-lettering pieces refined through careful iteration for
+              technical precision."
+            image={tempHomeLab}
+            imageAlt="Letter L in monoline script"
+            tag="Custom Lettering"
+          />
+
+          <ProjectCard
+            href="/logos"
+            title="Logofolio"
+            description="A selection of custom logotypes and brand marks from over the
+              years."
+            image={logoThumbnail}
+            imageAlt="Letter L in monoline script"
+            tag="Logo Design"
+          />
+        </div>
+      </section>
+    </main>
+  </Container>
+</Layout>
+
+<style>
+  .home-hero-grid {
+    /* vertical fluid padding */
+    /* padding-block: var(--space-xl); */
+    padding-bottom: var(--space-xl);
+    position: relative;
+    margin-bottom: var(--space-xxl);
+    /* text-align: center; */
+    /* display: flex;
+  gap: var(--space-md-lg); */
+  }
+
+  .home-hero-flex {
+    display: flex;
+    gap: var(--space-md);
+    margin-top: var(--space-md);
+    justify-content: space-between;
+  }
+
+  .intro-text {
+    font-size: var(--font-size-level-5);
+    line-height: 1.6;
+    max-width: 35ch;
+    /* text-shadow: 2px 2px 2px var(--color-bg); */
+  }
+
+  .hire-status {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-top: var(--space-md);
+  }
+  .hire-indicator {
+    width: 12px;
+    height: 12px;
+    background-color: greenyellow;
+    border-radius: 50%;
+    flex-shrink: 0;
+    box-shadow: 0 0 12px rgba(16, 185, 129, 1);
+  }
+  .hire-text {
+    font-family: "Roboto Mono", monospace;
+    font-size: var(--font-size-caption);
+    font-weight: 500;
+    text-transform: uppercase;
+  }
+
+  .portrait-container {
+    width: clamp(18rem, 34vw, 26rem);
+    height: clamp(18rem, 34vw, 26rem);
+  }
+
+  /* .circular-image {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  overflow: hidden;
+} */
+
+  .portrait-container img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    border-radius: 1.5rem;
+    object-fit: cover;
+    object-position: right;
+  }
+
+  .overlay {
+    position: absolute;
+    pointer-events: none;
+  }
+
+  .circle-1 {
+    bottom: -20px;
+    left: 50px;
+    width: 120px;
+    height: 40px;
+    /* border: 2px solid var(--color-tertiary); */
+    background-color: var(--color-primary);
+    /* border-radius: 50%; */
+  }
+
+  .circle-2 {
+    bottom: 80px;
+    right: -40px;
+    width: 100px;
+    height: 100px;
+    border: 2px dashed var(--color-secondary);
+    border-radius: 50%;
+  }
+
+  .circle-3 {
+    top: 80px;
+    right: -20px;
+    width: 40px;
+    height: 40px;
+    border: 1px solid var(--color-primary);
+    border-radius: 50%;
+  }
+
+  strong {
+    font-weight: 700;
+  }
+
+  section {
+    max-width: 80rem;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .icon {
+    width: var(--font-size-level-4);
+    height: var(--font-size-level-4);
+  }
+
+  .flex-container {
+    display: flex;
+    gap: var(--space-md);
+  }
+
+  .project-card {
+    border: 1px solid var(--color-border);
+    border-radius: 1.5rem;
+    overflow: hidden;
+    background-color: var(--color-surface);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .project-card figcaption {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    gap: var(--space-sm);
+    padding: var(--space-sm-2);
+  }
+
+  a .project-card {
+    font-family: "Satoshi", sans-serif;
+    transition: 0.2s ease-in-out;
+  }
+
+  a .project-card:hover {
+    transform: scale(1.04);
+    /* box-shadow: 0 0px 1rem var(--color-border); */
+  }
+
+  figcaption h4 {
+    color: var(--color-text-level-1);
+  }
+  figcaption p {
+    line-height: 1.5;
+    margin: 0;
+    /* font-family: "Roboto Mono", monospace; */
+  }
+
+  .tag {
+    font-family: "Roboto Mono", monospace;
+    font-size: var(--font-size-caption);
+    margin-top: auto; /* make tags align at bottom of cards */
+  }
+</style>

@@ -14,11 +14,15 @@ import letteringCover from "../assets/images/lettering/lettering-cover-v3.svg";
 import AboutSection from "../components/AboutSection.astro";
 import CertStack from "../components/CertStack.astro";
 
+import background from "../assets/background.svg";
+
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
 <Layout title="Home">
+  <!-- <img id="background" src={background.src} alt="" fetchpriority="high" /> -->
+
   <Container>
     <header class="home-hero">
       <figure class="portrait-container">
@@ -58,8 +62,8 @@ import CertStack from "../components/CertStack.astro";
 
           <div class="grid-auto-fit">
             <ProjectCard
-              href="/home-lab"
-              title="Home Lab"
+              href="/home-network"
+              title="Home Network"
               description="Design and implementation of a secure home network using OPNsense, focusing on VLAN segmentation."
               image={homeNetCover}
               imageAlt="temp Home lab"
@@ -68,8 +72,8 @@ import CertStack from "../components/CertStack.astro";
             />
 
             <ProjectCard
-              href="/active-directory"
-              title="Active Directory"
+              href="/lab"
+              title="Hacking Lab w/ Active Directory"
               description="Setup and administration of an Active Directory environment,
                   managing users, groups, and group policies in a Windows Server
                   domain."
@@ -129,12 +133,24 @@ import CertStack from "../components/CertStack.astro";
   </Container>
 
   <style>
+    #background {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      /* filter: blur(100px); */
+      opacity: 1;
+    }
+
     .home-hero {
       display: flex;
       flex-direction: column;
       gap: var(--space-md);
       margin-bottom: var(--space-xxl);
       padding-left: var(--space-md);
+      background-image:;
     }
 
     .intro-text {
@@ -166,7 +182,6 @@ import CertStack from "../components/CertStack.astro";
       display: flex;
       flex-direction: column;
       gap: var(--space-lg);
-      margin-bottom: var(--space-xxl);
     }
     .header-section {
       /* padding-left: var(--space-md); */

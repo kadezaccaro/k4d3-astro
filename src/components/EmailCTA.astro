@@ -1,45 +1,42 @@
 ---
 import Container from "./Container.astro";
 import Reveal from "./Reveal.astro";
+import MailIcon from "../components/icons/MailIcon.astro";
 ---
 
-<div class="bg-color-primary">
-  <div class="divider layered-wave"></div>
-  <Container>
-    <div class="container cta-flex-container">
-      <h2 class="cta-lets-work">Let's work together</h2>
+<Container>
+  <!-- <div class="divider layered-wave"></div> -->
 
-      <a href="/contact">
-        <button>
-          <!-- <Mail size={26} strokeWidth={3} /> -->
-          Get in touch
-        </button>
-      </a>
+  <div class="container cta-flex-container">
+    <h2 class="cta-lets-work">
+      Let's connect &mdash; I'd love to hear from you.
+    </h2>
+    <div class="email-btn">
+      <MailIcon />
+      <a href="/contact">kade@k4d3.com</a>
     </div>
-  </Container>
-  <div class="divider layered-steps-end"></div>
-</div>
+  </div>
+</Container>
+
+<div class="divider layered-steps-end"></div>
 
 <style>
-  .bg-color-primary {
-    background-color: var(--color-primary);
-  }
-
   .cta-flex-container {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    text-align: center;
     gap: var(--space-lg);
-    padding-block: var(--space-xl);
-    color: var(--color-bg);
+    margin-block: var(--space-xxl);
+    /* border: 1px solid var(--color-border); */
+    border-radius: 1rem;
+    padding: var(--space-md);
   }
 
   .cta-lets-work {
-    font-size: var(--font-size-display-lg);
+    font-size: var(--font-size-level-3);
     line-height: 1;
-    font-weight: 900;
-    letter-spacing: -1px;
+    font-weight: 300;
+    /* letter-spacing: -1px; */
+    color: var(--color-text-level-1);
   }
 
   .email-button {
@@ -52,6 +49,21 @@ import Reveal from "./Reveal.astro";
     border: 4px solid var(--color-bg);
     font-weight: 700;
   }
+
+  .email-btn {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+    /* border: 2px solid var(--color-primary); */
+    padding: var(--space-sm) var(--space-md);
+    border-radius: 0.5rem;
+  }
+  .email-btn a {
+    font-size: var(--font-size-level-5);
+    font-family: "Satoshi", sans-serif;
+    /* text-transform: uppercase; */
+  }
+
   .email-button:hover {
     transform: scale(1.04);
   }

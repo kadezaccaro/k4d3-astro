@@ -1,0 +1,118 @@
+---
+import Image from "astro/components/Image.astro";
+import selfPortrait from "../assets/images/portrait-placeholder.jpg";
+import cat1 from "../assets/images/z-roll.jpg";
+import cat2 from "../assets/images/z-stretch.jpg";
+import CatIcon from "./icons/CatIcon.astro";
+---
+
+<section class="about-container">
+  <div>
+    <header class="about-header-section">
+      <div class="icon-container">
+        <h3>About</h3>
+        <CatIcon />
+      </div>
+      <!-- <hr /> -->
+    </header>
+
+    <div class="container-text-new">
+      <p>
+        <strike className="text-strike">
+          <strong>Designer with a passion for Cybersecurity.</strong>
+        </strike>
+        <br />
+        <strong class="text-highlight">Human Being.</strong>
+      </p>
+      <p>
+        My work is dedicated to designing thoughtful experiences. This means
+        that I ask questions, brainstorm, plan approaches, and build enduring
+        solutions.
+      </p>
+      <p>
+        My introduction to design came at a young age with strong ambitions to
+        learn and create high-quality work. Over the years, these ambitions
+        continue to drive my projects as I look forward to continuous growth.
+      </p>
+      <p>
+        Apart from design work, I enjoy coding, exercising, video games, my cat,
+        and learning American Sign Language!
+      </p>
+      <p>
+        I’m currently exploring new opportunities and available for freelance.
+        I'd love to hear from you — {" "}
+        <a href="mailto:kade@k4d3.com">kade@k4d3.com</a>.
+      </p>
+    </div>
+  </div>
+
+  <div class="image-stack-container">
+    <figure class="about-photo-container">
+      <Image src={selfPortrait} alt="temp self portrait" />
+    </figure>
+
+    <figure class="about-photo-container reverse">
+      <Image src={cat1} alt="temp self portrait" />
+    </figure>
+
+    <figure class="about-photo-container">
+      <Image src={cat2} alt="temp self portrait" />
+    </figure>
+  </div>
+</section>
+
+<style>
+  .icon-container {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+  }
+
+  .about-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-lg);
+    margin-bottom: var(--space-lg);
+  }
+
+  .container-text-new {
+    padding-block: var(--space-lg);
+    padding-inline: var(--space-md);
+    /* margin: 0 auto; */
+    max-width: 60ch;
+  }
+
+  .about-header-section {
+    padding-inline: var(--space-md);
+  }
+
+  .image-stack-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-right: var(--space-lg);
+  }
+  .about-photo-container {
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    /* border-radius: 5rem; */
+    transform: rotate(5deg);
+    max-width: 320px;
+    margin: -40px;
+    border-radius: 2rem;
+    box-shadow: 0 0 8px 8px rgba(0, 0, 0, 0.5);
+  }
+  .about-photo-container img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    object-position: right;
+  }
+
+  .reverse {
+    transform: rotate(-5deg);
+    margin-left: -10rem;
+  }
+</style>

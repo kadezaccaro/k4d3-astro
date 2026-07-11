@@ -20,22 +20,21 @@ const posts = await getCollection("posts");
           <a href={`/blog/${post.id}`}>
             <article class="blog-article">
               <figure class="grid-auto-fit">
+                <figcaption>
+                  <p class="tag">{post.data.date}</p>
+                  <h2>{post.data.title}</h2>
+                  <p>{post.data.description}</p>
+                  <span>{post.data.readTime}</span>
+                </figcaption>
+
                 <div class="img-container">
                   <img
-                    src="https://picsum.photos/400/300"
+                    src="https://picsum.photos/400/250"
                     alt="Random placeholder"
                     width={400}
                     height={300}
                   />
                 </div>
-
-                <figcaption>
-                  <h2>{post.data.title}</h2>
-                  <p class="tag">
-                    {post.data.date} &bull; {post.data.readTime}
-                  </p>
-                  <p>{post.data.description}</p>
-                </figcaption>
               </figure>
             </article>
           </a>
@@ -54,11 +53,12 @@ const posts = await getCollection("posts");
     }
 
     .blog-article {
-      /* background-color: var(--color-surface); */
+      background-color: var(--color-surface);
       border: 1px solid var(--color-border);
       /* padding: var(--space-md); */
       border-radius: 2rem;
       overflow: hidden;
+      padding: var(--space-md);
     }
     .blog-article:hover img {
       transform: scale(1.1);
@@ -77,14 +77,15 @@ const posts = await getCollection("posts");
     .blog-article figcaption {
       display: flex;
       flex-direction: column;
-      align-self: center;
-      gap: var(--space-sm);
+      /* align-self: center; */
+      gap: var(--space-xs);
       font-family: "Satoshi", sans-serif;
     }
     .blog-article h2 {
-      font-family: "Satoshi", sans-serif;
-      line-height: 1;
+      /* font-family: "Satoshi", sans-serif; */
+      /* line-height: 1; */
       font-size: var(--font-size-level-3);
+      font-weight: bold;
     }
 
     .article-extras {
@@ -92,6 +93,10 @@ const posts = await getCollection("posts");
     }
     .article-extras .tag {
       font-size: var(--font-size-body);
+    }
+
+    .tag {
+      margin: 0;
     }
   </style>
 </Layout>

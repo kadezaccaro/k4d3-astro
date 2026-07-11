@@ -1,0 +1,51 @@
+---
+import ProjectCard from "../components/ProjectCard.astro";
+import homeNetCover from "../assets/images/temp-homelab.jpg";
+import Layout from "../layouts/Layout.astro";
+import Container from "../components/Container.astro";
+
+const projects = [
+  {
+    title: "Project 1",
+    slug: "project1",
+  },
+  {
+    title: "Project 2",
+    slug: "project2",
+  },
+  {
+    title: "Project 3",
+    slug: "project3",
+  },
+  {
+    title: "Project 4",
+    slug: "project4",
+  },
+  {
+    title: "Project 5",
+    slug: "project5",
+  },
+];
+---
+
+<Layout title="Projects | K4D3">
+  <Container>
+    <h1>Projects</h1>
+
+    <div class="grid-auto-fit">
+      {
+        projects.map((project) => (
+          <ProjectCard
+            href={`/projects/${project.slug}`}
+            title={project.title}
+            description="Design and implementation of a secure home network using OPNsense, focusing on VLAN segmentation."
+            image={homeNetCover}
+            imageAlt="temp Home lab"
+            tag="Networking"
+            isAboveFold
+          />
+        ))
+      }
+    </div>
+  </Container>
+</Layout>

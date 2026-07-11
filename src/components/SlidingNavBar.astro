@@ -1,0 +1,45 @@
+---
+const links = [
+  { href: "/", label: "Home" },
+  { href: "/about", label: "About" },
+  { href: "/blog", label: "Blog" },
+  { href: "/contact", label: "Contact" },
+];
+---
+
+<nav class="sliding-navbar" id="sliding-navbar">
+  <div class="sliding-navbar-links">
+    {links.map((link) => <a href={link.href}>{link.label}</a>)}
+  </div>
+</nav>
+
+<script>
+  const nav = document.getElementById("sliding-navbar");
+
+  const onScroll = () => nav?.classList.toggle("visible", window.scrollY > 120);
+
+  onScroll();
+  addEventListener("scroll", onScroll, { passive: true });
+</script>
+
+<style>
+  .sliding-navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    transform: translateY(-100%);
+    transition: transform 250ms ease;
+    z-index: 100;
+  }
+
+  .sliding-navbar.visible {
+    transform: translateY(0);
+  }
+
+  .sliding-navbar-links {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+  }
+</style>

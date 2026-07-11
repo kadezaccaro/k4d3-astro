@@ -302,6 +302,34 @@ hr {
   margin-top: var(--space-xs);
 }
 
+/* || DIVIDERS */
+
+.divider {
+  width: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  aspect-ratio: 960/80;
+  will-change: transform; /* tries to fix pixel gap between divider */
+}
+.layered-steps-end {
+  background-image: url("../assets/dividers/layered-steps-vibrant2.svg");
+  margin-top: -2px;
+}
+.layered-wave {
+  background-image: url("../assets/dividers/layered-waves-haikei.svg");
+  margin-top: var(--space-xxl);
+  margin-bottom: -2px; /* tries to fix pixel gap between divider */
+}
+.simple-wave {
+  background-image: url("../assets/dividers/simple-wave.svg");
+  margin-bottom: -2px;
+}
+.simple-wave-end {
+  background-image: url("./assets/dividers/simple-wave-end.svg");
+  margin-top: -2px;
+}
+
 /* || PROJECTS */
 
 .case-study-flex {
@@ -425,74 +453,6 @@ hr {
   padding: var(--space-md);
   border: 1px solid var(--color-border);
   border-radius: 0 1.5rem 1.5rem 1.5rem;
-}
-
-/* lettering page */
-.bg-light {
-  background-color: var(--color-bg-light);
-  padding-block: var(--space-lg);
-}
-
-.lettering .grid-auto-fit {
-  gap: 0;
-}
-.lettering img {
-  padding: var(--space-sm);
-}
-
-/* .project-flex-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
-  align-items: center;
-  gap: 16px;
-}
-.project-flex-item {
-  width: 100%;
-}
-.project-flex-item.col-2 {
-  width: calc(50% - 8px);
-}
-.project-flex-item.col-2.big {
-  width: 65%;
-}
-.project-flex-item.col-2.small {
-  width: 25%;
-}
-.project-flex-item.col-4 {
-  width: calc(25% - 12px);
-} */
-
-.book-caption {
-  color: var(--color-bg);
-  padding-top: var(--space-xs);
-  padding-inline: var(--space-sm);
-  font-size: var(--font-size-caption);
-  text-align: center;
-  justify-self: center;
-}
-
-/* infinite rotation of letter N */
-.rotate {
-  -webkit-animation: spin 10s linear infinite;
-  -moz-animation: spin 10s linear infinite;
-  animation: spin 10s linear infinite;
-}
-@-moz-keyframes spin {
-  100% {
-    -moz-transform: rotate(360deg);
-  }
-}
-@-webkit-keyframes spin {
-  100% {
-    -webkit-transform: rotate(360deg);
-  }
-}
-@keyframes spin {
-  100% {
-    -webkit-transform: rotate(360deg);
-    transform: rotate(360deg);
-  }
 }
 
 /* logofolio page */

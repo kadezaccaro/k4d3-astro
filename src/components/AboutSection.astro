@@ -110,8 +110,14 @@ import background from "../assets/background.svg";
     overflow: hidden;
     max-width: 20rem;
     border-radius: 2rem;
-    box-shadow: 0 0 8px 8px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 0 24px 4px rgba(0, 0, 0, 0.3);
+    transition: 0.3s ease-in-out;
   }
+  figure:hover {
+    rotate: 5deg;
+    scale: 1.04;
+  }
+
   .photo-stack figure {
     width: min(100%, 22rem);
     margin-top: -2rem;
@@ -124,9 +130,14 @@ import background from "../assets/background.svg";
     transform: rotate(-4deg);
     margin-left: -10rem;
   }
+  figure:nth-child(2):hover {
+    rotate: -5deg;
+  }
   .photo-stack figure:nth-child(3) {
     transform: rotate(6deg);
   }
+
+  /* || RESPONSIVE */
 
   @media (max-width: 66rem) {
     .about-container {

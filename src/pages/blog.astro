@@ -14,47 +14,61 @@ const posts = await getCollection("posts");
       </h1>
     </header>
 
-    {
-      posts.map((post) => (
-        <a href={`/blog/${post.id}`}>
-          <article>
-            <figure class="grid-auto-fit">
-              <img
-                src="https://picsum.photos/400/300"
-                alt="Random placeholder"
-                width={400}
-                height={300}
-              />
+    <div class="blog-flex-container">
+      {
+        posts.map((post) => (
+          <a href={`/blog/${post.id}`}>
+            <article class="blog-article">
+              <figure class="grid-auto-fit">
+                <div class="img-container">
+                  <img
+                    src="https://picsum.photos/400/300"
+                    alt="Random placeholder"
+                    width={400}
+                    height={300}
+                  />
+                </div>
 
-              <figcaption>
-                <h2>{post.data.title}</h2>
-                <p class="tag">
-                  {post.data.date} &bull; {post.data.readTime}
-                </p>
-                <p>{post.data.description}</p>
-              </figcaption>
-            </figure>
-          </article>
-        </a>
-      ))
-    }
+                <figcaption>
+                  <h2>{post.data.title}</h2>
+                  <p class="tag">
+                    {post.data.date} &bull; {post.data.readTime}
+                  </p>
+                  <p>{post.data.description}</p>
+                </figcaption>
+              </figure>
+            </article>
+          </a>
+        ))
+      }
+    </div>
   </Container>
 
   <style>
     /* || BLOG */
 
+    .blog-flex-container {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-md);
+    }
+
     .blog-article {
-      background-color: var(--color-surface);
-      border-radius: 8px;
+      /* background-color: var(--color-surface); */
       border: 1px solid var(--color-border);
-      padding: var(--space-md);
+      /* padding: var(--space-md); */
+      border-radius: 2rem;
+      overflow: hidden;
     }
     .blog-article:hover img {
-      transform: scale(1.25);
+      transform: scale(1.1);
+      /* transition-timing-function: cubic-bezier(0, 0, 0.2, 1); */
+      /* transition-duration: 0.3s; */
     }
-    .blog-article figure {
+    .img-container {
       overflow: hidden;
-      border-radius: 8px;
+      border-radius: 1rem;
+      border-right: 1px solid var(--color-border);
     }
     .blog-article img {
       height: 100%;

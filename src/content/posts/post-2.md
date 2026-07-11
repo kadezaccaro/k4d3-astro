@@ -1,7 +1,7 @@
 ---
 title: Post 2
-description: "Learning Astro Content Collections"
-date: February 16, 2025
+description: Learning Astro Content Collections
+date: July 10, 2024
 readTime: 5min read
 tag: nerdy
 # image:

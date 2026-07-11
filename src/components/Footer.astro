@@ -9,6 +9,8 @@ import Container from "./Container.astro";
 ---
 
 <footer class="container-xl">
+  <div class="divider layered-steps-end"></div>
+
   <Container>
     <div class="container footerContent">
       <div class="footerSection">
@@ -158,5 +160,31 @@ import Container from "./Container.astro";
   .footer-bottom-content p {
     font-size: var(--fs-xs);
     margin: 0;
+  }
+
+  .divider {
+    width: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    aspect-ratio: 960/80;
+    will-change: transform; /* tries to fix pixel gap between divider */
+  }
+  .layered-steps-end {
+    background-image: url("../assets/dividers/layered-steps-vibrant2.svg");
+    margin-top: -2px;
+  }
+  .layered-wave {
+    background-image: url("../assets/dividers/layered-waves-haikei.svg");
+    margin-top: var(--space-xxl);
+    margin-bottom: -2px; /* tries to fix pixel gap between divider */
+  }
+  .simple-wave {
+    background-image: url("../assets/dividers/simple-wave.svg");
+    margin-bottom: -2px;
+  }
+  .simple-wave-end {
+    background-image: url("./assets/dividers/simple-wave-end.svg");
+    margin-top: -2px;
   }
 </style>

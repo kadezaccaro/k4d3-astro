@@ -4,6 +4,12 @@ import NavBar from "../components/NavBar.astro";
 import Footer from "../components/Footer.astro";
 import EmailCTA from "../components/EmailCTA.astro";
 import { ClientRouter, fade, slide } from "astro:transitions";
+
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
 ---
 
 <!doctype html>
@@ -15,11 +21,13 @@ import { ClientRouter, fade, slide } from "astro:transitions";
     <link rel="icon" href="/favicon.ico" />
     <meta name="generator" content={Astro.generator} />
     <ClientRouter fallback="animate" />
-    <title>K4D3</title>
+    <title>{title}</title>
   </head>
   <body>
     <NavBar />
-    <slot />
+    <main>
+      <slot />
+    </main>
     <EmailCTA />
     <Footer />
   </body>

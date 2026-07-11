@@ -13,7 +13,7 @@ import NavLink from "./NavLink.astro";
       <div id="nav-links">
         <ul>
           <li><NavLink href="/" label="Home" /></li>
-          <li><NavLink href="#about" label="About" /></li>
+          <li><NavLink href="/#about" label="About" /></li>
           <li><NavLink href="/blog" label="Blog" /></li>
           <li><NavLink href="/contact" label="Contact" /></li>
         </ul>
@@ -69,5 +69,40 @@ import NavLink from "./NavLink.astro";
     display: flex;
     align-items: center;
     gap: 0.5rem;
+  }
+
+  /* || SLIDING NAV BAR */
+
+  .sliding-navbar {
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(8px);
+    position: fixed;
+    /* top: -100px; */
+    top: 0;
+    left: 0;
+    transform: translateY(-100%);
+    width: 100%;
+    transition: 0.3s ease;
+    z-index: 9;
+  }
+  .sliding-navbar-visible {
+    /* top: 0; */
+    transform: translateY(0);
+  }
+
+  .sliding-navbar-links {
+    display: flex;
+    justify-content: space-between;
+    /* gap: var(--space-lg); */
+  }
+  .sliding-navbar-links a {
+    padding-block: var(--space-xs);
+    text-transform: uppercase;
+    width: 100%;
+    text-align: center;
+  }
+  .sliding-navbar-links a:hover {
+    background-color: var(--color-primary);
+    color: var(--color-bg);
   }
 </style>

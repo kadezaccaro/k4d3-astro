@@ -1,0 +1,61 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Container from "../../components/Container.astro";
+import { getCollection, render } from "astro:content";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("posts");
+
+  return posts.map((post) => ({
+    params: {
+      slug: post.id,
+    },
+    props: {
+      post,
+    },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+---
+
+<Layout title=`${post.data.title} | K4D3`>
+  <Container>
+    <article>
+      <header>
+        <h1>{post.data.title}</h1>
+        <div class="article-extras">
+          <p class="tag">
+            {post.data.date} &mdash; {post.data.readTime}
+          </p>
+        </div>
+      </header>
+
+      <Content />
+
+      <div class="closing">
+        <h2>Thank you for reading.</h2>
+        <a href="/blog">
+          <div class="article-extras">
+            <span class="tag">&larr; Back to Blog</span>
+          </div>
+        </a>
+      </div>
+    </article>
+  </Container>
+</Layout>
+
+<style>
+  header {
+    margin-bottom: var(--space-lg);
+  }
+
+  .article-extras {
+    margin-top: var(--space-xs);
+  }
+
+  .closing {
+    margin-top: var(--space-lg);
+  }
+</style>

@@ -8,21 +8,19 @@ import selfPortrait from "../assets/images/portrait-placeholder.jpg";
 import RouterIcon from "../components/icons/RouterIcon.astro";
 import PenToolIcon from "../components/icons/PenToolIcon.astro";
 import homeNetCover from "../assets/images/temp-homelab.jpg";
+import homeLabCover from "../assets/images/home-lab-topology2.jpg";
+
 import gpCover from "../assets/images/grand_place/gp-cover-v2.svg";
 import logoCover from "../assets/images/logos/zero-v2.svg";
 import letteringCover from "../assets/images/lettering/lettering-cover-v3.svg";
 import AboutSection from "../components/AboutSection.astro";
 import CertStack from "../components/CertStack.astro";
 
-import background from "../assets/background.svg";
-
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
-<Layout title="Home">
-  <!-- <img id="background" src={background.src} alt="" fetchpriority="high" /> -->
-
+<Layout title="K4D3">
   <Container>
     <header class="home-hero">
       <figure class="portrait-container">
@@ -45,156 +43,143 @@ import background from "../assets/background.svg";
       <HireStatus />
     </header>
 
-    <main class="container">
-      <section class="projects-container">
-        <header class="header-section">
-          <h2>Projects</h2>
-          <hr />
-        </header>
+    <section class="projects-container">
+      <header class="header-section">
+        <h2>Projects</h2>
+        <hr />
+      </header>
 
-        <section>
-          <div class="header-subsection">
-            <div class="section-label">
-              <RouterIcon />
-              <h3>IT/Security</h3>
-            </div>
+      <section>
+        <div class="header-subsection">
+          <div class="section-label">
+            <RouterIcon />
+            <h3>IT/Security</h3>
           </div>
+        </div>
 
-          <div class="grid-auto-fit">
-            <ProjectCard
-              href="/home-network"
-              title="Home Network"
-              description="Design and implementation of a secure home network using OPNsense, focusing on VLAN segmentation."
-              image={homeNetCover}
-              imageAlt="temp Home lab"
-              tag="Networking"
-              isAboveFold
-            />
+        <div class="grid-auto-fit">
+          <ProjectCard
+            href="/home-network"
+            title="Home Network"
+            description="Design and implementation of a secure home network using OPNsense, focusing on VLAN segmentation."
+            image={homeNetCover}
+            imageAlt="temp Home lab"
+            tag="Networking"
+            isAboveFold
+          />
 
-            <ProjectCard
-              href="/lab"
-              title="Hacking Lab w/ Active Directory"
-              description="Setup and administration of an Active Directory environment,
+          <ProjectCard
+            href="/lab"
+            title="Hacking Lab w/ Active Directory"
+            description="Setup and administration of an Active Directory environment,
                   managing users, groups, and group policies in a Windows Server
                   domain."
-              image={homeNetCover}
-              imageAlt="temp Home lab"
-              tag="Systems Administration"
-              isAboveFold
-            />
-          </div>
-        </section>
-
-        <section>
-          <div class="header-subsection">
-            <div class="section-label">
-              <PenToolIcon />
-              <h3>Graphic Design</h3>
-            </div>
-          </div>
-
-          <div class="grid-auto-fit">
-            <ProjectCard
-              href="/grand-place"
-              title="Grand Place"
-              description="A new brand identity system and website for a luxury real estate
-              team."
-              image={gpCover}
-              imageAlt="GP monogram inside a rectangular border"
-              tag="Branding, Web Development"
-            />
-
-            <ProjectCard
-              href="/lettering"
-              title="Lettering Collection"
-              description="Select hand-lettering pieces refined through careful iteration for
-              technical precision."
-              image={letteringCover}
-              imageAlt="Letter L in monoline script"
-              tag="Custom Lettering"
-            />
-
-            <ProjectCard
-              href="/logos"
-              title="Logofolio"
-              description="A selection of custom logotypes and brand marks from over the
-              years."
-              image={logoCover}
-              imageAlt="Letter L in monoline script"
-              tag="Logo Design"
-            />
-          </div>
-        </section>
+            image={homeLabCover}
+            imageAlt="temp Home lab"
+            tag="Systems Administration"
+            isAboveFold
+          />
+        </div>
       </section>
 
-      <AboutSection />
-      <CertStack />
-    </main>
+      <section>
+        <div class="header-subsection">
+          <div class="section-label">
+            <PenToolIcon />
+            <h3>Graphic Design</h3>
+          </div>
+        </div>
+
+        <div class="grid-auto-fit">
+          <ProjectCard
+            href="/grand-place"
+            title="Grand Place"
+            description="A new brand identity system and website for a luxury real estate
+              team."
+            image={gpCover}
+            imageAlt="GP monogram inside a rectangular border"
+            tag="Branding, Web Development"
+          />
+
+          <ProjectCard
+            href="/lettering"
+            title="Lettering Collection"
+            description="Select hand-lettering pieces refined through careful iteration for
+              technical precision."
+            image={letteringCover}
+            imageAlt="Letter L in monoline script"
+            tag="Custom Lettering"
+          />
+
+          <ProjectCard
+            href="/logos"
+            title="Logofolio"
+            description="A selection of custom logotypes and brand marks from over the
+              years."
+            image={logoCover}
+            imageAlt="Letter L in monoline script"
+            tag="Logo Design"
+          />
+        </div>
+      </section>
+    </section>
+
+    <AboutSection />
+    <CertStack />
   </Container>
-
-  <style>
-    #background {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: -1;
-      /* filter: blur(100px); */
-      opacity: 1;
-    }
-
-    .home-hero {
-      display: flex;
-      flex-direction: column;
-      gap: var(--space-md);
-      margin-bottom: var(--space-xxl);
-      padding-left: var(--space-md);
-      background-image:;
-    }
-
-    .intro-text {
-      font-size: var(--font-size-level-5);
-      line-height: 1.6;
-      max-width: 40ch;
-    }
-
-    strong {
-      font-weight: 700;
-    }
-
-    .portrait-container {
-      width: clamp(4rem, 6vw, 7rem);
-      height: clamp(4rem, 6vw, 7rem);
-      border-radius: 50%;
-      overflow: hidden;
-      border: 1px solid var(--color-border);
-    }
-    .portrait-container img {
-      width: 100%;
-      height: 100%;
-      display: block;
-      /* border-radius: 1.5rem; */
-      object-fit: cover;
-    }
-
-    .projects-container {
-      display: flex;
-      flex-direction: column;
-      gap: var(--space-lg);
-    }
-    .header-section {
-      /* padding-left: var(--space-md); */
-    }
-
-    .header-subsection {
-      padding-bottom: var(--space-md);
-      padding-left: var(--space-md);
-    }
-    .section-label {
-      display: flex;
-      align-items: center;
-      gap: 1.5rem;
-    }
-  </style>
 </Layout>
+
+<style>
+  .home-hero {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+    margin-bottom: var(--space-xxl);
+    padding-left: var(--space-md);
+    background-image:;
+  }
+
+  .intro-text {
+    font-size: var(--font-size-level-5);
+    line-height: 1.6;
+    max-width: 40ch;
+  }
+
+  strong {
+    font-weight: 700;
+  }
+
+  .portrait-container {
+    width: clamp(4rem, 6vw, 7rem);
+    height: clamp(4rem, 6vw, 7rem);
+    border-radius: 50%;
+    overflow: hidden;
+    border: 1px solid var(--color-border);
+  }
+  .portrait-container img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    /* border-radius: 1.5rem; */
+    object-fit: cover;
+  }
+
+  .projects-container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+  }
+  .header-section {
+    /* padding-left: var(--space-md); */
+  }
+
+  .header-subsection {
+    padding-bottom: var(--space-md);
+    padding-left: var(--space-md);
+  }
+  .section-label {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+  }
+</style>

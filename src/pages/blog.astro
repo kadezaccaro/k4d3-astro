@@ -1,0 +1,83 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Container from "../components/Container.astro";
+
+import { getCollection } from "astro:content";
+const posts = await getCollection("posts");
+---
+
+<Layout title="Blog | K4D3">
+  <Container>
+    <header class="header-hero">
+      <h1>
+        <strong>Blog</strong>
+      </h1>
+    </header>
+
+    {
+      posts.map((post) => (
+        <a href={`/blog/${post.id}`}>
+          <article>
+            <figure class="grid-auto-fit">
+              <img
+                src="https://picsum.photos/400/300"
+                alt="Random placeholder"
+                width={400}
+                height={300}
+              />
+
+              <figcaption>
+                <h2>{post.data.title}</h2>
+                <p class="tag">
+                  {post.data.date} &bull; {post.data.readTime}
+                </p>
+                <p>{post.data.description}</p>
+              </figcaption>
+            </figure>
+          </article>
+        </a>
+      ))
+    }
+  </Container>
+
+  <style>
+    /* || BLOG */
+
+    .blog-article {
+      background-color: var(--color-surface);
+      border-radius: 8px;
+      border: 1px solid var(--color-border);
+      padding: var(--space-md);
+    }
+    .blog-article:hover img {
+      transform: scale(1.25);
+    }
+    .blog-article figure {
+      overflow: hidden;
+      border-radius: 8px;
+    }
+    .blog-article img {
+      height: 100%;
+      transition: transform 0.5s ease;
+    }
+    .blog-article figcaption {
+      display: flex;
+      flex-direction: column;
+      align-self: center;
+      gap: var(--space-sm);
+      font-family: "Satoshi", sans-serif;
+    }
+    .blog-article h2 {
+      font-family: "Satoshi", sans-serif;
+      line-height: 1;
+      font-size: var(--font-size-level-3);
+    }
+
+    .article-extras {
+      margin-top: var(--space-xs);
+    }
+    .article-extras .tag {
+      font-size: var(--font-size-body);
+    }
+  </style>
+</Layout>

@@ -86,3 +86,77 @@ import Container from "./Container.astro";
     </Container>
   </div>
 </footer>
+
+<style>
+  /* || FOOTER */
+
+  /* Footer Content Grid */
+  .footerContent {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-lg);
+    padding-block: var(--space-xl);
+  }
+  .footerContent > * {
+    flex: 1;
+  }
+  .footerSection:first-of-type {
+    flex-grow: 2;
+  }
+
+  /* Footer Section */
+  .footerSection {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+  .footerSection h2 {
+    font-size: var(--font-size-level-4);
+  }
+  .footerSection p {
+    line-height: 1.6;
+  }
+  .footerSection h3 {
+    font-weight: normal;
+    font-size: var(--font-size-body);
+    color: var(--color-text-level-2);
+    letter-spacing: unset;
+  }
+  .footerSection ul {
+    list-style: none;
+  }
+  .footerSection li {
+    border-bottom: 1px solid var(--color-border);
+  }
+  .footerSection li:last-child {
+    border-bottom: none;
+  }
+  .footerSection li a {
+    /* Ensure the link covers the entire list item */
+    display: block;
+    padding: var(--space-xs) 0;
+  }
+  .footerSection li:first-child a {
+    padding-top: 0;
+  }
+  .footerSection li:last-child a {
+    padding-bottom: 0;
+  }
+  .footerSection a:hover {
+    padding-left: 0.25rem;
+  }
+
+  .footer-bottom {
+    border-top: 1px solid var(--color-border);
+    padding-block: var(--space-md);
+  }
+  .footer-bottom-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .footer-bottom-content p {
+    font-size: var(--fs-xs);
+    margin: 0;
+  }
+</style>

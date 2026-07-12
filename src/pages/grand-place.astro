@@ -1,9 +1,22 @@
 ---
-// import Layout from "../layouts/Layout.astro";
-import Layout from "../../layouts/Layout.astro";
-import Container from "../../components/Container.astro";
-import Image from "astro/components/Image.astro";
-import gpStackedLogo from "../../assets/images/grand_place/GrandPlace_StackedLogo.svg";
+import Layout from "../layouts/Layout.astro";
+import Container from "../components/Container.astro";
+import { Image } from "astro:assets";
+// IMPORT IMAGES
+import gpStackedLogo from "../assets/images/grand_place/GrandPlace_StackedLogo.svg";
+import gpLogosCaseStudy from "../assets/images/grand_place/GrandPlace_Logos_CaseStudy.webp";
+import gpBoxKey from "../assets/images/grand_place/gp-box-and-key.webp";
+import gpLogoProcess from "../assets/images/grand_place/logoprocess-gp.jpg";
+import gpClearSpace from "../assets/images/grand_place/gp-clearspace.webp";
+import gpColorPalette from "../assets/images/grand_place/grandplace_colorpalette.webp";
+import gpBrandGuide from "../assets/images/grand_place/BrandGuide_Presentation_Letter.webp";
+import diamondHouse from "../assets/images/grand_place/diamond-house-RD1-mockup.jpg";
+import gpCardMockup from "../assets/images/grand_place/grandplace-card-mockup4.png";
+import gpLargeSign from "../assets/images/grand_place/GrandPlace_LargeSign.svg";
+import gpOpenHouse from "../assets/images/grand_place/GrandPlace_OpenHouseSign.svg";
+import gpSellersGuide from "../assets/images/grand_place/gp-homesellersguide-mockup-v2.webp";
+import gpBusCards from "../assets/images/grand_place/gp-businesscard-rd2-option2.webp";
+import gpLogomark from "../assets/images/grand_place/GrandPlace_Logomark_Color.webp";
 ---
 
 <Layout title="Grand Place | K4D3">
@@ -59,20 +72,18 @@ import gpStackedLogo from "../../assets/images/grand_place/GrandPlace_StackedLog
         </div>
       </div>
     </div>
+  </Container>
 
-    <div class="container-lg">
-      <Image
-        src={gpStackedLogo}
-        alt="
-        Grand
-        Place
-        stacked
-        logotype"
-        loading="eager"
-      />
-    </div>
+  <div class="container-lg">
+    <Image
+      src={gpStackedLogo}
+      alt="Grand Place stacked logotype"
+      loading="eager"
+    />
+  </div>
 
-    <div class="container pad-around grid-auto-fit">
+  <Container>
+    <div class="pad-around grid-auto-fit">
       <h2 class="case-h2">The Solution</h2>
 
       <div>
@@ -99,17 +110,12 @@ import gpStackedLogo from "../../assets/images/grand_place/GrandPlace_StackedLog
       </div>
     </div>
 
-    <div class="container">
-      <img
-        src="../assets/images/grand_place/GrandPlace_Logos_CaseStudy.webp"
-        alt="Grand Place primary and secondary logos"
-        width="1922"
-        height="1081"
-        loading="lazy"
-      />
-    </div>
+    <Image
+      src={gpLogosCaseStudy}
+      alt="Grand Place primary and secondary logos"
+    />
 
-    <div class="container pad-around grid-auto-fit">
+    <div class="pad-around grid-auto-fit">
       <h2 class="case-h2">Brand Naming</h2>
       <div>
         <p>
@@ -127,17 +133,9 @@ import gpStackedLogo from "../../assets/images/grand_place/GrandPlace_StackedLog
       </div>
     </div>
 
-    <div class="container">
-      <img
-        src="../assets/images/grand_place/gp-box-and-key.webp"
-        alt="Grand Place logo embossed on a box and key"
-        width="1920"
-        height="1080"
-        loading="lazy"
-      />
-    </div>
+    <Image src={gpBoxKey} alt="Grand Place logo embossed on a box and key" />
 
-    <div class="container pad-around grid-auto-fit">
+    <div class="pad-around grid-auto-fit">
       <h2 class="case-h2">Logo, Type &amp; Color</h2>
       <div>
         <p>
@@ -159,62 +157,37 @@ import gpStackedLogo from "../../assets/images/grand_place/GrandPlace_StackedLog
       </div>
     </div>
 
-    <div class="container">
-      <img
-        class="pad-bottom-md"
-        src="../assets/images/grand_place/logoprocess-gp.jpg"
-        alt="Critiquing various logo options printed out on the wall"
-        width="1275"
-        height="858"
-        loading="lazy"
-      />
-      <img
-        class="pad-bottom-md"
-        src="../assets/images/grand_place/gp-clearspace.webp"
-        alt="Grand Place minimum clear space guides"
-        width="1921"
-        height="1081"
-        loading="lazy"
-      />
-      <img
-        class="pad-bottom-md"
-        src="../assets/images/grand_place/grandplace_colorpalette.webp"
-        alt="Various Grand Place logo colorways"
-        width="1921"
-        height="1281"
-        loading="lazy"
-      />
-      <img
-        class="pad-bottom-md"
-        src="../assets/images/grand_place/BrandGuide_Presentation_Letter.webp"
-        alt="Grand Place brand guidelines"
-        width="2400"
-        height="1854"
-        loading="lazy"
-      />
+    <Image
+      src={gpLogoProcess}
+      alt="Critiquing various logo options printed out on the wall"
+    />
 
-      <h3 class="unchosen-concepts-h3">Unchosen Concepts:</h3>
-      <div class="unchosen-concepts">
-        <div class="grid-auto-fit">
-          <img
-            src="../assets/images/grand_place/diamond-house-RD1-mockup.jpg"
-            alt="Unchosen concept of a diamond inside a house shining outward"
-            width="1280"
-            height="1280"
-            loading="lazy"
-          />
-          <img
-            src="../assets/images/grand_place/grandplace-card-mockup4.png"
-            alt="Unchosen concept of a GP logomark in the shape of a key with text reading 'Grand Place' in serif and script styles."
-            width="955"
-            height="955"
-            loading="lazy"
-          />
-        </div>
+    <Image src={gpClearSpace} alt="Grand Place minimum clear space guides" />
+
+    <Image src={gpColorPalette} alt="Grand Place minimum clear space guides" />
+
+    <Image
+      class="pad-bottom-md"
+      src={gpBrandGuide}
+      alt="Grand Place brand guidelines"
+    />
+
+    <h3 class="unchosen-concepts-h3">Unchosen Concepts:</h3>
+    <div class="unchosen-concepts">
+      <div class="grid-auto-fit">
+        <Image
+          src={diamondHouse}
+          alt="Unchosen concept of a diamond inside a house shining outward"
+        />
+
+        <Image
+          src={gpCardMockup}
+          alt="Unchosen concept of a diamond inside a house shining outward"
+        />
       </div>
     </div>
 
-    <div class="container pad-around grid-auto-fit">
+    <div class="pad-around grid-auto-fit">
       <h2 class="case-h2">Signage &amp; Printed Material</h2>
       <p>
         With the industry's rules and regulations in mind, I applied the new
@@ -222,46 +195,20 @@ import gpStackedLogo from "../../assets/images/grand_place/GrandPlace_StackedLog
       </p>
     </div>
 
-    <div class="container grid-auto-fit pad-bottom-md">
-      <img
-        src="../assets/images/grand_place/GrandPlace_LargeSign.svg"
-        alt="Grand Place large for sale sign"
-        width="1920"
-        height="1920.2"
-        loading="lazy"
-      />
-      <img
-        src="../assets/images/grand_place/GrandPlace_OpenHouseSign.svg"
-        alt="Grand Place small open house sign"
-        width="1920"
-        height="1920.2"
-        loading="lazy"
-      />
+    <div class="grid-auto-fit pad-bottom-md">
+      <Image src={gpLargeSign} alt="Grand Place large for sale sign" />
+
+      <Image src={gpOpenHouse} alt="Grand Place small open house sign" />
     </div>
 
-    <div class="container">
-      <img
-        class="pad-bottom-md"
-        src="../assets/images/grand_place/gp-homesellersguide-mockup-v2.webp"
-        alt="Grand Place Home Seller's Guide"
-        width="1920"
-        height="1440"
-        loading="lazy"
-      />
-      <img
-        src="../assets/images/grand_place/gp-businesscard-rd2-option2.webp"
-        alt="Grand Place business cards"
-        width="1920"
-        height="1080"
-        loading="lazy"
-      />
-      <img
-        src="../assets/images/grand_place/GrandPlace_Logomark_Color.webp"
-        alt='"GP" logomark with sunburst effect'
-        width="1603"
-        height="1166"
-        loading="lazy"
-      />
-    </div>
+    <Image
+      src={gpSellersGuide}
+      alt="Grand Place Home Seller's Guide"
+      class="pad-bottom-md"
+    />
+
+    <Image src={gpBusCards} alt="Grand Place business cards" />
+
+    <Image src={gpLogomark} alt="GP logomark with sunburst effect" />
   </Container>
 </Layout>

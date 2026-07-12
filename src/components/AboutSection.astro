@@ -1,5 +1,5 @@
 ---
-import Image from "astro/components/Image.astro";
+import { Image } from "astro:assets";
 import selfPortrait from "../assets/images/portrait-placeholder.jpg";
 import cat1 from "../assets/images/z-roll.jpg";
 import cat2 from "../assets/images/z-stretch.jpg";
@@ -151,8 +151,8 @@ import background from "../assets/background.svg";
     }
 
     .photo-stack {
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1rem;
+      grid-template-columns: repeat(3, 1fr);
+      /* gap: 1rem; */
       padding-inline: var(--space-md);
     }
     .photo-stack figure {
@@ -160,9 +160,9 @@ import background from "../assets/background.svg";
       margin-top: 0;
     }
     .photo-stack figure:nth-child(3) {
-      grid-column: 1 / -1;
-      justify-self: center;
-      width: 50%;
+      /* grid-column: 1 / -1; */
+      /* justify-self: center; */
+      /* width: 50%; */
     }
     .photo-container figure {
       width: 100%;

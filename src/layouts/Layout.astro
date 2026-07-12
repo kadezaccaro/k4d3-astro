@@ -7,7 +7,7 @@ import EmailCTA from "../components/EmailCTA.astro";
 import { ClientRouter, fade, slide } from "astro:transitions";
 
 interface Props {
-  title: string;
+  title?: string;
 }
 
 const { title } = Astro.props;

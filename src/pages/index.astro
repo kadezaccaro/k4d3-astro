@@ -1,7 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Container from "../components/Container.astro";
-import Image from "astro/components/Image.astro";
+import { Image } from "astro:assets";
 import ProjectCard from "../components/ProjectCard.astro";
 import HireStatus from "../components/HireStatus.astro";
 import selfPortrait from "../assets/images/portrait-placeholder.jpg";
@@ -27,17 +27,21 @@ import CertStack from "../components/CertStack.astro";
         <Image src={selfPortrait} alt="temp self portrait" loading="eager" />
       </figure>
 
-      <h1>
-        I'm Kade, a <strong>Designer</strong> with a passion for{" "}
+      <h1 class="tagline">
+        I'm Kade, a future <strong>IT support specialist</strong> with a passion for
+        {" "}
         <strong>Cybersecurity.</strong>
       </h1>
 
       <p class="intro-text">
-        I'm currently{" "}
-        <span class="text-highlight-color">
+        I'm currently a <span class="text-highlight-color"
+          >Cybersecurity student{" "}
+
           transitioning into IT/Security
         </span>{" "}
         with a creative background in Graphic Design and Front-End Web Development.
+        As a victim of data breaches, I strive to make a difference in protecting
+        people and the organizations we trust.
       </p>
 
       <HireStatus />
@@ -92,7 +96,7 @@ import CertStack from "../components/CertStack.astro";
 
         <div class="grid-auto-fit">
           <ProjectCard
-            href="/projects/grand-place"
+            href="/grand-place"
             title="Grand Place"
             description="A new brand identity system and website for a luxury real estate
               team."
@@ -134,15 +138,19 @@ import CertStack from "../components/CertStack.astro";
     display: flex;
     flex-direction: column;
     gap: var(--space-md);
-    margin-bottom: var(--space-xxl);
+    margin-bottom: var(--space-xl);
     padding-left: var(--space-md);
     background-image:;
   }
 
+  .tagline {
+    font-size: var(--font-size-level-2);
+  }
+
   .intro-text {
-    font-size: var(--font-size-level-5);
+    font-size: var(--font-size-level-6);
     line-height: 1.6;
-    max-width: 40ch;
+    max-width: 45ch;
   }
 
   strong {

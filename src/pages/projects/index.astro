@@ -1,0 +1,68 @@
+---
+import homeNetCover from "../../assets/images/temp-homelab.jpg";
+import Layout from "../../layouts/Layout.astro";
+import Container from "../../components/Container.astro";
+
+import { getCollection } from "astro:content";
+import ProjectCard from "../../components/ProjectCard.astro";
+const works = await getCollection("works");
+console.log("/////PROJECTS DATA/////", works);
+---
+
+<Layout title="Projects | K4D3">
+  <Container>
+    <h1>Projects</h1>
+
+    <div class="grid-auto-fit">
+      {
+        works.map((work) => (
+          // <ProjectCard
+          //   href={`/works/${work.slug}`}
+          //   title={work.title}
+          //   description="Design and implementation of a secure home network using OPNsense, focusing on VLAN segmentation."
+          //   image={homeNetCover}
+          //   imageAlt="temp Home lab"
+          //   tag="Networking"
+          //   isAboveFold
+          // />
+
+          <ProjectCard
+            href={`/projects/${work.id}`}
+            title={work.data.title}
+            description={work.data.description}
+            image={homeNetCover}
+            imageAlt="temp Home lab"
+            tag="Networking"
+            isAboveFold
+          />
+        ))
+      }
+    </div>
+  </Container>
+</Layout>
+
+<!-- {
+        posts.map((post) => (
+          <a href={`/blog/${post.id}`}>
+            <article class="blog-article">
+              <figure class="grid-auto-fit">
+                <figcaption>
+                  <p class="tag">{post.data.date}</p>
+                  <h2>{post.data.title}</h2>
+                  <p>{post.data.description}</p>
+                  <span>{post.data.readTime}</span>
+                </figcaption>
+
+                <div class="img-container">
+                  <img
+                    src="https://picsum.photos/400/250"
+                    alt="Random placeholder"
+                    width={400}
+                    height={300}
+                  />
+                </div>
+              </figure>
+            </article>
+          </a>
+        ))
+      } -->

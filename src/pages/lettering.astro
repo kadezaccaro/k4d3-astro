@@ -1,0 +1,229 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Container from "../components/Container.astro";
+import { Image } from "astro:assets";
+// IMPORT IMAGES
+import twl from "../assets/images/lettering/truth-will-last.svg";
+import aiw from "../assets/images/lettering/artiswork.webp";
+import thanks from "../assets/images/lettering/thanks.svg";
+import beBrave from "../assets/images/lettering/be-brave.webp";
+import pressure from "../assets/images/lettering/pressure.svg";
+import loosenUp from "../assets/images/lettering/loosenup.svg";
+import letterN from "../assets/images/lettering/letter-n.svg";
+import jfs from "../assets/images/lettering/jfs.svg";
+import typismBook from "../assets/images/lettering/typism-book.png";
+import sunday from "../assets/images/lettering/sunday.svg";
+import refine from "../assets/images/lettering/refine.svg";
+import altruism from "../assets/images/lettering/altruism.svg";
+import ubn from "../assets/images/lettering/ubn-collection.webp";
+import tFlourished from "../assets/images/lettering/t-flourished.svg";
+import communicate from "../assets/images/lettering/communicate.svg";
+import faux from "../assets/images/lettering/faux.svg";
+import surreal from "../assets/images/lettering/surreal.svg";
+import rebuild from "../assets/images/lettering/rebuild.svg";
+import balance from "../assets/images/lettering/balance.svg";
+import rhythm from "../assets/images/lettering/rhythm.svg";
+import ourMusings from "../assets/images/lettering/our-musings.svg";
+import letterL from "../assets/images/lettering/letter-l.svg";
+import drLecter from "../assets/images/lettering/dr-lecter.svg";
+import letterA from "../assets/images/lettering/letter-a.svg";
+import letterB from "../assets/images/lettering/letter-b.svg";
+import letterC from "../assets/images/lettering/letter-c.svg";
+import letterD from "../assets/images/lettering/letter-d.svg";
+---
+
+<Layout title="Lettering | K4D3">
+  <Container>
+    <header class="container header-hero">
+      <h1>
+        <strong>Lettering Collection</strong>
+      </h1>
+      <h2 class="subtitle">
+        Select hand-lettering pieces refined through careful iteration for
+        technical precision.
+      </h2>
+    </header>
+  </Container>
+
+  <div class="divider simple-wave"></div>
+
+  <div class="bg-light lettering">
+    <div class="container-lg">
+      <div class="grid-auto-fit">
+        <Image
+          src={twl}
+          alt='"Truth Will Last" bouncing brush script'
+          loading="eager"
+        />
+        <Image
+          src={aiw}
+          alt='"Art is Work" in elegant formal script combined with a bold serif style"
+          loading="eager'
+          class="resize-2"
+        />
+      </div>
+
+      <Image
+        src={thanks}
+        alt='"Thanks!" elegant formal script with large circular flourishes'
+      />
+      <Image
+        src={beBrave}
+        alt='"Be Brave" disconnected script with arched baseline'
+      />
+      <Image src={pressure} alt='"Pressure" slanted bouncing brush script' />
+
+      <div class="grid-auto-fit">
+        <Image src={loosenUp} alt='"Loosen Up" slanted bouncing brush script' />
+        <Image
+          src={letterN}
+          alt='"N" with unique flourishes spinning around'
+          class="rotate resize"
+        />
+      </div>
+
+      <div class="grid-auto-fit">
+        <Image
+          src={jfs}
+          alt='"Just F*cking Start" slanted formal script with flourishes'
+        />
+
+        <figure class="resize">
+          <Image src={typismBook} alt="Opened book showcasing featured work" />
+
+          <figcaption class="book-caption">
+            I'm excited to have my work published in{" "}
+            <strong>Typism Book 6</strong> among so many admirable artists!
+          </figcaption>
+        </figure>
+      </div>
+
+      <div class="grid-auto-fit">
+        <Image src={sunday} alt='"Sunday" slanted brush script' />
+        <Image src={refine} alt='"Refine" bouncing brush script' />
+      </div>
+
+      <Image
+        src={altruism}
+        alt='"Altruism" in all caps with slanted serif style'
+      />
+
+      <div class="grid-auto-fit">
+        <Image
+          src={ubn}
+          alt='"Undefined By Numbers" in all caps with paintbrush texture'
+          class="resize-2"
+        />
+        <Image
+          src={tFlourished}
+          alt='"Letter T" capitalized and bold with a lot of decorative flourishes'
+        />
+      </div>
+
+      <Image
+        src={communicate}
+        alt='"Communicate" elegant formal script with large flourishes'
+      />
+
+      <div class="grid-auto-fit">
+        <Image src={faux} alt='"Faux" slanted brush script' />
+        <Image src={surreal} alt='"Surreal" backslanted monoline script' />
+      </div>
+
+      <Image
+        src={rebuild}
+        alt='"Rebuild" elegant formal script with arched baseline'
+      />
+
+      <div class="grid-auto-fit">
+        <Image
+          src={balance}
+          alt='"Balance" slanted script with arched baseline'
+        />
+        <Image
+          src={rhythm}
+          alt='"Rhythm" slanted brush script with aggressive style'
+        />
+      </div>
+
+      <div class="grid-auto-fit">
+        <Image
+          src={ourMusings}
+          alt='"Our Musings" formal script with flourishes'
+        />
+        <Image src={letterL} alt='"Letter L" monoline script' class="resize" />
+      </div>
+
+      <Image
+        src={drLecter}
+        alt='"Dr. Lecter" in all caps with experimental gothic serif style'
+      />
+
+      <div class="grid-auto-fit">
+        <Image src={letterA} alt='"Letter A" unique high-contrast style' />
+        <Image src={letterB} alt='"Letter B" blackletter' />
+        <Image src={letterC} alt='"Letter C" slanted brush script' />
+        <Image src={letterD} alt='"Letter D" slanted brush script' />
+      </div>
+    </div>
+  </div>
+
+  <div class="divider simple-wave-end"></div>
+</Layout>
+
+<style>
+  .bg-light {
+    background-color: var(--color-bg-light);
+    padding-block: var(--space-lg);
+  }
+
+  .lettering .grid-auto-fit {
+    gap: 0;
+  }
+  .lettering img {
+    padding: var(--space-sm);
+  }
+
+  .resize,
+  .resize-2 {
+    max-width: 80%;
+    width: auto;
+    height: auto;
+    align-self: center;
+    justify-self: center;
+  }
+  .resize-2 {
+    max-width: 100%;
+  }
+
+  .book-caption {
+    color: var(--color-bg);
+    font-size: var(--font-size-caption);
+    text-align: center;
+    justify-self: center;
+    max-width: 40ch;
+  }
+
+  /* infinite rotation of letter N */
+  .rotate {
+    -webkit-animation: spin 10s linear infinite;
+    -moz-animation: spin 10s linear infinite;
+    animation: spin 10s linear infinite;
+  }
+  @-moz-keyframes spin {
+    100% {
+      -moz-transform: rotate(360deg);
+    }
+  }
+  @-webkit-keyframes spin {
+    100% {
+      -webkit-transform: rotate(360deg);
+    }
+  }
+  @keyframes spin {
+    100% {
+      -webkit-transform: rotate(360deg);
+      transform: rotate(360deg);
+    }
+  }
+</style>

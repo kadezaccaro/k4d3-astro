@@ -1,0 +1,51 @@
+---
+import Layout from "../../layouts/Layout.astro";
+// import Container from "../../components/Container.astro";
+import { getCollection, render } from "astro:content";
+import Container from "../../components/Container.astro";
+
+export async function getStaticPaths() {
+  const projects = await getCollection("projects");
+
+  console.log(
+    "///Generated paths:///",
+    projects.map((project) => project.id),
+  );
+
+  return projects.map((project) => ({
+    params: {
+      slug: project.id,
+    },
+    props: {
+      project,
+    },
+  }));
+}
+
+const { project } = Astro.props;
+const { Content } = await render(project);
+
+console.log("this is project:", project);
+---
+
+<!-- <ProjectLayout work={project.data}>
+  <Content />
+</ProjectLayout> -->
+<Layout title=`${project.data.title} | K4D3`>
+  <Container>
+    <h1>{project.data.title}</h1>
+    <h2>{project.data.description}</h2>
+
+    {
+      project.data.services && (
+        <ul>
+          {project.data.services.map((service) => (
+            <li>{service}</li>
+          ))}
+        </ul>
+      )
+    }
+
+    <Content />
+  </Container>
+</Layout>

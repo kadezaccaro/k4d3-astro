@@ -5,8 +5,8 @@ import Container from "../../components/Container.astro";
 
 import { getCollection } from "astro:content";
 import ProjectCard from "../../components/ProjectCard.astro";
-const works = await getCollection("works");
-console.log("/////PROJECTS DATA/////", works);
+const projects = await getCollection("projects");
+console.log("/////PROJECTS DATA/////", projects);
 ---
 
 <Layout title="Projects | K4D3">
@@ -15,10 +15,10 @@ console.log("/////PROJECTS DATA/////", works);
 
     <div class="grid-auto-fit">
       {
-        works.map((work) => (
+        projects.map((project) => (
           // <ProjectCard
-          //   href={`/works/${work.slug}`}
-          //   title={work.title}
+          //   href={`/works/${project.slug}`}
+          //   title={project.title}
           //   description="Design and implementation of a secure home network using OPNsense, focusing on VLAN segmentation."
           //   image={homeNetCover}
           //   imageAlt="temp Home lab"
@@ -27,10 +27,10 @@ console.log("/////PROJECTS DATA/////", works);
           // />
 
           <ProjectCard
-            href={`/projects/${work.id}`}
-            title={work.data.title}
-            description={work.data.description}
-            image={homeNetCover}
+            href={`/work/${project.id}`}
+            title={project.data.title}
+            description={project.data.description}
+            image={project.data.thumbnail}
             imageAlt="temp Home lab"
             tag="Networking"
             isAboveFold

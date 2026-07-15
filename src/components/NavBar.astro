@@ -1,8 +1,8 @@
 ---
 const links = [
   { href: "/", label: "Home" },
-  { href: "#about", label: "About" },
   { href: "/work", label: "Work" },
+  { href: "#about", label: "About" },
   { href: "/blog", label: "Blog" },
   { href: "/contact", label: "Contact" },
 ];
@@ -49,47 +49,54 @@ const pathname = Astro.url.pathname;
 </header>
 
 <script>
-  const header = document.querySelector(".site-header");
+  function initNavbar() {
+    const header = document.querySelector(".site-header");
 
-  if (header) {
-    const button = header.querySelector(".menu-toggle");
-    const nav = header.querySelector(".nav");
-    const links = nav?.querySelectorAll("a");
+    if (header) {
+      const button = header.querySelector(".menu-toggle");
+      const nav = header.querySelector(".nav");
+      const links = nav?.querySelectorAll("a");
 
-    const openMenu = () => {
-      button?.setAttribute("aria-expanded", "true");
-      nav?.classList.add("open");
-      //   document.body.style.overflow = "hidden";
-    };
+      const openMenu = () => {
+        button?.setAttribute("aria-expanded", "true");
+        nav?.classList.add("open");
+        //   document.body.style.overflow = "hidden";
+      };
 
-    const closeMenu = () => {
-      button?.setAttribute("aria-expanded", "false");
-      nav?.classList.remove("open");
-      //   document.body.style.overflow = "";
-    };
+      const closeMenu = () => {
+        button?.setAttribute("aria-expanded", "false");
+        nav?.classList.remove("open");
+        //   document.body.style.overflow = "";
+      };
 
-    const toggleMenu = () => {
-      nav?.classList.contains("open") ? closeMenu() : openMenu();
-    };
+      const toggleMenu = () => {
+        nav?.classList.contains("open") ? closeMenu() : openMenu();
+      };
 
-    button?.addEventListener("click", toggleMenu);
+      button?.addEventListener("click", toggleMenu);
 
-    links?.forEach((link) => link.addEventListener("click", closeMenu));
+      links?.forEach((link) => link.addEventListener("click", closeMenu));
 
-    document.addEventListener("keydown", (event) => {
-      if (event.key === "Escape") {
-        closeMenu();
-      }
-    });
-
-    window
-      .matchMedia("(min-width: 769px)")
-      .addEventListener("change", (event) => {
-        if (event.matches) {
+      // close mobile menu on escape key press
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") {
           closeMenu();
         }
       });
+
+      // close mobile menu on window resize
+      window
+        .matchMedia("(min-width: 768px)")
+        .addEventListener("change", (event) => {
+          if (event.matches) {
+            closeMenu();
+          }
+        });
+    }
   }
+
+  // re-init after swapping pages to prevent astro transitions from breaking functionality
+  document.addEventListener("astro:page-load", initNavbar);
 </script>
 
 <style>

@@ -26,7 +26,6 @@ const { title } = Astro.props;
   </head>
   <body>
     <NavBar />
-    <SlidingNavBar />
     <main>
       <slot />
     </main>
@@ -42,8 +41,8 @@ const { title } = Astro.props;
     color: var(--color-text-level-1);
     overflow-x: hidden;
 
-    border-top: 4px solid;
-    border-bottom: 4px solid;
+    /* border-top: 2px solid; */
+    border-bottom: 2px solid;
     border-image: linear-gradient(
         to left,
 

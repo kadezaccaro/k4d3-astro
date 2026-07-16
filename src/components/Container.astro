@@ -1,11 +1,37 @@
-<div class="container">
+---
+interface Props {
+  size?: "sm" | "md" | "lg" | "full";
+  class?: string;
+}
+
+const { size, class: className = "" } = Astro.props;
+---
+
+<div class:list={["container", size && `container--${size}`, className]}>
   <slot />
 </div>
 
 <style>
   .container {
+    max-width: 82rem; /* default container value */
     margin: 0 auto;
-    max-width: 82rem;
     padding-inline: clamp(1rem, 4vw, 2rem); /* horizontal fluid padding */
+    width: 100%;
+  }
+
+  .container--sm {
+    max-width: 48rem;
+  }
+
+  .container--md {
+    max-width: 64rem;
+  }
+
+  .container--lg {
+    max-width: 129.5rem;
+  }
+
+  .container--full {
+    max-width: none;
   }
 </style>

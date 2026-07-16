@@ -1,0 +1,68 @@
+---
+import { Image } from "astro:assets";
+
+interface Tool {
+  name: string;
+  logo?: ImageMetadata;
+}
+
+interface Props {
+  tools: Tool[];
+}
+
+const { tools } = Astro.props;
+
+import TwoColumn from "../components/TwoColumn.astro";
+---
+
+<TwoColumn>
+  <h3 class="tool-stack__heading">Tools Used</h3>
+
+  <div class="tool-stack">
+    {
+      tools.map((tool) => (
+        <div class="tool-stack__card">
+          {tool.logo && (
+            <Image
+              src={tool.logo}
+              alt={`${tool.name} logo`}
+              width={40}
+              height={40}
+              loading="lazy"
+            />
+          )}
+
+          {/* <span class="tool-stack__name">{tool.name}</span> */}
+        </div>
+      ))
+    }
+  </div>
+</TwoColumn>
+
+<style>
+  .tool-stack {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: var(--space-sm);
+  }
+  .tool-stack__heading {
+    /* grid-column: 1 / -1; */
+    grid-row: 1 / -1;
+
+    font-family: "Roboto Mono";
+    font-size: var(--font-size-body);
+    text-transform: uppercase;
+  }
+  .tool-stack__card {
+    padding: var(--space-sm);
+    border-radius: 1.5rem;
+    background-color: var(--color-surface);
+    aspect-ratio: 1 / 1;
+  }
+  .tool-stack__card img {
+    object-fit: contain;
+  }
+  .tool-stack__name {
+    font-size: var(--font-size-level-6);
+  }
+</style>

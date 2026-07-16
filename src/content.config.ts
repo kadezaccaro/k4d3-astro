@@ -36,7 +36,12 @@ const projects = defineCollection({
           }),
         )
         .optional(),
-      tools: z.array(z.string()),
+      tools: z.array(
+        z.object({
+          name: z.string(),
+          logo: image().optional(),
+        }),
+      ),
       client: z.string().optional(),
       url: z.string().optional(),
       services: z.array(z.string()).optional(),

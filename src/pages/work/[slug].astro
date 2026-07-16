@@ -3,6 +3,8 @@ import Layout from "../../layouts/Layout.astro";
 // import Container from "../../components/Container.astro";
 import { getCollection, render } from "astro:content";
 import Container from "../../components/Container.astro";
+import { Image } from "astro:assets";
+import ProjectGallery from "../../components/ProjectGallery.astro";
 
 export async function getStaticPaths() {
   const projects = await getCollection("projects");
@@ -25,7 +27,9 @@ export async function getStaticPaths() {
 const { project } = Astro.props;
 const { Content } = await render(project);
 
-console.log("this is project:", project);
+console.log("LOG PROJECT.DATA.COVER >>>", project.data.cover);
+console.log("LOG TYPOF PROJECT.DATA.COVER >>>", typeof project.data.cover);
+console.log("LOG PROJECT.DATA.IMAGES >>>", project.data.images);
 ---
 
 <!-- <ProjectLayout work={project.data}>
@@ -33,10 +37,23 @@ console.log("this is project:", project);
 </ProjectLayout> -->
 <Layout title=`${project.data.title} | K4D3`>
   <Container>
-    <h1>{project.data.title}</h1>
-    <h2>{project.data.description}</h2>
+    <header class="case-hero">
+      <span class="case-hero__tag">{project.data.tag}</span>
+      <h1>{project.data.title}</h1>
+      <h2 class="case-hero__subtitle">{project.data.summary}</h2>
 
-    {
+      <div class="case-hero__image">
+        <Image
+          src={project.data.cover}
+          alt={project.data.coverAlt ?? project.data.title}
+          loading="eager"
+          fetchpriority="high"
+          class="case-cover"
+        />
+      </div>
+    </header>
+
+    <!-- {
       project.data.services && (
         <ul>
           {project.data.services.map((service) => (
@@ -44,8 +61,76 @@ console.log("this is project:", project);
           ))}
         </ul>
       )
-    }
+    } -->
 
-    <Content />
+    <div class="case-content">
+      <Content />
+    </div>
+
+    <div class="case-gallery">
+      <ProjectGallery images={project.data.images} />
+    </div>
   </Container>
 </Layout>
+
+<style>
+  .case-hero {
+    margin-top: var(--space-xl);
+    margin-bottom: var(--space-lg);
+  }
+  .case-hero__tag {
+    border: 1px solid var(--color-border);
+    padding: 0.4rem 0.8rem;
+    border-radius: 0.5rem;
+    margin-bottom: var(--space-sm);
+    text-transform: uppercase;
+    font-family: "Roboto Mono";
+    display: inline-block;
+    background-color: var(--color-surface);
+    color: var(--color-text-level-2);
+  }
+  .case-hero h1 {
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: -0.05em;
+    margin-bottom: var(--space-sm);
+  }
+  .case-hero__subtitle {
+    font-size: var(--font-size-level-5);
+    font-weight: normal;
+    color: var(--color-quinary);
+    letter-spacing: unset;
+    margin-bottom: var(--space-md);
+  }
+
+  .case-gallery :global(img) {
+    border: 1px solid var(--color-border);
+    border-radius: 2rem;
+  }
+
+  .case-content :global(h2) {
+    margin: var(--space-lg) 0 var(--space-sm);
+    font-size: var(--font-size-level-3);
+    letter-spacing: -0.025em;
+    font-weight: 700;
+  }
+
+  /* list styling */
+  .case-content :global(ul) {
+    list-style: none;
+    color: var(--color-text-level-2);
+  }
+  .case-content :global(li) {
+    margin-top: var(--space-sm);
+    position: relative;
+    padding-left: var(--space-sm-2);
+    font-size: var(--font-size-level-5);
+    line-height: 1.5;
+  }
+  .case-content :global(li::before) {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: var(--color-quarternary);
+  }
+</style>

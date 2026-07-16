@@ -24,11 +24,23 @@ const projects = defineCollection({
   schema: ({ image }) =>
     z.object({
       title: z.string(),
-      description: z.string(),
-      thumbnail: image(),
+      summary: z.string(),
+      tag: z.string(),
+      cover: image(),
+      coverAlt: z.string(),
+      images: z
+        .array(
+          z.object({
+            src: image(),
+            alt: z.string(),
+          }),
+        )
+        .optional(),
+      tools: z.array(z.string()),
       client: z.string().optional(),
       url: z.string().optional(),
       services: z.array(z.string()).optional(),
+      featured: z.boolean().default(false),
     }),
 });
 

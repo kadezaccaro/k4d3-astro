@@ -8,21 +8,23 @@ import background from "../assets/background.svg";
 ---
 
 <section class="about-section" id="about">
-  <!-- <img id="background" src={background.src} alt="" fetchpriority="high" /> -->
   <div class="about-container">
-    <div>
-      <header class="about-header-section">
+    <div class="about-container__bio">
+      <header>
         <h3>About</h3>
+        <hr />
       </header>
 
-      <div class="container-text-new">
-        <p>
-          <strike className="text-strike">
-            <strong>Designer with a passion for Cybersecurity.</strong>
-          </strike>
-          <br />
-          <strong class="text-highlight">Human Being.</strong>
-        </p>
+      <div class="about-container__text">
+        <div class="about-container__tagline">
+          <h4>
+            <strike class="text-strike">
+              Designer with a passion for IT/Cybersecurity.
+            </strike>
+            <br />
+            <span class="text-highlight">Human Being.</span>
+          </h4>
+        </div>
         <p>
           As a victim of data breaches, I strive to make a difference in
           protecting people and the organizations we trust.
@@ -44,7 +46,7 @@ import background from "../assets/background.svg";
         <p>
           I’m currently exploring new opportunities and available for freelance.
           I'd love to hear from you — {" "}
-          <a href="mailto:kade@k4d3.com">kade@k4d3.com</a>.
+          <a href="mailto:hi@k4d3.com">hi@k4d3.com</a>.
         </p>
       </div>
     </div>
@@ -74,27 +76,21 @@ import background from "../assets/background.svg";
     position: relative;
   }
 
-  #background {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -10;
-    filter: blur(100px);
-    opacity: 0.5;
-  }
-
   .about-container {
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: var(--space-xl);
   }
-
-  .container-text-new {
-    padding-top: var(--space-lg);
+  .about-container__text {
+    padding-top: var(--space-md);
     max-width: 60ch;
+  }
+  .about-container__tagline {
+    margin-bottom: var(--space-lg);
+  }
+  .about-container__tagline h4 {
+    font-weight: 400;
   }
 
   /* || PHOTO STACK */

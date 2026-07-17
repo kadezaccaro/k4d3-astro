@@ -111,7 +111,7 @@ const projects = await getCollection("projects");
               technical precision."
             image={letteringCover}
             imageAlt="Letter L in monoline script"
-            tag="Hand Lettering"
+            tag="Custom Type"
           />
 
           <ProjectCard
@@ -121,10 +121,14 @@ const projects = await getCollection("projects");
               years."
             image={logoCover}
             imageAlt="Letter L in monoline script"
-            tag="Logo Design"
+            tag="Brand Identity"
           />
         </div>
       </section>
+
+      <a href="/work" class="project-section__more text-muted"
+        >View more work &rarr;</a
+      >
     </section>
 
     <AboutSection />
@@ -151,7 +155,7 @@ const projects = await getCollection("projects");
   }
 
   strong {
-    font-weight: 700;
+    font-weight: 900;
   }
 
   .portrait-container {
@@ -169,10 +173,19 @@ const projects = await getCollection("projects");
     object-fit: cover;
   }
 
+  .project-section__more {
+    /* border-top: 1px solid var(--color-border); */
+    border-bottom: 1px solid var(--color-border);
+    /* border-radius: 1rem; */
+    /* padding-left: var(--space-xs); */
+    padding-bottom: var(--space-md);
+    text-align: center;
+  }
+
   .projects-container {
     display: flex;
     flex-direction: column;
-    gap: var(--space-lg);
+    gap: var(--space-md);
   }
   .header-section {
     /* padding-left: var(--space-md); */

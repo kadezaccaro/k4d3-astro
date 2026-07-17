@@ -1,19 +1,21 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import Button from "../components/Button.astro";
+import Container from "../components/Container.astro";
 ---
 
 <Layout title="Contact | K4D3">
-  <header class="header-hero container-sm">
-    <h1 class="case-h1">Contact</h1>
+  <Container size="sm">
+    <header class="header-hero">
+      <h1 class="header-hero__h1">Contact</h1>
 
-    <p>
-      If you'd like to get in touch, please email{" "}
-      <a href="mailto:hi@k4d3.com" class="link-highlight"> hi@k4d3.com </a>
-      , or you can use the form below&mdash;I hope to hear from you soon!
-    </p>
-  </header>
+      <p>
+        If you'd like to get in touch, please email{" "}
+        <a href="mailto:hi@k4d3.com" class="link-highlight">hi@k4d3.com</a>, or
+        you can use the form below. I hope to hear from you soon!
+      </p>
+    </header>
 
-  <main class="container-sm">
     <form action="https://formsubmit.co/hi@k4d3.com" method="POST">
       <input type="hidden" name="_captcha" value="false" />
 
@@ -50,13 +52,22 @@ import Layout from "../layouts/Layout.astro";
         <textarea id="message" name="message" required></textarea>
       </div>
 
-      <button type="submit" class="submit-button"> Send message </button>
+      <Button type="submit" size="full" variant="secondary">
+        Send message
+      </Button>
     </form>
-  </main>
+  </Container>
 </Layout>
 
 <style>
-  /* || CONTACT */
+  .header-hero {
+    margin-bottom: var(--space-md);
+  }
+  .header-hero__h1 {
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: var(--space-sm);
+  }
 
   form {
     display: flex;
@@ -89,14 +100,6 @@ import Layout from "../layouts/Layout.astro";
   }
   textarea {
     min-height: 14rem;
-  }
-
-  :focus {
-    outline: none;
-  }
-  :focus-visible {
-    outline: 3px solid #2563eb; /* accessible blue */
-    outline-offset: 2px;
   }
 
   .submit-button {

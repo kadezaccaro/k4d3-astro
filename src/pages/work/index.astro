@@ -2,16 +2,16 @@
 import homeNetCover from "../../assets/images/temp-homelab.jpg";
 import Layout from "../../layouts/Layout.astro";
 import Container from "../../components/Container.astro";
+import ProjectCard from "../../components/ProjectCard.astro";
 
 import { getCollection } from "astro:content";
-import ProjectCard from "../../components/ProjectCard.astro";
 const projects = await getCollection("projects");
-console.log("/////PROJECTS DATA/////", projects);
+// console.log("/////PROJECTS DATA/////", projects);
 ---
 
 <Layout title="Projects | K4D3">
   <Container>
-    <h1>Projects</h1>
+    <h1>Work</h1>
 
     <div class="grid-auto-fit">
       {
@@ -29,8 +29,8 @@ console.log("/////PROJECTS DATA/////", projects);
           <ProjectCard
             href={`/work/${project.id}`}
             title={project.data.title}
-            description={project.data.description}
-            image={project.data.thumbnail}
+            description={project.data.summary}
+            image={project.data.cover}
             imageAlt="temp Home lab"
             tag="Networking"
             isAboveFold
@@ -66,3 +66,9 @@ console.log("/////PROJECTS DATA/////", projects);
           </a>
         ))
       } -->
+
+<style>
+  h1 {
+    padding-bottom: var(--space-md);
+  }
+</style>

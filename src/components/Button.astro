@@ -1,0 +1,129 @@
+---
+interface Props {
+  size?: "sm" | "md" | "lg" | "full";
+  variant?: "primary" | "secondary" | "outline";
+  type?: "button" | "submit" | "reset";
+  href?: string;
+  class?: string;
+}
+
+const {
+  size = "md",
+  variant = "primary",
+  type = "button",
+  href,
+  class: className = "",
+} = Astro.props;
+
+const classes = ["btn", `btn--${size}`, `btn--${variant}`, className];
+---
+
+{
+  href ? (
+    <a href={href} class:list={classes}>
+      <slot />
+    </a>
+  ) : (
+    <button type={type} class:list={classes}>
+      <slot />
+    </button>
+  )
+}
+
+<style>
+  /* button {
+    background: none;
+    padding: 0.5rem 1rem;
+    background-color: var(--color-secondary);
+    border: none;
+    border-radius: 0.75rem;
+    cursor: pointer;
+    color: var(--color-bg);
+    font-size: var(--font-size-body);
+    transition: 300ms;
+    text-align: center;
+    font-family: "Roboto Mono", monospace;
+  }
+  button:hover {
+    transform: scale(1.04);
+  }
+  button:active {
+    transform: scale(0.96);
+  } */
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    text-decoration: none;
+    font-family: "Roboto Mono", monospace;
+    font-size: var(--font-size-body);
+    font-weight: 700;
+    text-transform: uppercase;
+    transition: 0.3s;
+  }
+
+  /* Size Variants */
+  .btn--sm {
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+  }
+
+  .btn--md {
+    padding: var(--space-sm) var(--space-sm-2);
+    font-size: var(--font-size-level-6);
+  }
+
+  .btn--lg {
+    padding: 1rem 2rem;
+    font-size: var(--font-size-level-5);
+  }
+
+  .btn--full {
+    width: 100%;
+    padding: var(--space-xs) var(--space-sm-2);
+    /* padding: 0.75rem 1.5rem; */
+  }
+
+  /* Style Variants */
+  .btn--primary {
+    background: none;
+    color: var(--color-text-level-1);
+    border: 2px solid var(--color-primary);
+  }
+
+  .btn--primary:hover {
+    border-color: var(--color-text-level-1);
+    /* transform: translateY(-2px); */
+    /* box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3); */
+  }
+  .btn--primary:hover {
+    transform: scale(1.04);
+  }
+  .btn--primary:active {
+    transform: scale(0.96);
+  }
+
+  .btn--secondary {
+    background-color: var(--color-secondary);
+    color: var(--color-bg);
+  }
+
+  .btn--secondary:hover {
+    background-color: var(--color-primary);
+  }
+
+  .btn--outline {
+    background-color: transparent;
+    border: 2px solid #3b82f6;
+    color: #3b82f6;
+  }
+
+  .btn--outline:hover {
+    background-color: #eff6ff;
+  }
+</style>

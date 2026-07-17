@@ -11,8 +11,8 @@ import background from "../assets/background.svg";
   <div class="about-container">
     <div class="about-container__bio">
       <header>
-        <h3>About</h3>
-        <hr />
+        <h2>About</h2>
+        <!-- <hr /> -->
       </header>
 
       <div class="about-container__text">
@@ -25,27 +25,31 @@ import background from "../assets/background.svg";
             <span class="text-highlight">Human Being.</span>
           </h4>
         </div>
-        <p>
-          As a victim of data breaches, I strive to make a difference in
-          protecting people and the organizations we trust.
-        </p>
-        <p>
-          My work is dedicated to designing thoughtful experiences. This means
-          that I ask questions, brainstorm, plan approaches, and build enduring
-          solutions.
-        </p>
+
         <p>
           My introduction to design came at a young age with strong ambitions to
-          learn and create high-quality work. Over the years, these ambitions
-          continue to drive my projects as I look forward to continuous growth.
+          learn and create high-quality work. <strong>
+            While I have expanded my interests with IT and Cybersecurity, these
+            ambitions continue to drive my projects today.</strong
+          >
         </p>
         <p>
-          Apart from design work, I enjoy coding, exercising, video games, my
-          cat, and learning American Sign Language!
+          My passion for Cybersecurity was sparked by an unfortunate hacking
+          incident that resulted from a company data breach. To make a story
+          short, I stepped up and{" "}
+          <a href="/blog/the-hacked-account">disrupted the hack</a>.
         </p>
         <p>
-          I’m currently exploring new opportunities and available for freelance.
-          I'd love to hear from you — {" "}
+          As a victim of data breaches, I hope to make a difference in
+          protecting people and the organizations we rely on.
+        </p>
+        <p>
+          Apart from my work, I enjoy exercising, playing video games, watching
+          anti-scam creators, and <a href="/work/home-lab">homelabbing</a>!
+        </p>
+        <p>
+          I’m currently in school for Cybersecurity, and exploring new hiring
+          opportunities. I'd love to hear from you — {" "}
           <a href="mailto:hi@k4d3.com">hi@k4d3.com</a>.
         </p>
       </div>
@@ -72,7 +76,9 @@ import background from "../assets/background.svg";
     display: flex;
     flex-direction: column;
     gap: var(--space-xl);
-    padding-block: var(--space-xl);
+    padding-top: var(--space-xl);
+    margin-bottom: var(--space-lg);
+
     position: relative;
   }
 

@@ -5,12 +5,14 @@
 <style>
   .two-column {
     display: grid;
-    grid-template-columns: minmax(12rem, 20rem) minmax(0, 1fr);
+    grid-template-columns: 1fr 2fr;
+    /* grid-template-columns: 1fr max-content; */
+    /* display: flex; */
+    /* justify-content: space-between; */
     gap: var(--space-md);
-
     border-top: 1px solid var(--color-border);
-    padding-top: var(--space-sm);
-    margin-bottom: var(--space-lg);
+    padding-top: var(--space-md);
+    margin-bottom: var(--space-xl);
   }
 
   @media (max-width: 768px) {

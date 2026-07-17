@@ -55,4 +55,52 @@ import Layout from "../layouts/Layout.astro";
   </main>
 </Layout>
 
-<style></style>
+<style>
+  /* || CONTACT */
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+
+  .input-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  label {
+    font-size: var(--font-size-body);
+    line-height: 1.1;
+  }
+
+  input,
+  textarea {
+    font-size: var(--font-size-body);
+    line-height: 1.6;
+    background-color: var(--color-bg);
+    padding: 0.5rem 1rem;
+    color: var(--color-text-level-1);
+    border: 2px solid var(--color-border);
+    box-shadow: none;
+    border-radius: 0.5rem;
+    resize: vertical;
+  }
+  textarea {
+    min-height: 14rem;
+  }
+
+  :focus {
+    outline: none;
+  }
+  :focus-visible {
+    outline: 3px solid #2563eb; /* accessible blue */
+    outline-offset: 2px;
+  }
+
+  .submit-button {
+    padding: 1rem;
+    font-weight: 700;
+  }
+</style>

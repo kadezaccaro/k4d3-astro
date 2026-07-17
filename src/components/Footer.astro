@@ -14,7 +14,7 @@ import Container from "./Container.astro";
   <Container>
     <div class="container footerContent">
       <div class="footerSection">
-        <h2>K4D3</h2>
+        <a href="/" class="logo"> K4D3 </a>
         <p>
           A graphic designer & coder passionate about well-designed experiences
           with close attention href detail.
@@ -91,6 +91,12 @@ import Container from "./Container.astro";
 
 <style>
   /* || FOOTER */
+  .logo {
+    font-weight: 700;
+    text-decoration: none;
+    font-family: "Satoshi", sans-serif;
+    font-size: var(--font-size-level-4);
+  }
 
   /* Footer Content Grid */
   .footerContent {

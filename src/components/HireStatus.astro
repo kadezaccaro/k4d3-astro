@@ -1,5 +1,6 @@
 <div class="hire-status">
   <div class="hire-indicator"></div>
+  <div class="animate-ping"></div>
   <p class="hire-text">Available for hire</p>
 </div>
 
@@ -7,15 +8,16 @@
   .hire-status {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: 1rem;
   }
   .hire-indicator {
-    width: 12px;
-    height: 12px;
+    width: 10px;
+    height: 10px;
     background-color: greenyellow;
     border-radius: 50%;
     box-shadow: 0 0 12px rgba(16, 185, 129, 1);
-    animation: pulse 2s infinite;
+    /* animation: pulse 2s infinite; */
+    position: relative;
   }
   .hire-text {
     font-family: "Roboto Mono", monospace;
@@ -34,6 +36,22 @@
     50% {
       opacity: 0.6;
       transform: scale(0.8);
+    }
+  }
+
+  .animate-ping {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: greenyellow;
+    border-radius: 50%;
+    animation: ping 1s infinite;
+  }
+  @keyframes ping {
+    75%,
+    100% {
+      transform: scale(4);
+      opacity: 0;
     }
   }
 </style>

@@ -4,17 +4,20 @@ import Container from "../components/Container.astro";
 import { Image } from "astro:assets";
 import ProjectCard from "../components/ProjectCard.astro";
 import HireStatus from "../components/HireStatus.astro";
-import selfPortrait from "../assets/images/portrait-placeholder.jpg";
 import RouterIcon from "../components/icons/RouterIcon.astro";
 import PenToolIcon from "../components/icons/PenToolIcon.astro";
+import AboutSection from "../components/AboutSection.astro";
+import CertStack from "../components/CertStack.astro";
+// IMPORT IMAGES
+import selfPortrait from "../assets/images/portrait-placeholder.jpg";
 import homeNetCover from "../assets/images/temp-homelab.jpg";
 import homeLabCover from "../assets/images/home-lab-topology2.jpg";
-
 import gpCover from "../assets/images/grand_place/gp-cover-v2.svg";
 import logoCover from "../assets/images/zero-v2.svg";
 import letteringCover from "../assets/images/lettering-cover-v3.svg";
-import AboutSection from "../components/AboutSection.astro";
-import CertStack from "../components/CertStack.astro";
+
+import { getCollection } from "astro:content";
+const projects = await getCollection("projects");
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
@@ -28,20 +31,18 @@ import CertStack from "../components/CertStack.astro";
       </figure>
 
       <h1 class="tagline">
-        I'm Kade, a future <strong>IT support specialist</strong> with a passion for
+        I'm Kade, a <strong>Designer</strong> with a passion for
         {" "}
-        <strong>Cybersecurity.</strong>
+        <strong>IT/Cybersecurity.</strong>
       </h1>
 
       <p class="intro-text">
-        I'm currently a <span class="text-highlight-color"
-          >Cybersecurity student{" "}
-
+        I'm currently a Cybersecurity student <span
+          class="text-highlight-color"
+        >
           transitioning into IT/Security
         </span>{" "}
         with a creative background in Graphic Design and Front-End Web Development.
-        As a victim of data breaches, I strive to make a difference in protecting
-        people and the organizations we trust.
       </p>
 
       <HireStatus />
@@ -63,7 +64,7 @@ import CertStack from "../components/CertStack.astro";
 
         <div class="grid-auto-fit">
           <ProjectCard
-            href="/home-network"
+            href="/work/home-network"
             title="Home Network"
             description="Design and implementation of a secure home network using OPNsense, focusing on VLAN segmentation."
             image={homeNetCover}
@@ -73,11 +74,9 @@ import CertStack from "../components/CertStack.astro";
           />
 
           <ProjectCard
-            href="/lab"
+            href="/work/hacking-lab"
             title="Hacking Lab w/ Active Directory"
-            description="Setup and administration of an Active Directory environment,
-                  managing users, groups, and group policies in a Windows Server
-                  domain."
+            description="Setup and administration of an Active Directory environment, managing users, groups, and group policies in a Windows Server domain."
             image={homeLabCover}
             imageAlt="temp Home lab"
             tag="Systems Administration"
@@ -96,7 +95,7 @@ import CertStack from "../components/CertStack.astro";
 
         <div class="grid-auto-fit">
           <ProjectCard
-            href="/grand-place"
+            href="/work/grand-place"
             title="Grand Place"
             description="A new brand identity system and website for a luxury real estate
               team."
@@ -106,18 +105,18 @@ import CertStack from "../components/CertStack.astro";
           />
 
           <ProjectCard
-            href="/lettering"
+            href="/work/lettering"
             title="Lettering Collection"
             description="Select hand-lettering pieces refined through careful iteration for
               technical precision."
             image={letteringCover}
             imageAlt="Letter L in monoline script"
-            tag="Custom Lettering"
+            tag="Hand Lettering"
           />
 
           <ProjectCard
-            href="/logos"
-            title="Logofolio"
+            href="/work/logos"
+            title="Logos"
             description="A selection of custom logotypes and brand marks from over the
               years."
             image={logoCover}
@@ -138,13 +137,11 @@ import CertStack from "../components/CertStack.astro";
     display: flex;
     flex-direction: column;
     gap: var(--space-md);
-    margin-bottom: var(--space-xl);
-    padding-left: var(--space-md);
-    background-image:;
+    margin-block: var(--space-xl);
   }
 
   .tagline {
-    font-size: var(--font-size-level-2);
+    font-size: var(--font-size-level-1);
   }
 
   .intro-text {
@@ -183,7 +180,6 @@ import CertStack from "../components/CertStack.astro";
 
   .header-subsection {
     padding-bottom: var(--space-md);
-    padding-left: var(--space-md);
   }
   .section-label {
     display: flex;

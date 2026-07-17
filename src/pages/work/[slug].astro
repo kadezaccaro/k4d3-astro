@@ -30,6 +30,10 @@ const { Content } = await render(project);
 console.log("LOG PROJECT.DATA.COVER >>>", project.data.cover);
 console.log("LOG TYPOF PROJECT.DATA.COVER >>>", typeof project.data.cover);
 console.log("LOG PROJECT.DATA.IMAGES >>>", project.data.images);
+console.log("LOG PROJECT.DATA.TOOLS >>>", project.data.tools);
+
+import ToolStack from "../../components/ToolStack.astro";
+import background from "../../assets/background.svg";
 ---
 
 <!-- <ProjectLayout work={project.data}>
@@ -38,6 +42,7 @@ console.log("LOG PROJECT.DATA.IMAGES >>>", project.data.images);
 <Layout title=`${project.data.title} | K4D3`>
   <Container>
     <header class="case-hero">
+      <img id="background" src={background.src} fetchpriority="high" />
       <span class="case-hero__tag">{project.data.tag}</span>
       <h1>{project.data.title}</h1>
       <h2 class="case-hero__subtitle">{project.data.summary}</h2>
@@ -63,6 +68,8 @@ console.log("LOG PROJECT.DATA.IMAGES >>>", project.data.images);
       )
     } -->
 
+    <ToolStack tools={project.data.tools} />
+
     <div class="case-content">
       <Content />
     </div>
@@ -71,66 +78,83 @@ console.log("LOG PROJECT.DATA.IMAGES >>>", project.data.images);
       <ProjectGallery images={project.data.images} />
     </div>
   </Container>
+
+  <style>
+    .case-hero {
+      margin-top: var(--space-xl);
+      margin-bottom: var(--space-lg);
+      position: relative;
+    }
+    #background {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -10;
+      filter: blur(100px);
+      /* opacity: 0.5; */
+    }
+    .case-hero__tag {
+      border: 1px solid var(--color-border);
+      padding: 0.4rem 0.8rem;
+      border-radius: 0.5rem;
+      margin-bottom: var(--space-md);
+      text-transform: uppercase;
+      font-family: "Roboto Mono";
+      display: inline-block;
+      background-color: var(--color-surface);
+      color: var(--color-text-level-2);
+    }
+    .case-hero h1 {
+      font-weight: 800;
+      line-height: 0.8;
+      letter-spacing: -0.05em;
+      margin-bottom: var(--space-md);
+    }
+    .case-hero__subtitle {
+      font-size: var(--font-size-level-5);
+      font-weight: normal;
+      color: var(--color-quinary);
+      letter-spacing: unset;
+      margin-bottom: var(--space-xl);
+    }
+
+    .case-hero :global(img) {
+      /* border: 1px solid var(--color-border); */
+      border-radius: 2rem;
+    }
+
+    .case-content :global(h3) {
+      /* margin: var(--space-lg) 0 var(--space-sm); */
+      /* letter-spacing: -0.025em; */
+      font-weight: 700;
+      font-family: "Satoshi";
+      font-size: var(--font-size-level-5);
+      /* color: red; */
+      /* text-transform: uppercase; */
+    }
+
+    /* list styling */
+    .case-content :global(ul) {
+      list-style: none;
+      color: var(--color-text-level-2);
+    }
+    .case-content :global(li) {
+      margin-top: var(--space-sm);
+      position: relative;
+      padding-left: var(--space-sm-2);
+      font-size: var(--font-size-level-6);
+      line-height: 1.5;
+    }
+    .case-content :global(li::before) {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: var(--color-quarternary);
+    }
+    .case-content :global(li:first-of-type) {
+      margin-top: 0;
+    }
+  </style>
 </Layout>
-
-<style>
-  .case-hero {
-    margin-top: var(--space-xl);
-    margin-bottom: var(--space-lg);
-  }
-  .case-hero__tag {
-    border: 1px solid var(--color-border);
-    padding: 0.4rem 0.8rem;
-    border-radius: 0.5rem;
-    margin-bottom: var(--space-sm);
-    text-transform: uppercase;
-    font-family: "Roboto Mono";
-    display: inline-block;
-    background-color: var(--color-surface);
-    color: var(--color-text-level-2);
-  }
-  .case-hero h1 {
-    font-weight: 800;
-    line-height: 1;
-    letter-spacing: -0.05em;
-    margin-bottom: var(--space-sm);
-  }
-  .case-hero__subtitle {
-    font-size: var(--font-size-level-5);
-    font-weight: normal;
-    color: var(--color-quinary);
-    letter-spacing: unset;
-    margin-bottom: var(--space-md);
-  }
-
-  .case-gallery :global(img) {
-    border: 1px solid var(--color-border);
-    border-radius: 2rem;
-  }
-
-  .case-content :global(h2) {
-    margin: var(--space-lg) 0 var(--space-sm);
-    font-size: var(--font-size-level-3);
-    letter-spacing: -0.025em;
-    font-weight: 700;
-  }
-
-  /* list styling */
-  .case-content :global(ul) {
-    list-style: none;
-    color: var(--color-text-level-2);
-  }
-  .case-content :global(li) {
-    margin-top: var(--space-sm);
-    position: relative;
-    padding-left: var(--space-sm-2);
-    font-size: var(--font-size-level-5);
-    line-height: 1.5;
-  }
-  .case-content :global(li::before) {
-    content: "•";
-    position: absolute;
-    left: 0;
-    color: var(--color-quarternary);
-  }
-</style>

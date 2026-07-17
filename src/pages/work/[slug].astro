@@ -34,6 +34,7 @@ console.log("LOG PROJECT.DATA.TOOLS >>>", project.data.tools);
 
 import ToolStack from "../../components/ToolStack.astro";
 import background from "../../assets/background.svg";
+import PageHeader from "../../components/PageHeader.astro";
 ---
 
 <!-- <ProjectLayout work={project.data}>
@@ -41,22 +42,14 @@ import background from "../../assets/background.svg";
 </ProjectLayout> -->
 <Layout title=`${project.data.title} | K4D3`>
   <Container>
-    <header class="case-hero">
-      <img id="background" src={background.src} fetchpriority="high" />
-      <span class="case-hero__tag">{project.data.tag}</span>
-      <h1>{project.data.title}</h1>
-      <h2 class="case-hero__subtitle">{project.data.summary}</h2>
-
-      <div class="case-hero__image">
-        <Image
-          src={project.data.cover}
-          alt={project.data.coverAlt ?? project.data.title}
-          loading="eager"
-          fetchpriority="high"
-          class="case-cover"
-        />
-      </div>
-    </header>
+    <PageHeader
+      tag={project.data.tag}
+      title={project.data.title}
+      subtitle={project.data.summary}
+      background={background}
+      cover={project.data.cover}
+      coverAlt={project.data.coverAlt}
+    />
 
     <!-- {
       project.data.services && (
@@ -80,50 +73,6 @@ import background from "../../assets/background.svg";
   </Container>
 
   <style>
-    .case-hero {
-      margin-bottom: var(--space-lg);
-      position: relative;
-    }
-    #background {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: -10;
-      filter: blur(100px);
-      /* opacity: 0.5; */
-    }
-    .case-hero__tag {
-      border: 1px solid var(--color-border);
-      padding: 0.4rem 0.8rem;
-      border-radius: 0.5rem;
-      margin-bottom: var(--space-md);
-      text-transform: uppercase;
-      font-family: "Roboto Mono";
-      display: inline-block;
-      background-color: var(--color-surface);
-      color: var(--color-text-level-2);
-    }
-    .case-hero h1 {
-      font-weight: 800;
-      line-height: 0.8;
-      letter-spacing: -0.05em;
-      margin-bottom: var(--space-md);
-    }
-    .case-hero__subtitle {
-      font-size: var(--font-size-level-5);
-      font-weight: normal;
-      color: var(--color-quinary);
-      letter-spacing: unset;
-      margin-bottom: var(--space-xl);
-    }
-
-    .case-hero :global(img) {
-      /* border: 1px solid var(--color-border); */
-      border-radius: 2rem;
-    }
-
     .case-content :global(h3) {
       /* margin: var(--space-lg) 0 var(--space-sm); */
       /* letter-spacing: -0.025em; */

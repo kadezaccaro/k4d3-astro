@@ -1,0 +1,103 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Container from "../../components/Container.astro";
+import { Image } from "astro:assets";
+// IMPORT IMAGES
+import yieldSerif from "../../assets/images/logos/yield-serif.svg";
+import yieldScript from "../../assets/images/logos/yield-script.svg";
+import variantV1 from "../../assets/images/logos/variant-v1.svg";
+import variantV2 from "../../assets/images/logos/variant-v2.svg";
+import ktMark from "../../assets/images/logos/kt-mark.svg";
+import ktypeScript from "../../assets/images/logos/ktype-script.svg";
+import ourMusings from "../../assets/images/logos/our-musings.svg";
+import ourMusingsMark from "../../assets/images/logos/our-musings-mark.svg";
+import humility from "../../assets/images/logos/humility.svg";
+import dMarkV2 from "../../assets/images/logos/d-mark-v2.svg";
+import quiver from "../../assets/images/logos/quiver.svg";
+import mMark from "../../assets/images/logos/m-mark.svg";
+import zero from "../../assets/images/logos/zero-v2.svg";
+import diamondHouseMark from "../../assets/images/logos/diamond-house-mark.svg";
+
+import PageHeader from "../../components/PageHeader.astro";
+---
+
+<Layout title="Logos | K4D3">
+  <Container>
+    <PageHeader
+      title="Logos"
+      subtitle="A selection of custom logotypes and brand marks from over the years."
+      tag="Brand Identity"
+    />
+  </Container>
+
+  <div class="logos">
+    <div class="container-xl">
+      <div class="logo-grid">
+        <Image
+          src={variantV2}
+          alt='"Variant" alternative brush script with arched baseline'
+        />
+        <Image src={variantV1} alt='"Variant" slanted brush script' />
+
+        <Image src={yieldScript} alt='Alternative "Yield" slanted script' />
+        <Image
+          src={yieldSerif}
+          alt='"Yield & Co." slanted serif with an American flag symbol'
+        />
+
+        <Image
+          src={ourMusings}
+          alt='"Our Musings" slanted formal script with flourishes'
+          loading="lazy"
+        />
+        <Image
+          src={ourMusingsMark}
+          alt='"OM" script monogram with stars'
+          loading="lazy"
+        />
+
+        <Image src={ktMark} alt='"KT" gothic monogram' loading="lazy" />
+        <Image
+          src={dMarkV2}
+          alt='"D" slanted brush script logomark'
+          loading="lazy"
+        />
+
+        <Image
+          src={quiver}
+          alt='"Quiver" slanted script with disconnected letters'
+          loading="lazy"
+        />
+        <Image
+          src={humility}
+          alt='"Humility" friendly script with a tagline that says "a provisions company"'
+          loading="lazy"
+        />
+
+        <Image
+          src={mMark}
+          alt='"M" slanted brush script logomark'
+          loading="lazy"
+        />
+        <Image
+          src={ktypeScript}
+          alt='"Ktype" upright brush script'
+          loading="lazy"
+        />
+
+        <Image
+          src={zero}
+          alt='"Zero" monoline script with arched baseline'
+          loading="lazy"
+        />
+        <Image
+          src={diamondHouseMark}
+          alt="Diamond inside of a pentagon house shape with a sunburst effect"
+          loading="lazy"
+        />
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<style></style>

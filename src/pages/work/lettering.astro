@@ -1,48 +1,46 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import Container from "../components/Container.astro";
+import Layout from "../../layouts/Layout.astro";
+import Container from "../../components/Container.astro";
+import PageHeader from "../../components/PageHeader.astro";
 import { Image } from "astro:assets";
 // IMPORT IMAGES
-import twl from "../assets/images/lettering/truth-will-last.svg";
-import aiw from "../assets/images/lettering/artiswork.webp";
-import thanks from "../assets/images/lettering/thanks.svg";
-import beBrave from "../assets/images/lettering/be-brave.webp";
-import pressure from "../assets/images/lettering/pressure.svg";
-import loosenUp from "../assets/images/lettering/loosenup.svg";
-import letterN from "../assets/images/lettering/letter-n.svg";
-import jfs from "../assets/images/lettering/jfs.svg";
-import typismBook from "../assets/images/lettering/typism-book.png";
-import sunday from "../assets/images/lettering/sunday.svg";
-import refine from "../assets/images/lettering/refine.svg";
-import altruism from "../assets/images/lettering/altruism.svg";
-import ubn from "../assets/images/lettering/ubn-collection.webp";
-import tFlourished from "../assets/images/lettering/t-flourished.svg";
-import communicate from "../assets/images/lettering/communicate.svg";
-import faux from "../assets/images/lettering/faux.svg";
-import surreal from "../assets/images/lettering/surreal.svg";
-import rebuild from "../assets/images/lettering/rebuild.svg";
-import balance from "../assets/images/lettering/balance.svg";
-import rhythm from "../assets/images/lettering/rhythm.svg";
-import ourMusings from "../assets/images/lettering/our-musings.svg";
-import letterL from "../assets/images/lettering/letter-l.svg";
-import drLecter from "../assets/images/lettering/dr-lecter.svg";
-import letterA from "../assets/images/lettering/letter-a.svg";
-import letterB from "../assets/images/lettering/letter-b.svg";
-import letterC from "../assets/images/lettering/letter-c.svg";
-import letterD from "../assets/images/lettering/letter-d.svg";
+import twl from "../../assets/images/lettering/truth-will-last.svg";
+import aiw from "../../assets/images/lettering/artiswork.webp";
+import thanks from "../../assets/images/lettering/thanks.svg";
+import beBrave from "../../assets/images/lettering/be-brave.webp";
+import pressure from "../../assets/images/lettering/pressure.svg";
+import loosenUp from "../../assets/images/lettering/loosenup.svg";
+import letterN from "../../assets/images/lettering/letter-n.svg";
+import jfs from "../../assets/images/lettering/jfs.svg";
+import typismBook from "../../assets/images/lettering/typism-book.png";
+import sunday from "../../assets/images/lettering/sunday.svg";
+import refine from "../../assets/images/lettering/refine.svg";
+import altruism from "../../assets/images/lettering/altruism.svg";
+import ubn from "../../assets/images/lettering/ubn-collection.webp";
+import tFlourished from "../../assets/images/lettering/t-flourished.svg";
+import communicate from "../../assets/images/lettering/communicate.svg";
+import faux from "../../assets/images/lettering/faux.svg";
+import surreal from "../../assets/images/lettering/surreal.svg";
+import rebuild from "../../assets/images/lettering/rebuild.svg";
+import balance from "../../assets/images/lettering/balance.svg";
+import rhythm from "../../assets/images/lettering/rhythm.svg";
+import ourMusings from "../../assets/images/lettering/our-musings.svg";
+import letterL from "../../assets/images/lettering/letter-l.svg";
+import drLecter from "../../assets/images/lettering/dr-lecter.svg";
+import letterA from "../../assets/images/lettering/letter-a.svg";
+import letterB from "../../assets/images/lettering/letter-b.svg";
+import letterC from "../../assets/images/lettering/letter-c.svg";
+import letterD from "../../assets/images/lettering/letter-d.svg";
 ---
 
 <Layout title="Lettering | K4D3">
   <Container>
-    <header class="container header-hero">
-      <h1>
-        <strong>Lettering Collection</strong>
-      </h1>
-      <h2 class="subtitle">
-        Select hand-lettering pieces refined through careful iteration for
-        technical precision.
-      </h2>
-    </header>
+    <PageHeader
+      title="Lettering Collection"
+      subtitle="Select hand-lettering pieces refined through careful iteration for
+        technical precision."
+      tag="Custom Type"
+    />
   </Container>
 
   <div class="divider simple-wave"></div>

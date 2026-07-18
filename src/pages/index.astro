@@ -126,9 +126,14 @@ const projects = await getCollection("projects");
         </div>
       </section>
 
-      <a href="/work" class="project-section__more text-muted"
-        >View more work &rarr;</a
-      >
+      <!-- <div class="project-section__more">
+        <a href="/work" class="text-muted">View more work</a>
+        <div class="project-section__endline"></div>
+      </div> -->
+
+      <div class="project-section__more">
+        <a href="/work" class="text-muted">View more work</a>
+      </div>
     </section>
 
     <AboutSection />
@@ -173,13 +178,27 @@ const projects = await getCollection("projects");
     object-fit: cover;
   }
 
-  .project-section__more {
-    /* border-top: 1px solid var(--color-border); */
-    border-bottom: 1px solid var(--color-border);
-    /* border-radius: 1rem; */
-    /* padding-left: var(--space-xs); */
+  .projects-container {
     padding-bottom: var(--space-md);
-    text-align: center;
+    border-bottom: 1px solid var(--color-border);
+    position: relative;
+  }
+  .project-section__more {
+    text-transform: uppercase;
+    white-space: nowrap;
+    line-height: 0.6;
+    position: absolute;
+    bottom: -7.5px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--color-bg);
+    padding: 0 1rem 0 1rem;
+    z-index: 2;
+  }
+  .project-section__endline {
+    height: 1px;
+    width: 100%;
+    background-color: var(--color-border);
   }
 
   .projects-container {

@@ -85,6 +85,11 @@
   height: var(--font-size-level-5);
   color: var(--color-primary);
 }
+.cert-icon {
+  width: var(--font-size-level-4);
+  height: var(--font-size-level-4);
+  color: var(--color-primary);
+}
 
 /* || LAYOUT UTILITIES */
 

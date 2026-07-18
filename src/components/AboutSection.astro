@@ -5,6 +5,8 @@ import cat1 from "../assets/images/z-roll.jpg";
 import cat2 from "../assets/images/z-stretch.jpg";
 import CatIcon from "./icons/CatIcon.astro";
 import background from "../assets/background.svg";
+import AchievementCard from "./AchievementCard.astro";
+import { achievementData } from "../data/achievementData";
 ---
 
 <section class="about-section" id="about">
@@ -70,6 +72,8 @@ import background from "../assets/background.svg";
       </figure>
     </aside>
   </div>
+
+  <AchievementCard achievements={achievementData} />
 </section>
 
 <style>

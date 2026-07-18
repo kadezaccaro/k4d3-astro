@@ -1,48 +1,40 @@
 ---
-import BadgeIcon from "./icons/BadgeIcon.astro";
-import GradIcon from "./icons/GradIcon.astro";
+interface Achievement {
+  title: string;
+  issuer: string;
+  date: string;
+  icon: any;
+}
+
+interface Props {
+  achievements: Achievement[];
+}
+
+const { achievements } = Astro.props;
 ---
 
 <section class="cert-stack-container">
-  <header class="cert-header-section">
-    <h3>Education & Certifications</h3>
-  </header>
+  <h3>Education & Certifications</h3>
 
-  <div class="achievements">
-    <div class="achievement-card tilt">
-      <GradIcon class="cert-icon" />
-      <h4>Associate's Degree in Cybersecurity</h4>
-      <p>Lanier Technical College &mdash; December 2026</p>
-    </div>
-
-    <div class="achievement-card tilt">
-      <BadgeIcon />
-      <h4>CompTIA A+ Certification</h4>
-      <p>CompTIA &mdash; May 2026</p>
-    </div>
-
-    <div class="achievement-card tilt">
-      <BadgeIcon />
-      <h4>CompTIA A+ Certification</h4>
-      <p>CompTIA &mdash; May 2026</p>
-    </div>
-
-    <!-- <div class="achievement-card">
-      <h4>CompTIA Security+ Certification</h4>
-      <p>CompTIA &mdash; June 2026</p>
-    </div>
-
-    <div class="achievement-card">
-      <h4>CompTIA Network+ Certification</h4>
-      <p>CompTIA &mdash; July 2026</p>
-    </div> -->
+  <div class="grid-auto-fit">
+    {
+      achievements.map(({ title, issuer, date, icon: Icon }) => (
+        <div class="achievement-card tilt">
+          <Icon />
+          <h4>{title}</h4>
+          <p>
+            {issuer} &mdash; {date}
+          </p>
+        </div>
+      ))
+    }
   </div>
 </section>
 
 <style>
-  /* .cert-icon {
-    font-size: var(--font-size-display-sm);
-  } */
+  h3 {
+    margin-bottom: var(--space-md);
+  }
 
   .achievements {
     /* --min-col-size: 400px; */

@@ -12,7 +12,7 @@ const pathname = Astro.url.pathname;
 import Container from "../components/Container.astro";
 ---
 
-<header class="site-header">
+<header class="site-header glass">
   <Container>
     <div class="flex-container">
       <a href="/" class="logo"> K4D3 </a>
@@ -53,56 +53,49 @@ import Container from "../components/Container.astro";
 </header>
 
 <script>
-  function initNavbar() {
-    const header = document.querySelector(".site-header");
+  function initNavBar() {
+    const button = document.querySelector<HTMLButtonElement>(".menu-toggle");
+    const nav = document.querySelector<HTMLElement>(".nav");
 
-    if (header) {
-      const button = header.querySelector(".menu-toggle");
-      const nav = header.querySelector(".nav");
-      const links = nav?.querySelectorAll("a");
+    if (!button || !nav) return;
 
-      const openMenu = () => {
-        button?.setAttribute("aria-expanded", "true");
-        nav?.classList.add("open");
-        //   document.body.style.overflow = "hidden";
-      };
+    const openMenu = () => {
+      button.setAttribute("aria-expanded", "true");
+      nav.classList.add("open");
+    };
 
-      const closeMenu = () => {
-        button?.setAttribute("aria-expanded", "false");
-        nav?.classList.remove("open");
-        //   document.body.style.overflow = "";
-      };
+    const closeMenu = () => {
+      button.setAttribute("aria-expanded", "false");
+      nav.classList.remove("open");
+    };
 
-      const toggleMenu = () => {
-        nav?.classList.contains("open") ? closeMenu() : openMenu();
-      };
+    button.addEventListener("click", () => {
+      const isOpen = button.getAttribute("aria-expanded") === "true";
 
-      button?.addEventListener("click", toggleMenu);
+      isOpen ? closeMenu() : openMenu();
+    });
 
-      links?.forEach((link) => link.addEventListener("click", closeMenu));
+    nav.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", closeMenu);
+    });
 
-      // close mobile menu on escape key press
-      document.addEventListener("keydown", (event) => {
-        if (event.key === "Escape") {
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") {
+        closeMenu();
+      }
+    });
+
+    window
+      .matchMedia("(min-width: 768px)")
+      .addEventListener("change", (event) => {
+        if (event.matches) {
           closeMenu();
         }
       });
-
-      // close mobile menu on window resize
-      window
-        .matchMedia("(min-width: 768px)")
-        .addEventListener("change", (event) => {
-          if (event.matches) {
-            closeMenu();
-          }
-        });
-    }
   }
 
-  // initNavbar();
-
   // re-init on page load to prevent astro transitions from breaking functionality
-  document.addEventListener("astro:page-load", initNavbar);
+  document.addEventListener("astro:page-load", initNavBar);
 </script>
 
 <style>
@@ -110,18 +103,25 @@ import Container from "../components/Container.astro";
     position: sticky;
     top: 0;
     z-index: 1000;
-    border-top: 2px solid;
-    /* border-bottom: 1px solid var(--color-border); */
-    border-image: linear-gradient(
-        to left,
-
-        var(--color-secondary),
-        var(--color-tertiary),
-        var(--color-primary)
-      )
-      1;
-    background-color: var(--color-surface);
+    border-bottom: 1px solid var(--color-border);
+    background-color: var(--color-bg);
     margin-bottom: var(--space-xl);
+  }
+
+  /* top line gradient */
+  .site-header::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(
+      to left,
+      var(--color-secondary),
+      var(--color-tertiary),
+      var(--color-primary)
+    );
   }
 
   .flex-container {
@@ -135,11 +135,8 @@ import Container from "../components/Container.astro";
   }
 
   .glass {
-    background: linear-gradient(
-      to bottom,
-      rgba(0, 0, 0, 0.5),
-      rgba(0, 0, 0, 0.4)
-    );
+    background: rgba(18, 18, 18, 0.3);
+    /* background: rgba(26, 26, 26, 0.5); */
     backdrop-filter: blur(16px) saturate(180%);
     -webkit-backdrop-filter: blur(16px) saturate(180%);
   }
@@ -177,15 +174,8 @@ import Container from "../components/Container.astro";
     border: none;
     background: none;
     cursor: pointer;
-    padding: 0;
-    background: linear-gradient(
-      to bottom,
-      rgba(85, 85, 85, 0.18),
-      rgba(45, 45, 45, 0.08)
-    );
-    box-shadow:
-      inset 0 1px rgba(255, 255, 255, 0.25),
-      0 10px 30px rgba(0, 0, 0, 0.15);
+    border: 1px solid var(--color-border);
+    border-radius: 0.5rem;
   }
 
   .menu-toggle span {
@@ -213,37 +203,32 @@ import Container from "../components/Container.astro";
     }
 
     .nav {
+      --nav-height: 76px;
+
       display: flex;
       align-items: center;
       justify-content: center;
       text-align: center;
-
-      height: 100dvh;
-      height: 100vh;
-
-      margin-top: var(--space-sm);
       position: fixed;
-      top: 100%;
+      top: var(--nav-height);
       left: 0;
       right: 0;
-
+      height: calc(100vh - var(--nav-height)); /* fallback */
+      height: calc(100dvh - var(--nav-height)); /* full height on ios */
+      z-index: 10;
       background: var(--color-bg);
-
-      border: 1px solid var(--color-border);
-      border-radius: 0.5rem;
-
-      overflow: hidden;
+      border-top: 1px solid var(--color-border);
+      overflow-y: auto; /* allow menu to scroll when height is compressed */
 
       opacity: 0;
       visibility: hidden;
       pointer-events: none;
-
-      transform: translateY(40px);
-      transition: 0.25s ease;
+      /* transform: translateX(100%); */
     }
 
     .nav ul {
       flex-direction: column;
+      gap: var(--space-md);
     }
 
     .nav li a {
@@ -255,7 +240,8 @@ import Container from "../components/Container.astro";
       opacity: 1;
       visibility: visible;
       pointer-events: auto;
-      transform: translateY(0);
+      /* transform: translateX(0); */
+      transition: 0.2s ease; /* keep transition only on menu open to prevent visual bug */
     }
   }
 </style>

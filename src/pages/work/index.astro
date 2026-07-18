@@ -6,7 +6,7 @@ import ProjectCard from "../../components/ProjectCard.astro";
 
 import { getCollection } from "astro:content";
 const projects = await getCollection("projects");
-// console.log("/////PROJECTS DATA/////", projects);
+console.log("/////PROJECTS DATA/////", projects);
 ---
 
 <Layout title="Projects | K4D3">
@@ -31,8 +31,8 @@ const projects = await getCollection("projects");
             title={project.data.title}
             description={project.data.summary}
             image={project.data.cover}
-            imageAlt="temp Home lab"
-            tag="Networking"
+            imageAlt={project.data.coverAlt}
+            tag={project.data.tag}
             isAboveFold
           />
         ))

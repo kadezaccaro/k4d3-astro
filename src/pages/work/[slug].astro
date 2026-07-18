@@ -9,10 +9,10 @@ import ProjectGallery from "../../components/ProjectGallery.astro";
 export async function getStaticPaths() {
   const projects = await getCollection("projects");
 
-  console.log(
-    "///Generated paths:///",
-    projects.map((project) => project.id),
-  );
+  // console.log(
+  //   "///Generated paths:///",
+  //   projects.map((project) => project.id),
+  // );
 
   return projects.map((project) => ({
     params: {
@@ -27,10 +27,10 @@ export async function getStaticPaths() {
 const { project } = Astro.props;
 const { Content } = await render(project);
 
-console.log("LOG PROJECT.DATA.COVER >>>", project.data.cover);
-console.log("LOG TYPOF PROJECT.DATA.COVER >>>", typeof project.data.cover);
-console.log("LOG PROJECT.DATA.IMAGES >>>", project.data.images);
-console.log("LOG PROJECT.DATA.TOOLS >>>", project.data.tools);
+// console.log("LOG PROJECT.DATA.COVER >>>", project.data.cover);
+// console.log("LOG TYPOF PROJECT.DATA.COVER >>>", typeof project.data.cover);
+// console.log("LOG PROJECT.DATA.IMAGES >>>", project.data.images);
+// console.log("LOG PROJECT.DATA.TOOLS >>>", project.data.tools);
 
 import ToolStack from "../../components/ToolStack.astro";
 import background from "../../assets/background.svg";
@@ -71,38 +71,38 @@ import PageHeader from "../../components/PageHeader.astro";
       <ProjectGallery images={project.data.images} />
     </div>
   </Container>
-
-  <style>
-    .case-content :global(h3) {
-      /* margin: var(--space-lg) 0 var(--space-sm); */
-      /* letter-spacing: -0.025em; */
-      font-weight: 700;
-      font-family: "Satoshi";
-      font-size: var(--font-size-level-5);
-      /* color: red; */
-      /* text-transform: uppercase; */
-    }
-
-    /* list styling */
-    .case-content :global(ul) {
-      list-style: none;
-      color: var(--color-text-level-2);
-    }
-    .case-content :global(li) {
-      margin-top: var(--space-sm);
-      position: relative;
-      padding-left: var(--space-sm-2);
-      font-size: var(--font-size-level-6);
-      line-height: 1.5;
-    }
-    .case-content :global(li::before) {
-      content: "•";
-      position: absolute;
-      left: 0;
-      color: var(--color-quarternary);
-    }
-    .case-content :global(li:first-of-type) {
-      margin-top: 0;
-    }
-  </style>
 </Layout>
+
+<style>
+  .case-content :global(h3) {
+    /* margin: var(--space-lg) 0 var(--space-sm); */
+    /* letter-spacing: -0.025em; */
+    font-weight: 700;
+    font-family: "Satoshi";
+    font-size: var(--font-size-level-5);
+    /* color: red; */
+    /* text-transform: uppercase; */
+  }
+
+  /* list styling */
+  .case-content :global(ul) {
+    list-style: none;
+    color: var(--color-text-level-2);
+  }
+  .case-content :global(li) {
+    margin-top: var(--space-sm);
+    position: relative;
+    padding-left: var(--space-sm-2);
+    font-size: var(--font-size-level-6);
+    line-height: 1.5;
+  }
+  .case-content :global(li::before) {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: var(--color-quarternary);
+  }
+  .case-content :global(li:first-of-type) {
+    margin-top: 0;
+  }
+</style>

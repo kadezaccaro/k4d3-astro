@@ -8,12 +8,12 @@ const { currentYear = new Date().getFullYear() } = Astro.props;
 import Container from "./Container.astro";
 ---
 
-<footer class="container-xl">
+<footer>
   <div class="divider layered-steps-end"></div>
 
   <Container>
-    <div class="container footerContent">
-      <div class="footerSection">
+    <div class="footer-content">
+      <div class="footer-section">
         <a href="/" class="logo"> K4D3 </a>
         <p>
           A graphic designer & coder passionate about well-designed experiences
@@ -21,7 +21,7 @@ import Container from "./Container.astro";
         </p>
       </div>
 
-      <div class="footerSection">
+      <div class="footer-section">
         <h3>Navigation</h3>
         <ul>
           <li>
@@ -39,7 +39,7 @@ import Container from "./Container.astro";
         </ul>
       </div>
 
-      <div class="footerSection">
+      <div class="footer-section">
         <h3>Social</h3>
         <div class="social-icons">
           <ul>
@@ -79,9 +79,9 @@ import Container from "./Container.astro";
     </div>
   </Container>
 
-  <div class="container-xl footer-bottom">
+  <div class="footer-bottom">
     <Container>
-      <div class="container footer-bottom-content">
+      <div class="footer-bottom-content">
         <p>K4D3 &copy; {currentYear}</p>
         <p>Coded with passion ❤</p>
       </div>
@@ -90,7 +90,14 @@ import Container from "./Container.astro";
 </footer>
 
 <style>
-  /* || FOOTER */
+  /* Footer Content Grid */
+  .footer-content {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr;
+    gap: var(--space-lg);
+    padding-block: var(--space-xl);
+  }
+
   .logo {
     font-weight: 700;
     text-decoration: none;
@@ -98,59 +105,43 @@ import Container from "./Container.astro";
     font-size: var(--font-size-level-4);
   }
 
-  /* Footer Content Grid */
-  .footerContent {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-lg);
-    padding-block: var(--space-xl);
-  }
-  .footerContent > * {
-    flex: 1;
-  }
-  .footerSection:first-of-type {
-    flex-grow: 2;
-  }
-
   /* Footer Section */
-  .footerSection {
+  .footer-section {
     display: flex;
     flex-direction: column;
     gap: var(--space-sm);
   }
-  .footerSection h2 {
-    font-size: var(--font-size-level-4);
-  }
-  .footerSection p {
+  .footer-section p {
     line-height: 1.6;
   }
-  .footerSection h3 {
-    font-weight: normal;
+  .footer-section h3 {
+    /* font-weight: normal; */
     font-size: var(--font-size-body);
     color: var(--color-text-level-2);
     letter-spacing: unset;
   }
-  .footerSection ul {
+  .footer-section ul {
     list-style: none;
   }
-  .footerSection li {
+  .footer-section li {
     border-bottom: 1px solid var(--color-border);
+    transition: 0.3s;
   }
-  .footerSection li:last-child {
+  .footer-section li:last-child {
     border-bottom: none;
   }
-  .footerSection li a {
+  .footer-section li a {
     /* Ensure the link covers the entire list item */
     display: block;
     padding: var(--space-xs) 0;
   }
-  .footerSection li:first-child a {
+  .footer-section li:first-child a {
     padding-top: 0;
   }
-  .footerSection li:last-child a {
+  .footer-section li:last-child a {
     padding-bottom: 0;
   }
-  .footerSection a:hover {
+  .footer-section li:hover {
     padding-left: 0.25rem;
   }
 
@@ -164,7 +155,19 @@ import Container from "./Container.astro";
     align-items: center;
   }
   .footer-bottom-content p {
-    font-size: var(--fs-xs);
+    font-size: var(--font-size-caption);
     margin: 0;
+  }
+
+  @media (max-width: 800px) {
+    .footer-content {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-lg);
+      padding-block: var(--space-xl);
+    }
+    .footer-bottom-content p {
+      font-size: var(--font-size-label);
+    }
   }
 </style>

@@ -132,7 +132,7 @@ import { achievementData } from "../data/achievementData";
   }
   .photo-stack figure:nth-child(2) {
     transform: rotate(-4deg);
-    margin-left: -10rem;
+    margin-left: -7rem;
   }
   figure:nth-child(2):hover {
     rotate: -5deg;
@@ -143,11 +143,11 @@ import { achievementData } from "../data/achievementData";
 
   /* || RESPONSIVE */
 
-  @media (max-width: 66rem) {
+  @media (max-width: 1056px) {
     .about-container {
       flex-direction: column;
       justify-content: end;
-      gap: var(--space-lg);
+      gap: var(--space-lg-2);
     }
 
     .container-text-new {
@@ -156,8 +156,8 @@ import { achievementData } from "../data/achievementData";
 
     .photo-stack {
       grid-template-columns: repeat(3, 1fr);
-      /* gap: 1rem; */
-      padding-inline: var(--space-md);
+      /* padding-inline: var(--space-md); */
+      max-width: 85%;
     }
     .photo-stack figure {
       width: 100%;
@@ -177,6 +177,20 @@ import { achievementData } from "../data/achievementData";
     }
     .photo-stack figure:nth-child(2) {
       margin-left: 0;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .photo-stack {
+      grid-template-columns: repeat(2, 1fr);
+      /* gap: 1rem; */
+    }
+    .photo-stack figure:nth-child(3) {
+      grid-column: 1 / -1;
+      justify-self: center;
+      width: 50%;
+      margin: -2.5rem;
+      z-index: 2;
     }
   }
 </style>

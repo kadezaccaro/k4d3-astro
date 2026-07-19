@@ -21,7 +21,7 @@ const { Content } = await render(post);
 ---
 
 <Layout title=`${post.data.title} | K4D3`>
-  <Container>
+  <Container size="sm">
     <article>
       <header>
         <h1>{post.data.title}</h1>
@@ -58,4 +58,15 @@ const { Content } = await render(post);
   .closing {
     margin-top: var(--space-lg);
   }
+
+  /* p {
+    text-align: justify;
+    text-align-last: auto;
+    hyphens: auto;
+    word-break: break-word;
+    overflow-wrap: break-word;
+    line-height: 1.6;
+    letter-spacing: 0.02em;
+    word-spacing: 0.1em;
+  } */
 </style>

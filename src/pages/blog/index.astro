@@ -7,34 +7,32 @@ const posts = await getCollection("posts");
 ---
 
 <Layout title="Blog | K4D3">
-  <Container>
-    <header class="header-hero">
-      <h1>
-        <strong>Blog</strong>
-      </h1>
-    </header>
+  <Container size="sm">
+    <h1 class="page-h1">Blog</h1>
 
     <div class="blog-flex-container">
       {
         posts.map((post) => (
           <a href={`/blog/${post.id}`}>
             <article class="blog-article">
-              <figure class="grid-auto-fit">
-                <figcaption>
-                  <p class="tag">{post.data.date}</p>
-                  <h2>{post.data.title}</h2>
-                  <p>{post.data.description}</p>
-                  <span>{post.data.readTime}</span>
-                </figcaption>
-
+              <header class="blog-article__header">
+                <span class="tag">{post.data.date}</span>
+                <span class="tag">{post.data.readTime}</span>
+              </header>
+              <figure>
                 <div class="img-container">
                   <img
-                    src="https://picsum.photos/400/250"
+                    src="https://picsum.photos/1400/600"
                     alt="Random placeholder"
                     width={400}
                     height={300}
                   />
                 </div>
+
+                <figcaption class="blog-article__details">
+                  <h2>{post.data.title}</h2>
+                  <p>{post.data.description}</p>
+                </figcaption>
               </figure>
             </article>
           </a>
@@ -42,61 +40,90 @@ const posts = await getCollection("posts");
       }
     </div>
   </Container>
-
-  <style>
-    /* || BLOG */
-
-    .blog-flex-container {
-      display: flex;
-      flex-direction: column;
-      gap: var(--space-md);
-    }
-
-    .blog-article {
-      background-color: var(--color-surface);
-      border: 1px solid var(--color-border);
-      /* padding: var(--space-md); */
-      border-radius: 2rem;
-      overflow: hidden;
-      padding: var(--space-md);
-    }
-    .blog-article:hover img {
-      transform: scale(1.1);
-      /* transition-timing-function: cubic-bezier(0, 0, 0.2, 1); */
-      /* transition-duration: 0.3s; */
-    }
-    .img-container {
-      overflow: hidden;
-      border-radius: 1rem;
-      border-right: 1px solid var(--color-border);
-    }
-    .blog-article img {
-      height: 100%;
-      transition: transform 0.5s ease;
-    }
-    .blog-article figcaption {
-      display: flex;
-      flex-direction: column;
-      /* align-self: center; */
-      gap: var(--space-xs);
-      font-family: "Satoshi", sans-serif;
-    }
-    .blog-article h2 {
-      /* font-family: "Satoshi", sans-serif; */
-      /* line-height: 1; */
-      font-size: var(--font-size-level-3);
-      font-weight: bold;
-    }
-
-    .article-extras {
-      margin-top: var(--space-xs);
-    }
-    .article-extras .tag {
-      font-size: var(--font-size-body);
-    }
-
-    .tag {
-      margin: 0;
-    }
-  </style>
 </Layout>
+
+<style>
+  .blog-flex-container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+
+  .blog-article {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    /* padding: var(--space-md); */
+    border-radius: 0.25rem;
+    overflow: hidden;
+    /* padding: var(--space-md); */
+  }
+  .blog-article__header {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--space-md);
+    padding: var(--space-sm) var(--space-sm-2);
+    color: var(--color-text-level-2);
+  }
+
+  .blog-article:hover img {
+    transform: scale(1.05);
+  }
+  .img-container {
+    overflow: hidden;
+    /* border-radius: 0.25rem; */
+    border-right: 1px solid var(--color-border);
+  }
+  .blog-article img {
+    height: 100%;
+    transition: transform 0.5s ease;
+  }
+
+  .blog-article__details {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: var(--space-lg-2);
+    /* padding: var(--space-sm); */
+    padding: var(--space-sm-2);
+  }
+  .blog-article__details h2 {
+    font-size: var(--font-size-level-5);
+    line-height: 1;
+    font-weight: 700;
+    white-space: nowrap;
+    text-transform: uppercase;
+    font-family: "Roboto Mono", monospace;
+  }
+  .blog-article__details p {
+    justify-self: end;
+    font-family: "Roboto Mono", monospace;
+    font-size: var(--font-size-caption);
+    line-height: 1.4;
+  }
+
+  .article-extras {
+    margin-top: var(--space-xs);
+  }
+  .article-extras .tag {
+    font-size: var(--font-size-body);
+  }
+
+  .tag {
+    font-size: var(--font-size-caption);
+    text-transform: uppercase;
+    /* margin: 0; */
+  }
+
+  @media (max-width: 800px) {
+    .blog-article__header {
+      padding: var(--space-sm);
+    }
+    .blog-article__details {
+      grid-template-columns: 1fr;
+      padding: var(--space-sm);
+      gap: var(--space-sm-2);
+    }
+    .blog-article__details p {
+      justify-self: start;
+    }
+  }
+</style>

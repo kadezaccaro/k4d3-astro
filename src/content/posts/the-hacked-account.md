@@ -1,9 +1,9 @@
 ---
-title: The Hacked Account
-description: A short story about a silver-lining hack, and how it was successfully stopped.
-date: February 16, 2025
-readTime: 3 min read
-tag: nerdy
+title: "The Hacked Account"
+description: "Short story: A hack is disrupted, and a new passion ignites."
+date: "February 16, 2025"
+readTime: "3 min read"
+tag: "nerdy"
 # image:
 # description:
 # layout: ../../layouts/Layout.astro

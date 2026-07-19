@@ -262,6 +262,11 @@ hr {
   margin-top: var(--space-xs);
 }
 
+.page-h1 {
+  margin-bottom: var(--space-lg-2);
+  font-weight: 700;
+}
+
 /* || DIVIDERS */
 
 .divider {

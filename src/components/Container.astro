@@ -1,6 +1,6 @@
 ---
 interface Props {
-  size?: "sm" | "md" | "lg" | "full";
+  size?: "xs" | "sm" | "md" | "lg" | "full";
   class?: string;
 }
 
@@ -19,8 +19,12 @@ const { size, class: className = "" } = Astro.props;
     width: 100%;
   }
 
-  .container--sm {
+  .container--xs {
     max-width: 40rem;
+  }
+
+  .container--sm {
+    max-width: 60rem;
   }
 
   .container--md {
@@ -33,5 +37,6 @@ const { size, class: className = "" } = Astro.props;
 
   .container--full {
     max-width: none;
+    padding: 0;
   }
 </style>

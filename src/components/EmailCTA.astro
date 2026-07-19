@@ -6,14 +6,17 @@ import TwoColumn from "../components/TwoColumn.astro";
 import Button from "../components/Button.astro";
 ---
 
-<Container>
-  <div class="cta-container">
-    <h3 class="cta-container__header">Let's Connect</h3>
-    <Button href="mailto:hi@k4d3.com">
-      <MailIcon />
-      hi@k4d3.com
-    </Button>
-  </div>
+<Container size="full">
+  <hr class="divider-page-end" />
+  <Container>
+    <div class="cta-container">
+      <h3 class="cta-container__header">Let's Connect</h3>
+      <Button href="mailto:hi@k4d3.com">
+        <MailIcon />
+        hi@k4d3.com
+      </Button>
+    </div>
+  </Container>
 </Container>
 
 <style>
@@ -28,6 +31,10 @@ import Button from "../components/Button.astro";
     font-size: var(--font-size-level-2);
     font-weight: 800;
     line-height: 1;
+  }
+
+  .divider-page-end {
+    margin-top: var(--space-xl);
   }
 
   @media (max-width: 40rem) {

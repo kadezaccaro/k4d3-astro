@@ -24,49 +24,57 @@ const { Content } = await render(post);
   <Container size="sm">
     <article>
       <header>
-        <h1>{post.data.title}</h1>
+        <h1 class="article-h1">{post.data.title}</h1>
         <div class="article-extras">
           <p class="tag">
-            {post.data.date} &mdash; {post.data.readTime}
+            {post.data.date} &bull; {post.data.readTime}
           </p>
         </div>
       </header>
 
-      <Content />
+      <Container size="xs">
+        <Content />
 
-      <div class="closing">
-        <h2>Thank you for reading.</h2>
-        <a href="/blog">
-          <div class="article-extras">
-            <span class="tag">&larr; Back to Blog</span>
+        <div class="closing">
+          <p>Thanks for reading!</p>
+          <div class="closing__back">
+            <a href="/blog">&larr; Back to Blog</a>
           </div>
-        </a>
-      </div>
+        </div>
+      </Container>
     </article>
   </Container>
 </Layout>
 
 <style>
   header {
-    margin-bottom: var(--space-lg);
+    text-align: center;
+    border-bottom: 1px solid var(--color-border);
+    padding-bottom: var(--space-md);
+    margin-bottom: var(--space-lg-2);
+  }
+  article h1 {
+    font-size: var(--font-size-level-2);
+    font-weight: bold;
+    font-family: "Roboto Mono", monospace;
+    text-transform: uppercase;
   }
 
   .article-extras {
     margin-top: var(--space-xs);
   }
 
-  .closing {
-    margin-top: var(--space-lg);
+  .tag {
+    font-family: "Roboto Mono", monospace;
+    /* text-transform: uppercase; */
+    /* font-size: var(--font-size-caption); */
   }
 
-  /* p {
-    text-align: justify;
-    text-align-last: auto;
-    hyphens: auto;
-    word-break: break-word;
-    overflow-wrap: break-word;
-    line-height: 1.6;
-    letter-spacing: 0.02em;
-    word-spacing: 0.1em;
-  } */
+  .closing {
+    margin-top: var(--space-lg-2);
+    text-align: left;
+  }
+  .closing__back {
+    margin-top: var(--space-xs);
+  }
 </style>

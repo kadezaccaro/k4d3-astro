@@ -1,12 +1,12 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Container from "../components/Container.astro";
-import { Image } from "astro:assets";
 import ProjectCard from "../components/ProjectCard.astro";
 import HireStatus from "../components/HireStatus.astro";
-import RouterIcon from "../components/icons/RouterIcon.astro";
-import PenToolIcon from "../components/icons/PenToolIcon.astro";
+import { Router } from "@lucide/astro";
+import { PenTool } from "@lucide/astro";
 import AboutSection from "../components/AboutSection.astro";
+import { Image } from "astro:assets";
 // IMPORT IMAGES
 import selfPortrait from "../assets/images/portrait-placeholder.jpg";
 import homeNetCover from "../assets/images/temp-homelab.jpg";
@@ -56,7 +56,7 @@ const projects = await getCollection("projects");
       <section>
         <div class="header-subsection">
           <div class="section-label">
-            <RouterIcon />
+            <Router class="icon" />
             <h3>IT/Security</h3>
           </div>
         </div>
@@ -87,7 +87,7 @@ const projects = await getCollection("projects");
       <section>
         <div class="header-subsection">
           <div class="section-label">
-            <PenToolIcon />
+            <PenTool class="icon" />
             <h3>Graphic Design</h3>
           </div>
         </div>

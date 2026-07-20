@@ -71,7 +71,7 @@ import letterD from "../../assets/images/lettering/letter-d.svg";
       />
       <Image src={pressure} alt='"Pressure" slanted bouncing brush script' />
 
-      <div class="grid-auto-fit">
+      <div class="grid-auto-fit overflow">
         <Image src={loosenUp} alt='"Loosen Up" slanted bouncing brush script' />
         <Image
           src={letterN}
@@ -200,6 +200,10 @@ import letterD from "../../assets/images/lettering/letter-d.svg";
     text-align: center;
     justify-self: center;
     max-width: 40ch;
+  }
+
+  .overflow {
+    overflow-x: hidden;
   }
 
   /* infinite rotation of letter N */

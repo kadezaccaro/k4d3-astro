@@ -110,20 +110,6 @@
   gap: 0;
 }
 
-.logo-grid {
-  --min-col-size: 600px;
-
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--space-sm);
-  padding: var(--space-sm);
-}
-.logo-grid img {
-  /* filter: grayscale(100%); */
-  /* transition: filter 0.3s ease; */
-  border-radius: var(--space-md);
-}
-
 /* .grid-2-col {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -255,7 +241,7 @@ hr {
   border: none;
   height: 1px;
   background-color: var(--color-border);
-  margin-top: var(--space-xs);
+  /* margin-top: var(--space-xs); */
 }
 .hr-color {
   background: var(--color-gradient);
@@ -294,3 +280,15 @@ hr {
   background-image: url("../assets/dividers/simple-wave-end.svg");
   margin-top: -2px;
 }
+
+/* p {
+  max-width: 55ch;
+  text-align: justify;
+  text-align-last: auto;
+  hyphens: auto;
+  word-break: break-word;
+  overflow-wrap: break-word;
+  line-height: 1.6;
+  letter-spacing: 0.02em;
+  word-spacing: 0.1em;
+} */

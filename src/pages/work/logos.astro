@@ -30,8 +30,8 @@ import PageHeader from "../../components/PageHeader.astro";
     />
   </Container>
 
-  <div class="logos">
-    <div class="container-xl">
+  <Container size="full">
+    <div class="logos">
       <div class="logo-grid">
         <Image
           src={variantV2}
@@ -97,7 +97,23 @@ import PageHeader from "../../components/PageHeader.astro";
         />
       </div>
     </div>
-  </div>
+  </Container>
 </Layout>
 
-<style></style>
+<style>
+  .logo-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-sm);
+    padding-inline: var(--space-sm);
+  }
+  .logo-grid img {
+    border-radius: var(--space-xs);
+  }
+
+  @media (max-width: 768px) {
+    .logo-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

@@ -1,6 +1,8 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import Container from "../../components/Container.astro";
+import PageHeader from "../../components/PageHeader.astro";
+import { SquareArrowOutUpRight } from "@lucide/astro";
 import { Image } from "astro:assets";
 // IMPORT IMAGES
 import gpStackedLogo from "../../assets/images/grand_place/GrandPlace_StackedLogo.svg";
@@ -17,8 +19,6 @@ import gpOpenHouse from "../../assets/images/grand_place/GrandPlace_OpenHouseSig
 import gpSellersGuide from "../../assets/images/grand_place/gp-homesellersguide-mockup-v2.webp";
 import gpBusCards from "../../assets/images/grand_place/gp-businesscard-rd2-option2.webp";
 import gpLogomark from "../../assets/images/grand_place/GrandPlace_Logomark_Color.webp";
-
-import PageHeader from "../../components/PageHeader.astro";
 ---
 
 <Layout title="Grand Place | K4D3">
@@ -27,14 +27,11 @@ import PageHeader from "../../components/PageHeader.astro";
       title="Grand Place"
       subtitle="A new brand identity system and website for a luxury real estate team."
       tag="Branding"
-      cover={gpStackedLogo}
     />
-  </Container>
 
-  <Container size="md">
     <section class="meta-strip">
-      <div>
-        <h3 class="subtag text-muted">Services</h3>
+      <div class="meta-strip__section">
+        <h3>Services</h3>
 
         <ul class="services">
           <li>Visual Strategy</li>
@@ -49,13 +46,13 @@ import PageHeader from "../../components/PageHeader.astro";
         </p> -->
       </div>
 
-      <div>
-        <h3 class="subtag web-url text-muted">Client</h3>
-        <p>Grand Place Real Estate</p>
+      <div class="meta-strip__section">
+        <h3>Client</h3>
+        <p class="tag">Grand Place Real Estate</p>
       </div>
 
-      <div>
-        <h3 class="subtag web-url text-muted">Website</h3>
+      <div class="meta-strip__section">
+        <h3>Website</h3>
         <div class="web-url-flex">
           <a
             class="web-url-flex"
@@ -64,17 +61,16 @@ import PageHeader from "../../components/PageHeader.astro";
             rel="noreferrer"
           >
             grandplacere.com
-            <!-- <SquareArrowOutUpRight /> -->
+            <SquareArrowOutUpRight class="icon-external-link" />
           </a>
         </div>
       </div>
     </section>
-  </Container>
 
-  <Container>
+    <Image src={gpStackedLogo} alt="Grand Place primary and secondary logos" />
+
     <section class="editorial-section">
       <h2 class="case-h2">Summary</h2>
-
       <div>
         <p>
           Grand Place Real Estate is a growing team with a mission to fulfill
@@ -88,25 +84,11 @@ import PageHeader from "../../components/PageHeader.astro";
       </div>
     </section>
 
-    <Image
-      src={gpLogosCaseStudy}
-      alt="Grand Place primary and secondary logos"
-    />
+    <hr />
 
     <section class="editorial-section">
       <h2 class="case-h2">The Solution</h2>
-
       <div>
-        <p>
-          Grand Place Real Estate is a growing team with a mission to fulfill
-          their clients' goals with seamless and trusting service. After years
-          of working under Keller Williams, it became clear to the owners that
-          they needed to distinguish themselves from other teams at KW. Their
-          brand was unrecognizable beyond the parent brokerage. Many realtors
-          face this because they rely on templates for their brand, which
-          results in everyone blending in with the competition.
-        </p>
-
         <p>
           With a new identity, they wanted their brand to target a luxury market
           while still being approachable to first-home buyers. We worked
@@ -114,7 +96,7 @@ import PageHeader from "../../components/PageHeader.astro";
           at each step of the process.
         </p>
         <p>
-          <strong>The brand identity needed to:</strong>
+          <strong>The brand identity needs to:</strong>
         </p>
         <ul class="bullet-list">
           <li>
@@ -130,7 +112,12 @@ import PageHeader from "../../components/PageHeader.astro";
       </div>
     </section>
 
-    <div class="pad-around grid-auto-fit">
+    <Image
+      src={gpLogosCaseStudy}
+      alt="Grand Place primary and secondary logos"
+    />
+
+    <section class="editorial-section">
       <h2 class="case-h2">Brand Naming</h2>
       <div>
         <p>
@@ -146,11 +133,11 @@ import PageHeader from "../../components/PageHeader.astro";
           business name happens to include their initials, G + P.
         </p>
       </div>
-    </div>
+    </section>
 
     <Image src={gpBoxKey} alt="Grand Place logo embossed on a box and key" />
 
-    <div class="pad-around grid-auto-fit">
+    <section class="editorial-section">
       <h2 class="case-h2">Logo, Type &amp; Color</h2>
       <div>
         <p>
@@ -170,143 +157,153 @@ import PageHeader from "../../components/PageHeader.astro";
           applications, having dedicated logos for each purpose.
         </p>
       </div>
+    </section>
+
+    <div class="gallery-spacing">
+      <Image
+        src={gpLogoProcess}
+        alt="Critiquing various logo options printed out on the wall"
+      />
+
+      <Image src={gpClearSpace} alt="Grand Place minimum clear space guides" />
+
+      <Image
+        src={gpColorPalette}
+        alt="Grand Place minimum clear space guides"
+      />
+
+      <Image src={gpBrandGuide} alt="Grand Place brand guidelines" />
+
+      <section>
+        <h3 class="unchosen-concepts-h3">Unchosen Concepts:</h3>
+        <div class="unchosen-concepts">
+          <div class="grid-auto-fit">
+            <Image
+              src={diamondHouse}
+              alt="Unchosen concept of a diamond inside a house shining outward"
+            />
+
+            <Image
+              src={gpCardMockup}
+              alt="Unchosen concept of a diamond inside a house shining outward"
+            />
+          </div>
+        </div>
+      </section>
     </div>
 
-    <Image
-      src={gpLogoProcess}
-      alt="Critiquing various logo options printed out on the wall"
-    />
-
-    <Image src={gpClearSpace} alt="Grand Place minimum clear space guides" />
-
-    <Image src={gpColorPalette} alt="Grand Place minimum clear space guides" />
-
-    <Image
-      class="pad-bottom-md"
-      src={gpBrandGuide}
-      alt="Grand Place brand guidelines"
-    />
-
-    <h3 class="unchosen-concepts-h3">Unchosen Concepts:</h3>
-    <div class="unchosen-concepts">
-      <div class="grid-auto-fit">
-        <Image
-          src={diamondHouse}
-          alt="Unchosen concept of a diamond inside a house shining outward"
-        />
-
-        <Image
-          src={gpCardMockup}
-          alt="Unchosen concept of a diamond inside a house shining outward"
-        />
-      </div>
-    </div>
-
-    <div class="pad-around grid-auto-fit">
+    <section class="editorial-section">
       <h2 class="case-h2">Signage &amp; Printed Material</h2>
       <p>
         With the industry's rules and regulations in mind, I applied the new
         branding to custom signs and other printed material.
       </p>
+    </section>
+
+    <div class="gallery-spacing">
+      <div class="grid-auto-fit">
+        <Image src={gpLargeSign} alt="Grand Place large for sale sign" />
+
+        <Image src={gpOpenHouse} alt="Grand Place small open house sign" />
+      </div>
+
+      <Image src={gpSellersGuide} alt="Grand Place Home Seller's Guide" />
+
+      <Image src={gpBusCards} alt="Grand Place business cards" />
+
+      <Image src={gpLogomark} alt="GP logomark with sunburst effect" />
     </div>
-
-    <div class="grid-auto-fit pad-bottom-md">
-      <Image src={gpLargeSign} alt="Grand Place large for sale sign" />
-
-      <Image src={gpOpenHouse} alt="Grand Place small open house sign" />
-    </div>
-
-    <Image
-      src={gpSellersGuide}
-      alt="Grand Place Home Seller's Guide"
-      class="pad-bottom-md"
-    />
-
-    <Image src={gpBusCards} alt="Grand Place business cards" />
-
-    <Image src={gpLogomark} alt="GP logomark with sunburst effect" />
   </Container>
 </Layout>
 
 <style>
-  .editorial-section {
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    gap: var(--space-md);
-    margin-bottom: var(--space-xl);
-    border-top: 1px solid var(--color-border);
-    padding-top: var(--space-sm);
-  }
-  .editorial-section h2 {
-    font-size: var(--font-size-level-3);
-    font-weight: 500;
-  }
-  .pad-bottom {
-    margin-bottom: var(--space-lg);
-  }
-
   .meta-strip {
     display: grid;
     /* grid-template-columns: repeat(3, minmax(0, 1fr)); */
-    grid-template-columns: 1.5fr 1fr 1fr;
+    grid-template-columns: 2fr 1fr 1fr;
     gap: var(--space-md);
-    /* border-top: 1px solid var(--color-border); */
-    /* padding-top: var(--space-sm); */
-    margin-bottom: var(--space-xl);
-    /* text-align: center; */
+    border-top: 1px solid var(--color-border);
+    padding-top: var(--space-sm);
+    margin-bottom: var(--space-lg-2);
+    font-family: "Roboto Mono", monospace;
   }
-  /* .meta-strip * {
-    justify-content: center;
-  } */
-
-  .meta-strip p {
-    color: var(--color-text-level-1);
+  .meta-strip > :nth-child(2),
+  .meta-strip > :nth-child(3) {
+    /* justify-self: end; */
   }
-
-  h3 {
+  .meta-strip h3 {
     text-transform: uppercase;
-    font-family: "Roboto Mono";
     color: var(--color-text-level-2);
-    font-size: var(--font-size-caption) !important;
-    /* font-weight: 700 !important; */
-  }
-
-  .subtag {
-    font-size: var(--font-size-level-6);
     margin-bottom: var(--space-sm);
-    font-weight: normal;
+  }
+  .meta-strip__section * {
+    color: var(--color-text-level-1);
+    font-size: var(--font-size-caption);
+    line-height: 1;
   }
 
   .services {
     display: flex;
     flex-wrap: wrap;
-    /* flex-direction: column; */
     gap: var(--space-xs);
     list-style-type: none;
-    /* color: var(--color-quinary); */
     font-size: var(--font-size-body);
-    /* font-family: "Roboto Mono", monospace; */
   }
-
   .services li {
     white-space: nowrap;
-    background-color: var(--color-surface);
-    background: linear-gradient(
-      rgba(255, 255, 255, 0.1),
-      rgba(255, 255, 255, 0.2)
-    );
-    /* border: 1px solid var(--color-border); */
+    background-color: rgba(255, 255, 255, 0.15);
     border-radius: 0.25rem;
-    padding: 4px 8px;
-    font-size: var(--font-size-caption);
-    font-family: "Roboto Mono", monospace;
+    padding: 0.5rem;
   }
 
   .web-url-flex {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 1rem;
+    gap: 0.5rem;
+    line-height: 1;
+  }
+  .icon-external-link {
+    width: var(--font-size-caption);
+    height: var(--font-size-caption);
+  }
+
+  .gallery-spacing {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+  img {
+    border-radius: 1rem;
+  }
+
+  .editorial-section {
+    display: grid;
+    grid-template-columns: 1fr 1.25fr;
+    gap: var(--space-md);
+    /* border-top: 1px solid var(--color-border); */
+    /* padding-top: var(--space-md); */
+    margin-top: var(--space-xl);
+    margin-bottom: var(--space-xl);
+  }
+  .editorial-section h2 {
+    font-size: var(--font-size-level-3);
+    font-weight: 500;
+  }
+
+  .case-h2 {
+    font-size: var(--font-size-level-2);
+    line-height: 1.1;
+    color: var(--color-primary);
+
+    background-image: linear-gradient(
+      90deg,
+      var(--color-quinary),
+      var(--color-tertiary)
+    );
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
   }
 
   .bullet-list {
@@ -330,33 +327,32 @@ import PageHeader from "../../components/PageHeader.astro";
     margin-bottom: 0;
   }
 
-  .case-h2 {
-    font-size: var(--font-size-level-2);
-    line-height: 1.1;
-    color: var(--color-primary);
-
-    background-image: linear-gradient(
-      90deg,
-      var(--color-quinary),
-      var(--color-tertiary)
-    );
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-
   .unchosen-concepts-h3 {
     display: inline-block;
-    font-size: var(--font-size-level-5);
+    font-size: var(--font-size-level-6);
     line-height: 1;
     border: 1px solid var(--color-border);
     border-radius: 1.5rem 1.5rem 0 0;
     padding: var(--space-sm) var(--space-md);
     border-bottom: none;
+    text-transform: uppercase;
+    font-family: "Roboto Mono", monospace;
+    font-weight: bold;
   }
   .unchosen-concepts {
     padding: var(--space-md);
     border: 1px solid var(--color-border);
     border-radius: 0 1.5rem 1.5rem 1.5rem;
+  }
+
+  @media (max-width: 1040px) {
+    .meta-strip {
+      grid-template-columns: 1fr;
+      gap: var(--space-md);
+    }
+
+    .editorial-section {
+      grid-template-columns: 1fr;
+    }
   }
 </style>

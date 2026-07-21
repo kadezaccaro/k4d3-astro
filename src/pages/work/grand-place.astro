@@ -9,13 +9,13 @@ import gpStackedLogo from "../../assets/images/grand_place/GrandPlace_StackedLog
 import gpLogosCaseStudy from "../../assets/images/grand_place/GrandPlace_Logos_CaseStudy.webp";
 import gpBoxKey from "../../assets/images/grand_place/gp-box-and-key.webp";
 import gpLogoProcess from "../../assets/images/grand_place/logoprocess-gp.jpg";
-import gpClearSpace from "../../assets/images/grand_place/gp-clearspace.webp";
+import gpClearSpace from "../../assets/images/grand_place/gp-clearspace.jpg";
 import gpColorPalette from "../../assets/images/grand_place/grandplace_colorpalette.webp";
 import gpBrandGuide from "../../assets/images/grand_place/BrandGuide_Presentation_Letter.webp";
 import diamondHouse from "../../assets/images/grand_place/diamond-house-RD1-mockup.jpg";
 import gpCardMockup from "../../assets/images/grand_place/grandplace-card-mockup4.png";
-import gpLargeSign from "../../assets/images/grand_place/GrandPlace_LargeSign.svg";
-import gpOpenHouse from "../../assets/images/grand_place/GrandPlace_OpenHouseSign.svg";
+import gpLargeSign from "../../assets/images/grand_place/GrandPlace_LargeSign.jpg";
+import gpOpenHouse from "../../assets/images/grand_place/GrandPlace_OpenSign.jpg";
 import gpSellersGuide from "../../assets/images/grand_place/gp-homesellersguide-mockup-v2.webp";
 import gpBusCards from "../../assets/images/grand_place/gp-businesscard-rd2-option2.webp";
 import gpLogomark from "../../assets/images/grand_place/GrandPlace_Logomark_Color.webp";
@@ -67,7 +67,11 @@ import gpLogomark from "../../assets/images/grand_place/GrandPlace_Logomark_Colo
       </div>
     </section>
 
-    <Image src={gpStackedLogo} alt="Grand Place primary and secondary logos" />
+    <Image
+      src={gpStackedLogo}
+      alt="Grand Place primary and secondary logos"
+      loading="eager"
+    />
 
     <section class="editorial-section">
       <h2 class="case-h2">Summary</h2>
@@ -164,14 +168,11 @@ import gpLogomark from "../../assets/images/grand_place/GrandPlace_Logomark_Colo
         src={gpLogoProcess}
         alt="Critiquing various logo options printed out on the wall"
       />
-
-      <Image src={gpClearSpace} alt="Grand Place minimum clear space guides" />
-
       <Image
         src={gpColorPalette}
         alt="Grand Place minimum clear space guides"
       />
-
+      <Image src={gpClearSpace} alt="Grand Place minimum clear space guides" />
       <Image src={gpBrandGuide} alt="Grand Place brand guidelines" />
 
       <section>
@@ -182,7 +183,6 @@ import gpLogomark from "../../assets/images/grand_place/GrandPlace_Logomark_Colo
               src={diamondHouse}
               alt="Unchosen concept of a diamond inside a house shining outward"
             />
-
             <Image
               src={gpCardMockup}
               alt="Unchosen concept of a diamond inside a house shining outward"
@@ -203,15 +203,15 @@ import gpLogomark from "../../assets/images/grand_place/GrandPlace_Logomark_Colo
     <div class="gallery-spacing">
       <div class="grid-auto-fit">
         <Image src={gpLargeSign} alt="Grand Place large for sale sign" />
-
         <Image src={gpOpenHouse} alt="Grand Place small open house sign" />
       </div>
-
       <Image src={gpSellersGuide} alt="Grand Place Home Seller's Guide" />
-
       <Image src={gpBusCards} alt="Grand Place business cards" />
-
-      <Image src={gpLogomark} alt="GP logomark with sunburst effect" />
+      <Image
+        src={gpLogomark}
+        alt="GP logomark with sunburst effect"
+        class="resize"
+      />
     </div>
   </Container>
 </Layout>
@@ -343,6 +343,11 @@ import gpLogomark from "../../assets/images/grand_place/GrandPlace_Logomark_Colo
     padding: var(--space-md);
     border: 1px solid var(--color-border);
     border-radius: 0 1.5rem 1.5rem 1.5rem;
+  }
+
+  .resize {
+    max-width: 39rem;
+    align-self: center;
   }
 
   @media (max-width: 1040px) {

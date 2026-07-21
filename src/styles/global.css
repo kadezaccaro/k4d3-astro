@@ -243,6 +243,9 @@ hr {
   background-color: var(--color-border);
   /* margin-top: var(--space-xs); */
 }
+.hr-space {
+  margin-top: var(--space-xs);
+}
 .hr-color {
   background: var(--color-gradient);
   margin-top: var(--space-xs);

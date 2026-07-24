@@ -24,7 +24,7 @@ const { tag, title, subtitle, background, cover, coverAlt } = Astro.props;
 
   <h1>{title}</h1>
 
-  {subtitle && <h2 class="case-hero__subtitle">{subtitle}</h2>}
+  {subtitle && <p class="case-hero__subtitle">{subtitle}</p>}
 
   {
     cover && (
@@ -75,10 +75,10 @@ const { tag, title, subtitle, background, cover, coverAlt } = Astro.props;
   }
   .case-hero__subtitle {
     font-size: var(--font-size-level-5);
-    font-weight: normal;
     color: var(--color-quinary);
-    letter-spacing: unset;
     margin-bottom: var(--space-lg-2);
+    text-wrap: balance;
+    line-height: 1.4;
   }
 
   .case-hero :global(img) {

@@ -26,23 +26,19 @@ const {
 // const image = await import(`../content/projects/${projectid}/thumbnail.jpg`);
 ---
 
-<a {href}>
-  <article class="project-card tilt">
-    <figure>
-      <div class="thumbnail">
-        <Image
-          src={image}
-          alt={imageAlt}
-          widths={[320, 640, 1024]}
-          loading={isAboveFold ? "eager" : "lazy"}
-        />
-      </div>
-      <figcaption>
-        <h4>{title}</h4>
-        <p>{description}</p>
-        <p class="tag text-highlight">{tag}</p>
-      </figcaption>
-    </figure>
+<a href={href}>
+  <article class="project-card">
+    <div class="project-card__cover">
+      <Image
+        src={image}
+        alt={imageAlt}
+        widths={[320, 640, 1024]}
+        loading={isAboveFold ? "eager" : "lazy"}
+      />
+    </div>
+    <h4>{title}</h4>
+    <p>{description}</p>
+    <p class="tag">{tag}</p>
   </article>
 </a>
 
@@ -50,58 +46,38 @@ const {
 
 <style>
   .project-card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm-2);
     border: 1px solid var(--color-border);
-    overflow: hidden;
-    /* background-color: var(--color-surface); */
-    height: 100%;
-    display: flex;
-    flex-direction: column;
     border-radius: 1.5rem;
-    height: 100%;
-  }
-
-  .thumbnail {
-    /* border: 2px solid var(--color-border); */
-    border-radius: 1rem;
-    border-bottom: 1px solid var(--color-border);
     overflow: hidden;
-  }
-
-  .project-card figcaption {
-    display: flex;
-    flex-direction: column;
-    /* flex-grow: 1; */
-    gap: var(--space-sm);
-    padding: var(--space-md);
-  }
-
-  a .project-card {
+    height: 100%;
     font-family: "Satoshi", sans-serif;
     transition: 0.2s ease-in-out;
+    color: inherit;
   }
-
-  a .project-card:hover {
-    transform: scale(1.02);
-    /* box-shadow: 0 0 1rem var(--color-border); */
-    /* border-color: var(--color-primary); */
+  .project-card__cover {
+    border-radius: var(--radius-lg);
+    border-bottom: var(--border);
+    overflow: hidden;
   }
-
-  figcaption {
-    /* display: flex; */
+  .project-card h4,
+  .project-card p {
+    padding-inline: var(--space-sm-2);
   }
-  figcaption h4 {
-    color: var(--color-text-level-1);
-  }
-  figcaption p {
+  .project-card p {
     line-height: 1.5;
-    margin: 0;
-    /* font-family: "Roboto Mono", monospace; */
+    margin-bottom: 0;
   }
-
-  .tag {
+  .project-card .tag {
     font-family: "Roboto Mono", monospace;
     font-size: var(--font-size-caption);
-    margin-top: auto;
-    /* make tags align at bottom of cards */
+    margin-top: auto; /* make tags align at bottom of cards */
+    padding-bottom: var(--space-sm-2);
+  }
+  .project-card:hover {
+    transform: scale(1.02);
+    color: inherit;
   }
 </style>

@@ -14,21 +14,24 @@ import Container from "./Container.astro";
   <Container>
     <div class="footer-content">
       <div class="footer-section">
-        <a href="/" class="logo"> K4D3 </a>
+        <a href="/" class="logo">K4D3</a>
         <p>
-          A graphic designer & coder passionate about well-designed experiences
-          with close attention to detail.
+          A passionate creative pivoting into IT & Cybersecurity, bringing close
+          attention to detail and problem solving.
         </p>
       </div>
 
       <div class="footer-section">
-        <h3>Navigation</h3>
+        <h2>Navigation</h2>
         <ul>
           <li>
             <a href="/">Home</a>
           </li>
           <li>
-            <a href="#about">About</a>
+            <a href="/work">Work</a>
+          </li>
+          <li>
+            <a href="/#about">About</a>
           </li>
           <li>
             <a href="/blog">Blog</a>
@@ -40,7 +43,7 @@ import Container from "./Container.astro";
       </div>
 
       <div class="footer-section">
-        <h3>Social</h3>
+        <h2>Social</h2>
         <div class="social-icons">
           <ul>
             <li>
@@ -82,7 +85,7 @@ import Container from "./Container.astro";
   <div class="footer-bottom">
     <Container>
       <div class="footer-bottom-content">
-        <p>K4D3 &copy; {currentYear}</p>
+        <p>© {currentYear} K4D3</p>
         <p>Coded with passion ❤</p>
       </div>
     </Container>
@@ -93,7 +96,7 @@ import Container from "./Container.astro";
   /* Footer Content Grid */
   .footer-content {
     display: grid;
-    grid-template-columns: 1.5fr 1fr 1fr;
+    grid-template-columns: 2fr 1fr 1fr;
     gap: var(--space-lg);
     padding-block: var(--space-xl);
   }
@@ -103,6 +106,7 @@ import Container from "./Container.astro";
     text-decoration: none;
     font-family: "Satoshi", sans-serif;
     font-size: var(--text-heading-md);
+    line-height: var(--leading-tight);
   }
 
   /* Footer Section */
@@ -114,9 +118,9 @@ import Container from "./Container.astro";
   .footer-section p {
     line-height: 1.6;
   }
-  .footer-section h3 {
-    /* font-weight: normal; */
+  .footer-section h2 {
     font-size: var(--text-body);
+    font-weight: normal;
     color: var(--color-text-level-2);
     letter-spacing: unset;
   }
@@ -156,10 +160,11 @@ import Container from "./Container.astro";
   }
   .footer-bottom-content p {
     font-size: var(--text-caption);
+    line-height: var(--leading-tight);
     margin: 0;
   }
 
-  @media (max-width: 800px) {
+  @media (max-width: 880px) {
     .footer-content {
       display: grid;
       grid-template-columns: 1fr;

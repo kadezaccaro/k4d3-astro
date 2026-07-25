@@ -146,6 +146,9 @@
 .pad-bottom-md {
   margin-bottom: var(--space-md);
 }
+.pad-bottom-lg {
+  margin-bottom: var(--space-lg-2);
+}
 .pad-bottom-xl {
   margin-bottom: var(--space-xl);
 }

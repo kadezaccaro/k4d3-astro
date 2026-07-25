@@ -25,17 +25,17 @@ const projects = await getCollection("projects");
 <Layout title="K4D3">
   <Container>
     <header class="home-hero">
-      <figure class="portrait-container">
+      <div class="portrait-container">
         <Image src={selfPortrait} alt="temp self portrait" loading="eager" />
-      </figure>
+      </div>
 
-      <h1 class="tagline">
+      <h1>
         I'm Kade, a <strong>Designer</strong> with a passion for
         {" "}
         <strong>IT/Cybersecurity.</strong>
       </h1>
 
-      <p class="intro-text">
+      <p>
         I'm currently a Cybersecurity student <span
           class="text-highlight-color"
         >
@@ -49,7 +49,7 @@ const projects = await getCollection("projects");
 
     <section class="projects-container">
       <header class="header-section">
-        <h2>Projects</h2>
+        <h2 class="">Projects</h2>
         <hr class="hr-space" />
       </header>
 
@@ -146,15 +146,13 @@ const projects = await getCollection("projects");
     gap: var(--space-md);
     margin-bottom: var(--space-xl);
   }
-
-  .tagline {
-    font-size: var(--font-size-level-1);
+  .home-hero h1 {
+    font-size: var(--text-display-sm);
+    font-weight: 400;
   }
-
-  .intro-text {
-    font-size: var(--font-size-level-6);
-    line-height: 1.6;
-    max-width: 45ch;
+  .home-hero p {
+    font-size: var(--text-body-lg);
+    max-width: 50ch;
   }
 
   strong {
@@ -166,19 +164,19 @@ const projects = await getCollection("projects");
     height: clamp(4rem, 6vw, 7rem);
     border-radius: 50%;
     overflow: hidden;
-    border: 1px solid var(--color-border);
+    border: var(--border);
   }
   .portrait-container img {
     width: 100%;
     height: 100%;
     display: block;
-    /* border-radius: 1.5rem; */
     object-fit: cover;
   }
 
   .projects-container {
     padding-bottom: var(--space-md);
-    border-bottom: 1px solid var(--color-border);
+    border-bottom: var(--border);
+    margin-bottom: var(--space-xl);
     position: relative;
   }
   .project-section__more {
@@ -215,5 +213,11 @@ const projects = await getCollection("projects");
     display: flex;
     align-items: center;
     gap: 1.5rem;
+  }
+
+  @media (max-width: 400px) {
+    .home-hero h1 {
+      font-size: var(--text-heading-xl);
+    }
   }
 </style>

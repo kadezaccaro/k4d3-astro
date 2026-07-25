@@ -33,7 +33,9 @@ const { Content } = await render(post);
       </header>
 
       <Container size="xs">
-        <Content />
+        <article class="prose prose-invert prose-xl prose-stone">
+          <Content />
+        </article>
 
         <div class="closing">
           <p>Thanks for reading!</p>
@@ -54,7 +56,7 @@ const { Content } = await render(post);
     margin-bottom: var(--space-lg-2);
   }
   article h1 {
-    font-size: var(--font-size-level-2);
+    font-size: var(--text-heading-xl);
     font-weight: bold;
     font-family: "Roboto Mono", monospace;
     text-transform: uppercase;
@@ -67,7 +69,7 @@ const { Content } = await render(post);
   .tag {
     font-family: "Roboto Mono", monospace;
     /* text-transform: uppercase; */
-    /* font-size: var(--font-size-caption); */
+    /* font-size: var(--text-caption); */
   }
 
   .closing {

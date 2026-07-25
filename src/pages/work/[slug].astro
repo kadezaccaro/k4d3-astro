@@ -63,9 +63,9 @@ import PageHeader from "../../components/PageHeader.astro";
 
     <ToolStack tools={project.data.tools} />
 
-    <div class="case-content">
+    <article class="markdown-content">
       <Content />
-    </div>
+    </article>
 
     <div class="case-gallery">
       <ProjectGallery images={project.data.images} />
@@ -74,26 +74,44 @@ import PageHeader from "../../components/PageHeader.astro";
 </Layout>
 
 <style>
-  .case-content :global(h3) {
-    /* margin: var(--space-lg) 0 var(--space-sm); */
-    /* letter-spacing: -0.025em; */
+  /* .case-content :global(h2) {
     font-weight: 700;
-    font-family: "Satoshi";
-    font-size: var(--font-size-level-5);
-    /* color: red; */
-    /* text-transform: uppercase; */
+    font-size: var(--text-heading-md);
+    margin-top: var(--space-lg-2);
+    margin-bottom: var(--space-sm);
+
+  }
+  .case-content :global(h3) {
+    font-size: var(--text-heading-xs);
+
+    font-weight: 700;
+    margin-bottom: var(--space-sm);
+  }
+  .case-content :global(p) {
+  }
+  .case-content :global(strong) {
+    color: var(--color-text-level-1);
   }
 
+  .case-content :global(hr) {
+    margin-block: var(--space-lg);
+  } */
+
+  /* .case-content :global(p:last-of-type) {
+    margin-bottom: var(--space-lg) !important;
+  } */
+
   /* list styling */
-  .case-content :global(ul) {
+  /* .case-content :global(ul) {
     list-style: none;
     color: var(--color-text-level-2);
+    margin-bottom: var(--space-md);
   }
   .case-content :global(li) {
-    margin-top: var(--space-sm);
+    margin-top: var(--space-xs);
     position: relative;
     padding-left: var(--space-sm-2);
-    font-size: var(--font-size-level-6);
+    font-size: var(--text-heading-xs);
     line-height: 1.5;
   }
   .case-content :global(li::before) {
@@ -104,5 +122,5 @@ import PageHeader from "../../components/PageHeader.astro";
   }
   .case-content :global(li:first-of-type) {
     margin-top: 0;
-  }
+  } */
 </style>

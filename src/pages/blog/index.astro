@@ -8,7 +8,7 @@ const posts = await getCollection("posts");
 
 <Layout title="Blog | K4D3">
   <Container size="sm">
-    <h1 class="page-h1">Blog</h1>
+    <h1>Blog</h1>
 
     <div class="blog-flex-container">
       {
@@ -24,8 +24,6 @@ const posts = await getCollection("posts");
                   <img
                     src="https://picsum.photos/1400/600"
                     alt="Random placeholder"
-                    width={400}
-                    height={300}
                   />
                 </div>
 
@@ -86,7 +84,7 @@ const posts = await getCollection("posts");
     padding: var(--space-sm-2);
   }
   .blog-article__details h2 {
-    font-size: var(--font-size-level-5);
+    font-size: var(--text-heading-sm);
     line-height: 1;
     font-weight: 700;
     white-space: nowrap;
@@ -96,7 +94,7 @@ const posts = await getCollection("posts");
   .blog-article__details p {
     justify-self: end;
     font-family: "Roboto Mono", monospace;
-    font-size: var(--font-size-caption);
+    font-size: var(--text-caption);
     line-height: 1.4;
   }
 
@@ -104,11 +102,11 @@ const posts = await getCollection("posts");
     margin-top: var(--space-xs);
   }
   .article-extras .tag {
-    font-size: var(--font-size-body);
+    font-size: var(--text-body);
   }
 
   .tag {
-    font-size: var(--font-size-caption);
+    font-size: var(--text-caption);
     text-transform: uppercase;
     /* margin: 0; */
   }

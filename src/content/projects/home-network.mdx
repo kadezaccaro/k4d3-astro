@@ -2,6 +2,7 @@
 title: "Home Network"
 summary: "Design and implementation of a secure home network using OPNsense, focusing on VLAN segmentation."
 tag: "Networking"
+category: "it"
 cover: "../../assets/images/opnsense-dashboard-perspective.jpg"
 coverAlt: "OPNsense router/firewall dashboard"
 images:
@@ -18,42 +19,47 @@ images:
     alt: Home network topology diagram
 tools:
   - name: "OPNsense"
-    logo: "../../assets/logo-opnsense.svg"
-
   - name: "ntopng"
-    logo: "../../assets/logo-opnsense.svg"
-
+  - name: "CrowdSec"
   - name: "DNS & IP Blocklists"
-    logo: "../../assets/logo-opnsense.svg"
-
-  - name: "CrowdSec"
-    logo: "../../assets/logo-opnsense.svg"
-
-  - name: "CrowdSec"
-    logo: "../../assets/logo-opnsense.svg"
-
-  - name: "CrowdSec"
-    logo: "../../assets/logo-opnsense.svg"
-featured: false
+featured: true
+featuredOrder: 1
 ---
 
 import Container from "../../components/Container.astro";
 import OneColumn from "../../components/OneColumn.astro";
 import TwoColumn from "../../components/TwoColumn.astro";
 import ProjectGallery from "../../components/ProjectGallery.astro";
-
-import topology from "../../assets/images/home-lab-topology2.jpg";
+// IMPORT IMAGES
 import dashboard from "../../assets/images/opnsense-dashboard-perspective.jpg";
+import topology from "../../assets/images/home-net-topology.jpg";
+import networkWIP from "../../assets/images/temp-homelab.jpg";
+import vlanNotes from "../../assets/images/vlan-notes.jpg";
+import fwRules from "../../assets/images/fw-rules.jpg";
 
-<TwoColumn>
+# This is Markdown
 
-### Objective
+## Overview
+
+The main goal was to expand my learning with a hands-on project to compliment my computer networking class studies. The plan was to replace my ISP's all-in-one with a mini PC running OPNsense as a router/firewall.
+
+**Objectives:**
 
 - Gain practical experience with networking
 - Implement VLAN segmentation
 - Improve security and visibility
 
-</TwoColumn>
+## Network Topology
+
+The main goal was to expand my learning with a hands-on project to compliment my computer networking class studies. The plan was to replace my ISP's all-in-one with a mini PC running OPNsense as a router/firewall.
+
+The security features of my ISP was very limited: no WPA3, no VLANs for segmentation, and not even a separate guest network.
+
+I chose OPNsense over pfSense because the organization/UI feels much more intuitive to me, though, I did end up virtualizing pfSense in my home lab to gain experience using both.
+
+In addition to the OPNsense box, my infrastructure includes a managed switch to offer more ports since my box only has 2 ports, wireless access point (one that is VLAN capable), and another mini PC server for homelabbing.
+
+Here is my planned home network topology:
 
 <ProjectGallery
   images={[
@@ -64,19 +70,75 @@ import dashboard from "../../assets/images/opnsense-dashboard-perspective.jpg";
   ]}
 />
 
-<TwoColumn>
+## OPNsense Configuration
 
-### Outcome
+Work in progress: setting up OPNsense for the first time...
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+<ProjectGallery
+  images={[
+    {
+      src: networkWIP,
+      alt: "Network setup work in progress",
+    },
+  ]}
+/>
+
+## VLAN Implementation
+
+I taught myself VLANs by creating the following diagram...
+
+It’s helpful to think of VLANs like isolated pipes within a bigger pipe. This bigger pipe is known as a trunk.
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+<ProjectGallery
+  images={[
+    {
+      src: vlanNotes,
+      alt: "Notes about VLAN implementation",
+    },
+  ]}
+/>
+
+## DNS
+
+Using Unbound, I configured Quad9 as my DNS resolver, whichh blocks malware and sites based on their reputation.
+
+quad9 dns upstream resolver that blocks malware
+
+hagezi pro blocklists for privacy and security
+
+dns over tls but still leaks SNI
+
+## Firewall Rules
+
+VLANs are not inherently isolated. This isolation must be created and enforced via firewall rules.
+block inter-vlan communication via rfc1918 private network block.
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+
+<ProjectGallery
+  images={[
+    {
+      src: fwRules,
+      alt: "Network topology",
+    },
+  ]}
+/>
+
+## Visibility & Security Add-ons
+
+Tools: ntopng, CrowdSec, Quad9, DNS & IP Blocklists
+
+Once my OPNsense configuration was up and running, I configured various add-ons including ntopng for traffic visibility, CrowdSec for improved security, DNS & IP Blocklists for improved privacy and security.
+
+## Outcome
 
 The result is a segmented network...
 
-</TwoColumn>
-
-<TwoColumn>
-
-### What I Learned
-
-<div>
+## What I Learned
 
 - How to programatically resize and optimize images using Sharp
 - How to embed Google Maps with and without the use of an API key
@@ -92,6 +154,18 @@ The result is a segmented network...
 
 > Once the contents of /dist have been deployed to a server, clients (typically browsers) will hit that server to grab the site and its assets. The last step can be time consuming, which is why browsers use a technique called caching. This allows sites to load faster with less unnecessary network traffic. However, it can also cause headaches when you need new code to be picked up.
 
-</div>
+## Markdown Code
 
-</TwoColumn>
+This is `const x = 5` in a sentence.
+
+```
+module.exports = {
+  theme: {
+    // ...
+  },
+  plugins: [
+    require('@tailwindcss/typography'),
+    // ...
+  ],
+}
+```

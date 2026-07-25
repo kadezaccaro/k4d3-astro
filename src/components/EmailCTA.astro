@@ -1,9 +1,7 @@
 ---
 import Container from "./Container.astro";
-import Reveal from "./Reveal.astro";
-import MailIcon from "../components/icons/MailIcon.astro";
-import TwoColumn from "../components/TwoColumn.astro";
 import Button from "../components/Button.astro";
+import { Mail } from "@lucide/astro";
 ---
 
 <Container size="full">
@@ -12,7 +10,7 @@ import Button from "../components/Button.astro";
     <div class="cta-container">
       <h3 class="cta-container__header">Let's Connect</h3>
       <Button href="mailto:hi@k4d3.com">
-        <MailIcon />
+        <Mail class="icon" />
         hi@k4d3.com
       </Button>
     </div>

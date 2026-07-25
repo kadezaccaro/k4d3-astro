@@ -1,6 +1,7 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import Container from "../../components/Container.astro";
+import PageHeader from "../../components/PageHeader.astro";
 import { Image } from "astro:assets";
 // IMPORT IMAGES
 import yieldSerif from "../../assets/images/logos/yield-serif.svg";
@@ -18,15 +19,20 @@ import mMark from "../../assets/images/logos/m-mark.svg";
 import zero from "../../assets/images/logos/zero-v2.svg";
 import diamondHouseMark from "../../assets/images/logos/diamond-house-mark.svg";
 
-import PageHeader from "../../components/PageHeader.astro";
+import { getEntry } from "astro:content";
+
+const entry = await getEntry("projects", "logos");
+if (!entry) throw new Error("Project not found");
+
+const project = entry.data;
 ---
 
-<Layout title="Logos | K4D3">
+<Layout title={`${project.title} | K4D3`}>
   <Container>
     <PageHeader
-      title="Logos"
-      subtitle="A selection of custom logotypes and brand marks from over the years."
-      tag="Brand Identity"
+      title={project.title}
+      subtitle={project.summary}
+      tag={project.tag}
     />
   </Container>
 

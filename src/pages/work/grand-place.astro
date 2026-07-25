@@ -19,9 +19,16 @@ import gpOpenHouse from "../../assets/images/grand_place/GrandPlace_OpenSign.jpg
 import gpSellersGuide from "../../assets/images/grand_place/gp-homesellersguide-mockup-v2.webp";
 import gpBusCards from "../../assets/images/grand_place/gp-businesscard-rd2-option2.webp";
 import gpLogomark from "../../assets/images/grand_place/GrandPlace_Logomark_Color.webp";
+
+import { getEntry } from "astro:content";
+
+const entry = await getEntry("projects", "grand-place");
+if (!entry) throw new Error("Project not found");
+
+const project = entry.data;
 ---
 
-<Layout title="Grand Place | K4D3">
+<Layout title={`${project.title} | K4D3`}>
   <Container>
     <PageHeader
       title="Grand Place"

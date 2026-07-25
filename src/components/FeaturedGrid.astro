@@ -1,0 +1,118 @@
+---
+import { getCollection } from "astro:content";
+import ProjectCard from "./ProjectCard.astro";
+import { Router } from "@lucide/astro";
+import { PenTool } from "@lucide/astro";
+
+const projects = await getCollection("projects");
+
+const featuredProjects = projects
+  .filter((project) => project.data.featured)
+  .sort((a, b) => {
+    return (
+      (a.data.featuredOrder ?? Infinity) - (b.data.featuredOrder ?? Infinity)
+    );
+  });
+
+const itProjects = featuredProjects.filter(
+  (project) => project.data.category === "it",
+);
+
+const designProjects = featuredProjects.filter(
+  (project) => project.data.category === "design",
+);
+---
+
+<section class="projects-container">
+  <header>
+    <h2>Projects</h2>
+    <hr class="hr-space" />
+  </header>
+
+  {
+    itProjects.length > 0 && (
+      <section aria-labelledby="work-it">
+        <header class="subsection-header">
+          <Router class="icon" />
+          <h3 id="work-it">IT/Security</h3>
+        </header>
+
+        <div class="grid-auto-fit">
+          {itProjects.map((project) => (
+            <ProjectCard
+              href={`/work/${project.id}`}
+              title={project.data.title}
+              description={project.data.summary}
+              image={project.data.cover}
+              imageAlt={project.data.coverAlt}
+              tag={project.data.tag}
+              isAboveFold={project.data.featured}
+            />
+          ))}
+        </div>
+      </section>
+    )
+  }
+
+  {
+    designProjects.length > 0 && (
+      <section aria-labelledby="work-design">
+        <header class="subsection-header">
+          <PenTool class="icon" />
+          <h3 id="work-design">Graphic Design</h3>
+        </header>
+
+        <div class="grid-auto-fit">
+          {designProjects.map((project) => (
+            <ProjectCard
+              href={`/work/${project.id}`}
+              title={project.data.title}
+              description={project.data.summary}
+              image={project.data.cover}
+              imageAlt={project.data.coverAlt}
+              tag={project.data.tag}
+              isAboveFold={project.data.featured}
+            />
+          ))}
+        </div>
+      </section>
+    )
+  }
+
+  <div class="view-more-work">
+    <a href="/work" class="text-muted"> View more work </a>
+    <hr />
+  </div>
+</section>
+
+<style>
+  .projects-container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+    margin-bottom: var(--space-xl);
+  }
+
+  .subsection-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: var(--space-md);
+    gap: var(--space-sm);
+  }
+
+  .view-more-work {
+    position: relative;
+  }
+  .view-more-work a {
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--color-bg);
+    padding: 0 1rem 0 1rem;
+    z-index: 2;
+    text-transform: uppercase;
+    white-space: nowrap;
+    line-height: 0.6;
+  }
+</style>

@@ -6,6 +6,7 @@ import HireStatus from "../components/HireStatus.astro";
 import { Router } from "@lucide/astro";
 import { PenTool } from "@lucide/astro";
 import AboutSection from "../components/AboutSection.astro";
+import FeaturedGrid from "../components/FeaturedGrid.astro";
 import { Image } from "astro:assets";
 // IMPORT IMAGES
 import selfPortrait from "../assets/images/portrait-placeholder.jpg";
@@ -47,9 +48,11 @@ const projects = await getCollection("projects");
       <HireStatus />
     </header>
 
-    <section class="projects-container">
+    <FeaturedGrid />
+
+    <!-- <section class="projects-container">
       <header class="header-section">
-        <h2 class="">Projects</h2>
+        <h2>Projects</h2>
         <hr class="hr-space" />
       </header>
 
@@ -125,15 +128,10 @@ const projects = await getCollection("projects");
         </div>
       </section>
 
-      <!-- <div class="project-section__more">
-        <a href="/work" class="text-muted">View more work</a>
-        <div class="project-section__endline"></div>
-      </div> -->
-
       <div class="project-section__more">
         <a href="/work" class="text-muted">View more work</a>
       </div>
-    </section>
+    </section> -->
 
     <AboutSection />
   </Container>

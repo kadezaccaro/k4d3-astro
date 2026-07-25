@@ -1,68 +1,118 @@
 ---
-import homeNetCover from "../../assets/images/temp-homelab.jpg";
 import Layout from "../../layouts/Layout.astro";
 import Container from "../../components/Container.astro";
+import { getCollection } from "astro:content";
 import ProjectCard from "../../components/ProjectCard.astro";
 
-import { getCollection } from "astro:content";
 const projects = await getCollection("projects");
-console.log("/////PROJECTS DATA/////", projects);
+
+const sortedProjects = projects.sort((a, b) => {
+  if (a.data.featured !== b.data.featured) {
+    return b.data.featured ? 1 : -1;
+  }
+
+  return a.data.title.localeCompare(b.data.title);
+});
 ---
 
-<Layout title="Projects | K4D3">
+<Layout title="Work">
   <Container>
-    <h1 class="page-h1">Work</h1>
+    <h1 class="pad-bottom-lg">Work</h1>
 
-    <div class="grid-auto-fit">
-      {
-        projects.map((project) => (
-          // <ProjectCard
-          //   href={`/works/${project.slug}`}
-          //   title={project.title}
-          //   description="Design and implementation of a secure home network using OPNsense, focusing on VLAN segmentation."
-          //   image={homeNetCover}
-          //   imageAlt="temp Home lab"
-          //   tag="Networking"
-          //   isAboveFold
-          // />
+    <div class="projects-container">
+      <div class="project-filters" aria-label="Filter projects">
+        <button class="filter-button active" data-filter="all">All Work</button>
+        <button class="filter-button" data-filter="it">IT/Security</button>
+        <button class="filter-button" data-filter="design"
+          >Graphic Design</button
+        >
+      </div>
 
-          <ProjectCard
-            href={`/work/${project.id}`}
-            title={project.data.title}
-            description={project.data.summary}
-            image={project.data.cover}
-            imageAlt={project.data.coverAlt}
-            tag={project.data.tag}
-            isAboveFold
-          />
-        ))
-      }
+      <div class="grid-auto-fit">
+        {
+          sortedProjects.map((project) => (
+            <div class="project-item" data-category={project.data.category}>
+              <ProjectCard
+                href={`/work/${project.id}`}
+                title={project.data.title}
+                description={project.data.summary}
+                image={project.data.cover}
+                imageAlt={project.data.coverAlt}
+                tag={project.data.tag}
+                isAboveFold={project.data.featured}
+              />
+            </div>
+          ))
+        }
+      </div>
     </div>
   </Container>
 </Layout>
 
-<!-- {
-        posts.map((post) => (
-          <a href={`/blog/${post.id}`}>
-            <article class="blog-article">
-              <figure class="grid-auto-fit">
-                <figcaption>
-                  <p class="tag">{post.data.date}</p>
-                  <h2>{post.data.title}</h2>
-                  <p>{post.data.description}</p>
-                  <span>{post.data.readTime}</span>
-                </figcaption>
+<script>
+  function initProjectFilters() {
+    const buttons = document.querySelectorAll<HTMLButtonElement>(
+      ".project-filters [data-filter]",
+    );
 
-                <div class="img-container">
-                  <img
-                    src="https://picsum.photos/400/250"
-                    alt="Random placeholder"
-                    width={400}
-                    height={300}
-                  />
-                </div>
-              </figure>
-            </article>
-          </a>
-        ))
-      } -->
+    const projects = document.querySelectorAll<HTMLElement>(
+      ".project-item[data-category]",
+    );
+
+    buttons.forEach((button) => {
+      button.addEventListener("click", () => {
+        const filter = button.dataset.filter;
+
+        buttons.forEach((btn) => btn.classList.remove("active"));
+
+        button.classList.add("active");
+
+        projects.forEach((project) => {
+          const category = project.dataset.category;
+
+          project.hidden = filter !== "all" && category !== filter;
+        });
+      });
+    });
+  }
+
+  document.addEventListener("astro:page-load", initProjectFilters);
+</script>
+
+<style>
+  .projects-container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+
+  .project-filters {
+    display: flex;
+    /* justify-content: center; */
+    gap: var(--space-sm);
+    flex-wrap: wrap;
+  }
+
+  .filter-button {
+    cursor: pointer;
+    font-size: var(--text-caption);
+    border: var(--border);
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius-full);
+    line-height: 1;
+    transition: 0.2s;
+    color: var(--color-text-level-2);
+    font-family: "Roboto Mono", monospace;
+    text-transform: uppercase;
+    font-weight: 500;
+    background-color: var(--color-surface);
+  }
+  .filter-button.active {
+    border-color: var(--color-text-level-1);
+    color: var(--color-text-level-1);
+  }
+
+  .project-item[hidden] {
+    display: none;
+  }
+</style>

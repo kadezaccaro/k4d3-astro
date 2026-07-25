@@ -26,6 +26,7 @@ const projects = defineCollection({
       title: z.string(),
       summary: z.string(),
       tag: z.string(),
+      category: z.enum(["it", "design"]).optional(),
       cover: image(),
       coverAlt: z.string(),
       images: z
@@ -36,16 +37,18 @@ const projects = defineCollection({
           }),
         )
         .optional(),
-      tools: z.array(
-        z.object({
-          name: z.string(),
-          logo: image().optional(),
-        }),
-      ),
+      tools: z
+        .array(
+          z.object({
+            name: z.string(),
+          }),
+        )
+        .optional(),
       client: z.string().optional(),
       url: z.string().optional(),
       services: z.array(z.string()).optional(),
       featured: z.boolean().default(false),
+      featuredOrder: z.number().optional(),
     }),
 });
 

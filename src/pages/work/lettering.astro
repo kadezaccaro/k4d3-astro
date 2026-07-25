@@ -31,15 +31,21 @@ import letterA from "../../assets/images/lettering/letter-a.svg";
 import letterB from "../../assets/images/lettering/letter-b.svg";
 import letterC from "../../assets/images/lettering/letter-c.svg";
 import letterD from "../../assets/images/lettering/letter-d.svg";
+
+import { getEntry } from "astro:content";
+
+const entry = await getEntry("projects", "lettering");
+if (!entry) throw new Error("Project not found");
+
+const project = entry.data;
 ---
 
-<Layout title="Lettering | K4D3">
+<Layout title={`${project.title} | K4D3`}>
   <Container>
     <PageHeader
-      title="Lettering Collection"
-      subtitle="Select hand-lettering pieces refined through careful iteration for
-        technical precision."
-      tag="Custom Type"
+      title={project.title}
+      subtitle={project.summary}
+      tag={project.tag}
     />
   </Container>
 

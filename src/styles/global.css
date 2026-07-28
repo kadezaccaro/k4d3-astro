@@ -103,7 +103,8 @@
   font-size: var(--text-display-sm);
 }
 .markdown-content h2 {
-  font-size: var(--text-heading-xl);
+  font-size: var(--text-heading-lg);
+  line-height: var(--leading-tight);
 }
 .markdown-content h3 {
   font-size: var(--text-heading-lg);
@@ -178,10 +179,11 @@
 }
 .text-highlight {
   color: var(--color-text-level-1);
+  font-weight: 500;
 }
 .text-highlight-color {
   color: var(--color-primary);
-  color: var(--color-quinary);
+  /* color: var(--color-quinary); */
 }
 
 .link-highlight {
@@ -278,14 +280,20 @@ figcaption {
   /* text-wrap: pretty; */
 }
 
-a {
+/* a {
+  color: var(--color-text-level-1);
+  text-decoration: underline;
+  font-weight: 500;
+} */
+
+nav a {
   font-family: "Roboto Mono", monospace;
   color: var(--color-text-level-1);
   text-decoration: none;
   transition: 300ms;
   font-size: var(--text-body);
 }
-a:hover {
+nav a:hover {
   color: var(--color-secondary);
 }
 .active {

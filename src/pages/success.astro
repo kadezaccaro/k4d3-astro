@@ -1,0 +1,27 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Container from "../components/Container.astro";
+import Button from "../components/Button.astro";
+import PageHeader from "../components/PageHeader.astro";
+---
+
+<Layout title="Success | K4D3">
+  <Container>
+    <PageHeader
+      title="Thanks for reaching out!"
+      subtitle="We'll be in touch as soon as possible. I do my best to respond within 24 hours."
+    />
+    <Button href="/" size="md">Back to Home</Button>
+  </Container>
+</Layout>
+
+<style>
+  .header-hero {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+  .header-hero__subtitle {
+    font-size: var(--text-heading-sm);
+  }
+</style>

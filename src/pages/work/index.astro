@@ -101,15 +101,17 @@ const sortedProjects = projects.sort((a, b) => {
     border-radius: var(--radius-full);
     line-height: 1;
     transition: 0.2s;
-    color: var(--color-text-level-2);
+    color: var(--color-text-level-1);
     font-family: "Roboto Mono", monospace;
     text-transform: uppercase;
     font-weight: 500;
     background-color: var(--color-surface);
   }
   .filter-button.active {
-    border-color: var(--color-text-level-1);
-    color: var(--color-text-level-1);
+    /* border-color: var(--color-primary); */
+    /* color: var(--color-text-level-1); */
+    background-color: var(--color-text-level-1);
+    color: var(--color-bg);
   }
 
   .project-item[hidden] {

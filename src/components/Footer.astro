@@ -97,7 +97,7 @@ import Container from "./Container.astro";
   .footer-content {
     display: grid;
     grid-template-columns: 2fr 1fr 1fr;
-    gap: var(--space-lg);
+    gap: var(--space-lg-2);
     padding-block: var(--space-xl);
   }
 
@@ -116,7 +116,7 @@ import Container from "./Container.astro";
     gap: var(--space-sm);
   }
   .footer-section p {
-    line-height: 1.6;
+    max-width: 45ch;
   }
   .footer-section h2 {
     font-size: var(--text-body);
@@ -129,7 +129,7 @@ import Container from "./Container.astro";
   }
   .footer-section li {
     border-bottom: 1px solid var(--color-border);
-    transition: 0.3s;
+    transition: 0.2s;
   }
   .footer-section li:last-child {
     border-bottom: none;
@@ -138,7 +138,10 @@ import Container from "./Container.astro";
     /* Ensure the link covers the entire list item */
     display: block;
     padding: var(--space-xs) 0;
+    font-family: "Roboto Mono", monospace;
+    font-size: var(--text-body);
   }
+
   .footer-section li:first-child a {
     padding-top: 0;
   }
@@ -147,6 +150,7 @@ import Container from "./Container.astro";
   }
   .footer-section li:hover {
     padding-left: 0.25rem;
+    color: var(--color-secondary);
   }
 
   .footer-bottom {

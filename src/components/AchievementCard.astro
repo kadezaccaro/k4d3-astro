@@ -20,7 +20,7 @@ const { achievements } = Astro.props;
     {
       achievements.map(({ title, issuer, date, icon: Icon }) => (
         <div class="achievement-card tilt">
-          <Icon />
+          <Icon class="icon" />
           <h4>{title}</h4>
           <p>
             {issuer} &mdash; {date}

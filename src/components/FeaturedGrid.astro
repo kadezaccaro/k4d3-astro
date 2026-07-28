@@ -103,6 +103,7 @@ const designProjects = featuredProjects.filter(
   .view-more-work {
     position: relative;
   }
+  /* refactor to use button component custom stlying later */
   .view-more-work a {
     position: absolute;
     bottom: -5px;
@@ -114,5 +115,12 @@ const designProjects = featuredProjects.filter(
     text-transform: uppercase;
     white-space: nowrap;
     line-height: 0.6;
+    font-family: "Roboto Mono", monospace;
+    font-weight: 500;
+    font-size: var(--text-body);
+    transition: 0.2s;
+  }
+  .view-more-work a:hover {
+    color: var(--color-secondary);
   }
 </style>

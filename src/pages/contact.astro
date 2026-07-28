@@ -8,10 +8,10 @@ import Container from "../components/Container.astro";
   <Container size="xs">
     <header class="header-hero">
       <h1 class="header-hero__h1">Contact</h1>
-      <p>
+      <p class="prose prose-invert">
         If you'd like to get in touch, please email{" "}
-        <a href="mailto:hi@k4d3.com" class="link-highlight">hi@k4d3.com</a>, or
-        you can use the form below. I hope to hear from you soon!
+        <a href="mailto:hi@k4d3.com">hi@k4d3.com</a>, or you can use the form
+        below. I hope to hear from you soon!
       </p>
     </header>
 
@@ -24,11 +24,7 @@ import Container from "../components/Container.astro";
         value="New contact form submission!"
       />
 
-      <input
-        type="hidden"
-        name="_next"
-        value="https://kadezaccaro.com/success"
-      />
+      <input type="hidden" name="_next" value="https://k4d3.com/success" />
 
       <div class="input-container">
         <label for="name">Name</label>

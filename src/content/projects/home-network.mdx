@@ -20,11 +20,12 @@ import TwoColumn from "../../components/TwoColumn.astro";
 import ProjectGallery from "../../components/ProjectGallery.astro";
 // IMPORT IMAGES
 import dashboard from "../../assets/images/opnsense-dashboard-perspective.jpg";
-import topology from "../../assets/images/net-topology4.svg";
+import topology from "../../assets/images/net-topology5.svg";
 import networkWIP from "../../assets/images/temp-homelab.jpg";
-import vlanNotes from "../../assets/images/vlan-notes.jpg";
+// import vlanPipes from "../../assets/images/vlan-pipes-demo3.svg";
+import vlanNotes from "../../assets/images/vlan-notes3.svg";
 import fwRules from "../../assets/images/fw-rules.jpg";
-import beforeAfter from "../../assets/images/before-after-vlan5.svg";
+import beforeAfter from "../../assets/images/before-after-vlan10.svg";
 import ntopDash from "../../assets/images/ntop-dashboard.jpg";
 import unboundDash from "../../assets/images/unbound-dnsbl.jpg";
 
@@ -58,7 +59,7 @@ I chose a reliable and power-efficient mini PC to run OPNsense as my router/fire
 
 ### Network Topology
 
-I designed my network topology with VLANs in mind, grouping devices into categories to isolate them from each other as necessary.
+I designed my network topology with VLANs in mind, grouping devices into categories to isolate them from each other as necessary:
 
 <ProjectGallery
   images={[
@@ -71,7 +72,7 @@ I designed my network topology with VLANs in mind, grouping devices into categor
 
 ## System Configuration
 
-_**Below:** Initial setup of the mini PC running OPNsense, managed switch, and WAP before to migrating away from the ISP all-in-one router._
+Initial setup of the mini PC running OPNsense, managed switch, and wireless access point (WAP):
 
 <ProjectGallery
   images={[
@@ -84,7 +85,7 @@ _**Below:** Initial setup of the mini PC running OPNsense, managed switch, and W
 
 ### VLAN Implementation
 
-When configuring VLAN tagging for switch ports, I created a diagram to help deepen my understanding of VLANs. It’s helpful to think of VLANs like isolated pipes within a bigger pipe. This bigger pipe is known as a trunk.
+While configuring my switch ports for VLAN tagging, I created a diagrams to help deepen my understanding of VLANs. It’s helpful to think of them as isolated pipes inside of a bigger pipe that is the physical network cable:
 
 <ProjectGallery
   images={[
@@ -95,7 +96,7 @@ When configuring VLAN tagging for switch ports, I created a diagram to help deep
   ]}
 />
 
-As shown below, a compromised device (red square) is effectively stuck and cannot access the rest of the network:
+As shown below, after segmentation, a compromised device (red square) is effectively stuck and cannot access the rest of the network:
 
 <ProjectGallery
   images={[
@@ -108,10 +109,11 @@ As shown below, a compromised device (red square) is effectively stuck and canno
 
 ### Firewall Rules
 
-VLANs are not inherently isolated. This isolation must be created and enforced via firewall rules.
-block inter-vlan communication via rfc1918 private network block.
+Since the OPNsense firewall is deny-by-default, firewall rules must be defined for network functionality. Most of my VLAN firewall rules follow a similar pattern. I created an alias to allow access to core service ports such as DNS & NTP. I created another alias to block access to private network ranges (RFC1918), which will keep VLANs isolated unless explicitly allowed to communicate. At the very bottom, I have an allow access to anything rule. Since firewall rules are processed from top-to-bottom, users are only allowed to access Internet services&mdash;not private networks.
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+At the very bottom, I have an allow access to anything rule. Since firewall rules are processed from top-to-bottom, users are only allowed to access Internet services&mdash;not private networks. Note: I have this rule so that any blocked attempts are logged. OPNsense is deny-by-default.
+
+At the very bottom, I have an allow access to HTTPS/HTTP/QUIC. Since firewall rules are processed from top-to-bottom, users are only allowed to access Internet services&mdash;not private networks.
 
 <ProjectGallery
   images={[

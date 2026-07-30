@@ -25,6 +25,8 @@ import networkWIP from "../../assets/images/temp-homelab.jpg";
 import vlanNotes from "../../assets/images/vlan-notes.jpg";
 import fwRules from "../../assets/images/fw-rules.jpg";
 import beforeAfter from "../../assets/images/before-after-vlan5.svg";
+import ntopDash from "../../assets/images/ntop-dashboard.jpg";
+import unboundDash from "../../assets/images/unbound-dnsbl.jpg";
 
 ## Project Overview
 
@@ -46,7 +48,7 @@ The main goal was to gain hands-on networking experience, while improving the se
 
 ## Designing the Solution
 
-### OPNsense or pfSense
+### Operating System
 
 I chose OPNsense over pfSense because the user interface felt much more intuitive to me, though, I eventually virtualized pfSense as a VM in my home lab to gain experience using both.
 
@@ -67,24 +69,9 @@ I designed my network topology with VLANs in mind, grouping devices into categor
   ]}
 />
 
-As shown below, a compromised device (red square) is effectively stuck and cannot access the rest of the network:
-
-<ProjectGallery
-  images={[
-    {
-      src: beforeAfter,
-      alt: "Before and after VLAN segmentation diagram",
-    },
-  ]}
-/>
-
 ## System Configuration
 
-### OPNsense Install
-
-Work in progress: setting up OPNsense for the first time...
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+_**Below:** Initial setup of the mini PC running OPNsense, managed switch, and WAP before to migrating away from the ISP all-in-one router._
 
 <ProjectGallery
   images={[
@@ -97,17 +84,24 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 
 ### VLAN Implementation
 
-I taught myself VLANs by creating the following diagram...
-
-It’s helpful to think of VLANs like isolated pipes within a bigger pipe. This bigger pipe is known as a trunk.
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+When configuring VLAN tagging for switch ports, I created a diagram to help deepen my understanding of VLANs. It’s helpful to think of VLANs like isolated pipes within a bigger pipe. This bigger pipe is known as a trunk.
 
 <ProjectGallery
   images={[
     {
       src: vlanNotes,
       alt: "Notes about VLAN implementation",
+    },
+  ]}
+/>
+
+As shown below, a compromised device (red square) is effectively stuck and cannot access the rest of the network:
+
+<ProjectGallery
+  images={[
+    {
+      src: beforeAfter,
+      alt: "Before and after VLAN segmentation diagram",
     },
   ]}
 />
@@ -130,24 +124,43 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 
 ### DNS
 
-Using Unbound, I configured Quad9 as my DNS resolver, whichh blocks malware and sites based on their reputation.
+I configured Quad9, a reputable non-profit, as my upstream DNS resolver that blocks access to known malicious sites. This is an effective way of reducing risk of phishing attempts.
 
-quad9 dns upstream resolver that blocks malware
+For an additional layer of security and privacy, I configured my local Unbound DNS resolver to use Hagezi Pro DNS Blocklists, blocking trackers, ads, and malware. Through Unbound reporting, I gain insight into when my devices are attempting to send collected tracking data over to companies:
 
-hagezi pro blocklists for privacy and security
+<ProjectGallery
+  images={[
+    {
+      src: unboundDash,
+      alt: "Network topology",
+    },
+  ]}
+/>
 
-dns over tls but still leaks SNI
+### Add-ons for Visibility & Security
 
-### Visibility & Security Add-ons
+Once OPNsense was up and running with core network services, I configured various add-ons to improve security and understanding of my network:
 
-Tools: ntopng, CrowdSec, Quad9, DNS & IP Blocklists
+- **ntopng**
 
-Once my OPNsense configuration was up and running, I configured various add-ons including ntopng for traffic visibility, CrowdSec for improved security, DNS & IP Blocklists for improved privacy and security.
+  Network traffic monitoring for troubleshooting and insight. Answers questions like: Who are my devices talking to? Where are they communicating? How much data is being sent?
 
-| Left | Center | Right |
-| :--- | :----: | ----: |
-| Data |  Data  |  Data |
-| Data |  Data  |  Data |
+<ProjectGallery
+  images={[
+    {
+      src: ntopDash,
+      alt: "Network topology",
+    },
+  ]}
+/>
+
+- **CrowdSec**
+
+  Uses community threat intel and firewall logs to detect suspicious behavior. Automatically bans repeated malicious connection attempts. I replaced Suricata IDS with CrowdSec for my network because it's lighter weight and my attack surface is lower not having exposed ports.
+
+- **Spamhaus DROP**
+
+  Additional layer of IP blocking to stop the "worst of the worst" traffic. Since OPNsense is deny-by-default, I configured it to only block traffic coming out of the network in case a device is hacked.
 
 ## What I Learned
 
@@ -157,13 +170,6 @@ Once my OPNsense configuration was up and running, I configured various add-ons 
 - GitHub Pages is not meant to host sensitive information, like API keys:
 
 > In other words, any information we put in our code will be available to someone visiting our site. If we want to host a site with sensitive information we would need some kind of backend, or server-side code, to store our sensitive information.
-
-- How to configure CSS in Webpack using style-loader and css-loader
-- How to properly use images in Webpack via import statements
-- How to dynamically generate an index.html page via HtmlWebpackPlugin
-- How to configure the Webpack output file to have a unique hash name for browser caching:
-
-> Once the contents of /dist have been deployed to a server, clients (typically browsers) will hit that server to grab the site and its assets. The last step can be time consuming, which is why browsers use a technique called caching. This allows sites to load faster with less unnecessary network traffic. However, it can also cause headaches when you need new code to be picked up.
 
 ## Future Improvements
 

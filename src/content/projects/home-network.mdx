@@ -37,11 +37,11 @@ The main goal was to gain hands-on networking experience, while improving the se
 
 - **Dependence on ISP hardware**
 
-  Like many home networks, my existing network relied on the ISP's all-in-one (modem, router, firewall, switch, wireless access point). These ISP solutions are simple, but very limited in terms of security features, visbility, and control.
+  Like many home networks, my existing network relied on the ISP's all-in-one (modem, router, firewall, switch, and wireless access point). These ISP solutions are simple, but very limited in terms of security features, visbility, and control.
 
 - **No separation of devices**
 
-  The previous hardware had no way of segmenting the network, which would reduce impact in the event of device compromise. Notably, unpatched systems and IoT devices such as smart home appliances, have a higher risk of compromise. Without separation, an attacker could use these vulnerable devices to pivot to other devices, or attempt to access the router's admin dashboard to achieve more control.
+  The previous hardware had no way of segmenting the network, which would reduce impact in the event of device compromise. Notably, unpatched systems and IoT devices such as smart home appliances, are at higher risk. Without separation, an attacker could use these vulnerable devices to pivot to other devices, or attempt to access the router's dashboard for more control.
 
 - **Limited visibility**
 
@@ -49,13 +49,11 @@ The main goal was to gain hands-on networking experience, while improving the se
 
 ## Designing the Solution
 
-### Operating System
+### OS & Hardware
 
 I chose OPNsense over pfSense because the user interface felt much more intuitive to me, though, I eventually virtualized pfSense as a VM in my home lab to gain experience using both.
 
-### Hardware
-
-I chose a reliable and power-efficient mini PC to run OPNsense as my router/firewall. I then needed dedicated hardware to fill in the gaps left by the ISP's all-in-one replacement (switch and WAP). My architecture includes a managed switch that offers more ports (since my box only has 2 ports), a wireless access point (one that is VLAN capable), and another mini PC server for homelabbing later on.
+I chose a reliable and power-efficient mini PC to run OPNsense as my router/firewall. My architecture includes a managed switch that offers more ports (since my box only has 2), a wireless access point (one that is VLAN capable), and another mini PC to use as a server for homelabbing later on.
 
 ### Network Topology
 
@@ -70,9 +68,9 @@ I designed my network topology with VLANs in mind, grouping devices into categor
   ]}
 />
 
-## System Configuration
+## Implementing the Solution
 
-Initial setup of the mini PC running OPNsense, managed switch, and wireless access point (WAP):
+Initial setup of network appliances: mini PC running OPNsense, managed switch, and wireless access point:
 
 <ProjectGallery
   images={[
@@ -83,9 +81,9 @@ Initial setup of the mini PC running OPNsense, managed switch, and wireless acce
   ]}
 />
 
-### VLAN Implementation
+### VLAN Configuration
 
-While configuring my switch ports for VLAN tagging, I created a diagrams to help deepen my understanding of VLANs. It’s helpful to think of them as isolated pipes inside of a bigger pipe that is the physical network cable:
+When configuring my switch ports for VLAN tagging, I created diagrams and notes to help deepen my understanding of VLANs. It’s helpful to abstract them as isolated pipes within a larger pipe being the physical network cable:
 
 <ProjectGallery
   images={[
@@ -109,11 +107,9 @@ As shown below, after segmentation, a compromised device (red square) is effecti
 
 ### Firewall Rules
 
-Since the OPNsense firewall is deny-by-default, firewall rules must be defined for network functionality. Most of my VLAN firewall rules follow a similar pattern. I created an alias to allow access to core service ports such as DNS & NTP. I created another alias to block access to private network ranges (RFC1918), which will keep VLANs isolated unless explicitly allowed to communicate. At the very bottom, I have an allow access to anything rule. Since firewall rules are processed from top-to-bottom, users are only allowed to access Internet services&mdash;not private networks.
+Since the OPNsense firewall is deny-by-default, rules must be created for network functionality. Most of my VLAN firewall rules follow a similar pattern. I created an alias to allow access to core service ports such as DNS and NTP. I created another alias to block (and log) access to private network ranges (RFC1918), which will keep VLANs isolated unless explicitly allowed to communicate. At the very bottom, I have a rule that allows access to anything. Since firewall rules are processed from top-to-bottom, users are only allowed to access Internet services&mdash;not private networks.
 
-At the very bottom, I have an allow access to anything rule. Since firewall rules are processed from top-to-bottom, users are only allowed to access Internet services&mdash;not private networks. Note: I have this rule so that any blocked attempts are logged. OPNsense is deny-by-default.
-
-At the very bottom, I have an allow access to HTTPS/HTTP/QUIC. Since firewall rules are processed from top-to-bottom, users are only allowed to access Internet services&mdash;not private networks.
+Note: For enterprise networks, it would be best to apply the principle of least privilege, allowing specific services such as HTTPS and HTTP instead of a broad allow. For a home network with gaming, IoT, etc., I prioritized functionality over granular control.
 
 <ProjectGallery
   images={[
@@ -126,9 +122,9 @@ At the very bottom, I have an allow access to HTTPS/HTTP/QUIC. Since firewall ru
 
 ### DNS
 
-I configured Quad9, a reputable non-profit, as my upstream DNS resolver that blocks access to known malicious sites. This is an effective way of reducing risk of phishing attempts.
+I configured Quad9, a reputable non-profit, as my upstream DNS resolver that blocks access to known malicious sites. This is an effective way of reducing the risk of phishing attempts.
 
-For an additional layer of security and privacy, I configured my local Unbound DNS resolver to use Hagezi Pro DNS Blocklists, blocking trackers, ads, and malware. Through Unbound reporting, I gain insight into when my devices are attempting to send collected tracking data over to companies:
+For an additional layer of security and privacy, I configured my local Unbound DNS resolver to use Hagezi DNS Blocklists, which blocks trackers, ads, and malware. Through Unbound reporting, I gain insight into when my devices are attempting to send collected tracking data to various companies:
 
 <ProjectGallery
   images={[
@@ -143,9 +139,10 @@ For an additional layer of security and privacy, I configured my local Unbound D
 
 Once OPNsense was up and running with core network services, I configured various add-ons to improve security and understanding of my network:
 
-- **ntopng**
+1. **ntopng**
 
-  Network traffic monitoring for troubleshooting and insight. Answers questions like: Who are my devices talking to? Where are they communicating? How much data is being sent?
+- Network traffic monitoring for troubleshooting and insight.
+- Answers questions like: Who are my devices talking to? Where are they communicating? How much data is being sent?
 
 <ProjectGallery
   images={[
@@ -156,22 +153,16 @@ Once OPNsense was up and running with core network services, I configured variou
   ]}
 />
 
-- **CrowdSec**
+2. **CrowdSec**
 
-  Uses community threat intel and firewall logs to detect suspicious behavior. Automatically bans repeated malicious connection attempts. I replaced Suricata IDS with CrowdSec for my network because it's lighter weight and my attack surface is lower not having exposed ports.
+- Uses community threat intel and firewall logs to detect suspicious behavior.
+- Automatically bans repeated malicious connection attempts and scans.
+- Note: I replaced Suricata IDS with CrowdSec for my network because it's lighter weight and my attack surface is lower without exposed ports.
 
-- **Spamhaus DROP**
+3. **Spamhaus DROP**
 
-  Additional layer of IP blocking to stop the "worst of the worst" traffic. Since OPNsense is deny-by-default, I configured it to only block traffic coming out of the network in case a device is hacked.
-
-## What I Learned
-
-- How to programatically resize and optimize images using Sharp
-- How to embed Google Maps with and without the use of an API key
-- How to protect API keys using a .env file, dotenv-webpack, and .gitignore
-- GitHub Pages is not meant to host sensitive information, like API keys:
-
-> In other words, any information we put in our code will be available to someone visiting our site. If we want to host a site with sensitive information we would need some kind of backend, or server-side code, to store our sensitive information.
+- Additional layer of IP blocking to stop the "worst of the worst" traffic.
+- Since OPNsense is deny-by-default, I configured it to only block traffic going out of the network in case a device is hacked.
 
 ## Future Improvements
 

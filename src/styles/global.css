@@ -104,13 +104,29 @@
 }
 .markdown-content h2 {
   font-size: var(--text-heading-lg);
-  line-height: var(--leading-tight);
+  /* line-height: var(--leading-tight); */
+
+  background-image: linear-gradient(
+    90deg,
+    var(--color-quinary),
+    var(--color-tertiary)
+  );
+  background-clip: text;
+  color: transparent;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  /* font-weight: 400; */
 }
 .markdown-content h3 {
-  font-size: var(--text-heading-lg);
+  font-size: var(--text-heading-md);
+  /* color: var(--color-quinary); */
+  /* font-weight: 400; */
 }
 .markdown-content h4 {
-  font-size: var(--text-heading-md);
+  font-size: var(--text-heading-sm);
+}
+.markdown-content table {
+  font-size: var(--text-body-lg);
 }
 
 .prose {
@@ -256,6 +272,7 @@ p {
   font-size: var(--text-body);
   line-height: var(--leading-body);
   color: var(--color-text-level-2);
+  color: oklch(86.9% 0.005 56.366);
   margin: 0;
   margin-bottom: var(--space-md);
   text-wrap: pretty;

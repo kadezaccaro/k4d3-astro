@@ -16,28 +16,28 @@ const { images = [] } = Astro.props;
 
 {
   images.length > 0 && (
-    <section class="project-gallery">
+    <div class="project-gallery">
       {images.map((image) => (
         <figure class="gallery-item">
           <Image
             src={image.src}
             alt={image.alt}
-            widths={[600, 1200]}
+            widths={[640, 960, 1248]}
             loading="lazy"
             class="gallery-image"
           />
         </figure>
       ))}
-    </section>
+    </div>
   )
 }
 
 <style>
   .project-gallery {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 1.5rem;
-    margin-block: 4rem;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-md);
+    /* margin-block: 4rem; */
   }
 
   .gallery-item {
@@ -54,5 +54,11 @@ const { images = [] } = Astro.props;
     width: 100%;
     height: auto;
     border-radius: 0.75rem;
+  }
+
+  @media (max-width: 768px) {
+    .project-gallery {
+      grid-template-columns: 1fr;
+    }
   }
 </style>

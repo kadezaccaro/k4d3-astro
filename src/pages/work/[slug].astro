@@ -32,7 +32,6 @@ const { Content } = await render(project);
 // console.log("LOG PROJECT.DATA.IMAGES >>>", project.data.images);
 // console.log("LOG PROJECT.DATA.TOOLS >>>", project.data.tools);
 
-import ToolStack from "../../components/ToolStack.astro";
 import background from "../../assets/background.svg";
 import PageHeader from "../../components/PageHeader.astro";
 ---
@@ -61,15 +60,15 @@ import PageHeader from "../../components/PageHeader.astro";
       )
     } -->
 
-    <ToolStack tools={project.data.tools} />
+    <!-- <ToolStack tools={project.data.tools} /> -->
 
     <article class="markdown-content">
       <Content />
     </article>
 
-    <div class="case-gallery">
+    <!-- <div class="case-gallery">
       <ProjectGallery images={project.data.images} />
-    </div>
+    </div> -->
   </Container>
 </Layout>
 

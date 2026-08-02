@@ -7,13 +7,16 @@ const posts = defineCollection({
     pattern: "**/*.md",
     base: "./src/content/posts",
   }),
-  schema: z.object({
-    title: z.string(),
-    description: z.string(),
-    date: z.string(),
-    readTime: z.string(),
-    tag: z.string(),
-  }),
+  schema: ({ image }) =>
+    z.object({
+      title: z.string(),
+      description: z.string(),
+      date: z.string(),
+      readTime: z.string(),
+      tag: z.string(),
+      cover: image(),
+      coverAlt: z.string(),
+    }),
 });
 
 const projects = defineCollection({

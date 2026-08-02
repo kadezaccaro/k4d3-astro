@@ -1,6 +1,7 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import Container from "../../components/Container.astro";
+import { Image } from "astro:assets";
 
 import { getCollection } from "astro:content";
 const posts = await getCollection("posts");
@@ -21,9 +22,11 @@ const posts = await getCollection("posts");
               </header>
               <figure>
                 <div class="img-container">
-                  <img
-                    src="https://picsum.photos/1400/600"
-                    alt="Random placeholder"
+                  <Image
+                    src={post.data.cover}
+                    alt={post.data.coverAlt}
+                    width={1400}
+                    height={600}
                   />
                 </div>
 

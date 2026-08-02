@@ -2,6 +2,7 @@
 import Layout from "../../layouts/Layout.astro";
 import Container from "../../components/Container.astro";
 import { getCollection, render } from "astro:content";
+import { Image } from "astro:assets";
 
 export async function getStaticPaths() {
   const posts = await getCollection("posts");
@@ -21,49 +22,53 @@ const { Content } = await render(post);
 ---
 
 <Layout title=`${post.data.title} | K4D3`>
-  <Container size="sm">
-    <article>
+  <article>
+    <Container>
       <header>
-        <h1 class="article-h1">{post.data.title}</h1>
-        <div class="article-extras">
+        <Image src={post.data.cover} alt={post.data.coverAlt} />
+
+        <div class="header-text">
+          <h1 class="article-h1">{post.data.title}</h1>
           <p class="tag">
             {post.data.date} &bull; {post.data.readTime}
           </p>
         </div>
       </header>
+    </Container>
 
-      <Container size="xs">
-        <article class="prose prose-invert prose-xl prose-stone">
-          <Content />
-        </article>
+    <Container size="xs">
+      <article class="prose prose-invert">
+        <Content />
+      </article>
 
-        <div class="closing">
-          <p>Thanks for reading!</p>
-          <div class="closing__back">
-            <a href="/blog">&larr; Back to Blog</a>
-          </div>
+      <div class="closing prose prose-invert prose-xl">
+        <p>Thanks for reading!</p>
+        <div class="closing__back">
+          <a href="/blog">&larr; Back to Blog</a>
         </div>
-      </Container>
-    </article>
-  </Container>
+      </div>
+    </Container>
+  </article>
 </Layout>
 
 <style>
   header {
-    text-align: center;
-    border-bottom: 1px solid var(--color-border);
-    padding-bottom: var(--space-md);
     margin-bottom: var(--space-lg-2);
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    border-bottom: var(--border);
   }
-  article h1 {
-    font-size: var(--text-heading-xl);
-    font-weight: bold;
-    /* font-family: "Roboto Mono", monospace; */
-    /* text-transform: uppercase; */
+  .header-text {
+    text-align: center;
+    padding: var(--space-md);
+    background-color: var(--color-surface);
   }
 
-  .article-extras {
-    margin-top: var(--space-xs);
+  article h1 {
+    font-size: var(--text-heading-lg);
+    margin-bottom: var(--space-xs);
+    /* font-family: "Roboto Mono", monospace; */
+    /* text-transform: uppercase; */
   }
 
   .tag {

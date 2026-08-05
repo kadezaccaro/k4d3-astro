@@ -5,9 +5,9 @@ import HireStatus from "../components/HireStatus.astro";
 import FeaturedGrid from "../components/FeaturedGrid.astro";
 import { Image } from "astro:assets";
 // IMPORT IMAGES
-import selfPortrait from "../assets/images/portrait-placeholder.jpg";
-import cat1 from "../assets/images/z-roll.jpg";
-import cat2 from "../assets/images/z-stretch.jpg";
+import selfPortraitSmall from "../assets/images/sm-port-grey.png";
+import selfPortrait from "../assets/images/lg-port-grey.png";
+
 import AchievementCard from "../components/AchievementCard.astro";
 import { achievementData } from "../data/achievementData";
 ---
@@ -16,7 +16,11 @@ import { achievementData } from "../data/achievementData";
   <Container>
     <header class="home-hero">
       <div class="portrait-container">
-        <Image src={selfPortrait} alt="temp self portrait" loading="eager" />
+        <Image
+          src={selfPortraitSmall}
+          alt="temp self portrait"
+          loading="eager"
+        />
       </div>
 
       <h1>
@@ -74,17 +78,9 @@ import { achievementData } from "../data/achievementData";
           </div>
         </div>
 
-        <aside class="photo-stack">
-          <div class="photo-wrapper">
+        <aside>
+          <div class="self-port__wrapper">
             <Image src={selfPortrait} alt="temp self portrait" />
-          </div>
-
-          <div class="photo-wrapper">
-            <Image src={cat1} alt="temp self portrait" />
-          </div>
-
-          <div class="photo-wrapper">
-            <Image src={cat2} alt="temp self portrait" />
           </div>
         </aside>
       </div>
@@ -115,11 +111,11 @@ import { achievementData } from "../data/achievementData";
   }
 
   .portrait-container {
-    width: clamp(4rem, 6vw, 7rem);
-    height: clamp(4rem, 6vw, 7rem);
-    border-radius: 50%;
+    width: clamp(6rem, 7vw, 8rem);
+    /* height: clamp(4rem, 6vw, 7rem); */
+    /* border-radius: 50%; */
     overflow: hidden;
-    border: var(--border);
+    /* border: var(--border); */
   }
   .portrait-container img {
     width: 100%;
@@ -190,8 +186,6 @@ import { achievementData } from "../data/achievementData";
   }
   .about-container__text {
     max-width: 54ch;
-    /* text-align: justify; */
-    /* hyphens: auto; */
   }
   .about-container__tagline {
     margin-bottom: var(--space-md);
@@ -200,84 +194,7 @@ import { achievementData } from "../data/achievementData";
     font-weight: 400;
   }
 
-  /* || PHOTO STACK */
-
-  .photo-stack {
-    display: grid;
-    grid-template-columns: 1fr;
-    padding-inline: var(--space-md);
-  }
-  .photo-wrapper {
-    aspect-ratio: 1 / 1;
-    overflow: hidden;
-    width: 16rem;
-    border-radius: var(--radius-xl);
-    box-shadow: 0 0 24px 4px rgba(0, 0, 0, 0.3);
-    transition: 0.2s ease;
-  }
-  .photo-wrapper:hover {
-    rotate: 5deg;
-    scale: 1.04;
-  }
-
-  .photo-stack .photo-wrapper {
-    margin-top: -1rem;
-  }
-  .photo-stack .photo-wrapper:first-child {
-    transform: rotate(4deg);
-    border: var(--border);
-  }
-  .photo-stack .photo-wrapper:nth-child(2) {
-    transform: rotate(-6deg);
-    margin-left: -5rem;
-  }
-  .photo-wrapper:nth-child(2):hover {
-    rotate: -5deg;
-  }
-  .photo-wrapper:nth-child(3) {
-    transform: rotate(12deg);
-  }
-
-  /* || RESPONSIVE */
-
-  @media (max-width: 1080px) {
-    .about-container {
-      flex-direction: column;
-      gap: var(--space-lg-2);
-    }
-
-    .about-container__text {
-      max-width: 65ch;
-    }
-
-    .photo-stack {
-      grid-template-columns: 1fr 1fr 1fr;
-    }
-    .photo-stack .photo-wrapper {
-      width: 100%;
-      margin: 0;
-    }
-    .photo-stack .photo-wrapper:first-child {
-      transform: rotate(-4deg);
-    }
-    .photo-stack .photo-wrapper:nth-child(2) {
-      transform: rotate(6deg);
-      margin: 0;
-    }
-    .photo-wrapper:nth-child(3) {
-      transform: rotate(-8deg);
-    }
-    .photo-wrapper:hover {
-      rotate: -5deg;
-    }
-    .photo-wrapper:nth-child(2):hover {
-      rotate: 5deg;
-    }
-  }
-
-  @media (max-width: 640px) {
-    .photo-stack {
-      padding-inline: var(--space-xs);
-    }
+  .self-port__wrapper {
+    max-width: 30rem;
   }
 </style>

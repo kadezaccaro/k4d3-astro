@@ -11,7 +11,7 @@ export const achievementData = [
   {
     title: "CompTIA A+ Certification",
     issuer: "CompTIA",
-    date: "Expected May 2026",
+    date: "Expected December 2026",
     icon: BadgeCheck,
   },
 ];

@@ -4,7 +4,7 @@ description: "Short story: A hack is disrupted, and a new passion ignites."
 date: "February 16, 2025"
 readTime: "3 min read"
 tag: "nerdy"
-cover: "../../assets/images/emailbmb.jpg"
+cover: "../../assets/images/emailbmb2.jpg"
 coverAlt: "Illustration of an email bomb hacking an old brick phone"
 ---
 

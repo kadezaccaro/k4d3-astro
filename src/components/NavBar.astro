@@ -12,7 +12,7 @@ const pathname = Astro.url.pathname;
 import Container from "../components/Container.astro";
 ---
 
-<header class="site-header">
+<header class="site-header glass">
   <Container>
     <div class="flex-container">
       <a href="/" class="logo"> K4D3 </a>
@@ -104,10 +104,6 @@ import Container from "../components/Container.astro";
     top: 0;
     z-index: 1000;
     border-bottom: 1px solid var(--color-border);
-    /* glass */
-    background: rgba(18, 18, 18, 0.3);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
   }
 
   /* top line gradient */
@@ -124,6 +120,12 @@ import Container from "../components/Container.astro";
       var(--color-tertiary),
       var(--color-primary)
     );
+  }
+
+  .glass {
+    background: rgba(18, 18, 18, 0.3);
+    /* -webkit-backdrop-filter: blur(16px); */
+    backdrop-filter: blur(16px);
   }
 
   .flex-container {

@@ -7,10 +7,19 @@ import ProjectCard from "../../components/ProjectCard.astro";
 const projects = await getCollection("projects");
 
 const sortedProjects = projects.sort((a, b) => {
+  // Prioritize featured projects
   if (a.data.featured !== b.data.featured) {
     return b.data.featured ? 1 : -1;
   }
 
+  // Sort featured projects by custom order
+  if (a.data.featured) {
+    return (
+      (a.data.featuredOrder ?? Infinity) - (b.data.featuredOrder ?? Infinity)
+    );
+  }
+
+  // Sort non-featured projects alphabetically
   return a.data.title.localeCompare(b.data.title);
 });
 ---

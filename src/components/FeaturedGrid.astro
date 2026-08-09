@@ -8,6 +8,7 @@ const projects = await getCollection("projects");
 
 const featuredProjects = projects
   .filter((project) => project.data.featured)
+  // Sort projects via custom order
   .sort((a, b) => {
     return (
       (a.data.featuredOrder ?? Infinity) - (b.data.featuredOrder ?? Infinity)

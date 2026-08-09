@@ -129,17 +129,11 @@
   font-size: var(--text-body-lg);
 }
 
-.prose {
-  /* --tw-prose-body: var(--color-text-level-2);
-  --tw-prose-headings: var(--color-text-level-1);
-  --tw-prose-links: var(--color-primary);
-  --tw-prose-bold: var(--color-text-level-1); */
+.prose a {
+  transition: 0.3s;
 }
-.prose h2 {
-  /* margin-top: 4rem; */
-}
-.prose img {
-  /* border-radius: 1rem; */
+.prose a:hover {
+  color: var(--color-secondary);
 }
 /* TAILWIND TYPOGRAPHY END */
 

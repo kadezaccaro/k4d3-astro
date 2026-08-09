@@ -1,0 +1,48 @@
+---
+import Layout from "./Layout.astro";
+import Container from "../components/Container.astro";
+
+interface Props {
+  title: string;
+  heading: string;
+  message: string;
+  linkText: string;
+  linkHref: string;
+  tag: string;
+}
+
+const { title, heading, message, linkText, linkHref, tag } = Astro.props;
+---
+
+<Layout title={title}>
+  <Container>
+    <section class="message-page prose prose-invert">
+      <p class="tag">{tag}</p>
+      <h1>{heading}</h1>
+      <p>{message}</p>
+      <a href={linkHref}>&larr; {linkText}</a>
+    </section>
+  </Container>
+</Layout>
+
+<style>
+  .message-page {
+    display: grid;
+    gap: var(--space-sm);
+  }
+
+  .message-page p,
+  .message-page h1 {
+    margin: 0;
+  }
+
+  .message-page h1 {
+    font-size: var(--text-heading-lg);
+  }
+
+  .tag {
+    font-family: "Roboto Mono", monospace;
+    text-transform: uppercase;
+    font-size: var(--text-caption);
+  }
+</style>

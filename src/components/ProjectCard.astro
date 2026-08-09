@@ -77,8 +77,11 @@ const {
     margin-top: auto; /* make tags align at bottom of cards */
     padding-bottom: var(--space-sm-2);
   }
-  .project-card:hover {
-    transform: scale(1.02);
-    color: inherit;
+
+  /* only apply card hover effect on hover-capable devices */
+  @media (hover: hover) {
+    .project-card:hover {
+      transform: scale(1.02);
+    }
   }
 </style>

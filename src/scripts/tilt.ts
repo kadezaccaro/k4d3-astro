@@ -1,10 +1,16 @@
 function initTilt() {
+  // Only initialize tilt on devices that support hover
+  if (!window.matchMedia("(hover: hover)").matches) return;
+
   const cards = document.querySelectorAll<HTMLElement>(".tilt");
 
   cards.forEach((card) => {
     let frame: number | null = null;
 
     card.addEventListener("pointermove", (event: PointerEvent) => {
+      // Ignore touch input
+      if (event.pointerType === "touch") return;
+
       const rect = card.getBoundingClientRect();
 
       const x = (event.clientX - rect.left) / rect.width - 0.5;

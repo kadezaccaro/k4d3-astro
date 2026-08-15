@@ -149,13 +149,11 @@ import Container from "./Container.astro";
   .footer-section li:last-child a {
     padding-bottom: 0;
   }
-  .footer-section li:hover {
-    color: var(--color-secondary);
-  }
-  /* only apply card hover transform effect on hover-capable devices */
+  /* only apply hover effect on hover-capable devices */
   @media (hover: hover) {
     .footer-section li:hover {
       padding-left: 0.25rem;
+      color: var(--color-secondary);
     }
   }
 

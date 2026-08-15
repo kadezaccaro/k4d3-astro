@@ -86,7 +86,7 @@ import Container from "./Container.astro";
     <Container>
       <div class="footer-bottom-content">
         <!-- <p>© {currentYear} K4D3</p> -->
-        <p>All illustrations & images created by me</p>
+        <p>All content & illustrations created by me</p>
         <p>Coded with passion ❤</p>
       </div>
     </Container>
@@ -150,8 +150,13 @@ import Container from "./Container.astro";
     padding-bottom: 0;
   }
   .footer-section li:hover {
-    padding-left: 0.25rem;
     color: var(--color-secondary);
+  }
+  /* only apply card hover transform effect on hover-capable devices */
+  @media (hover: hover) {
+    .footer-section li:hover {
+      padding-left: 0.25rem;
+    }
   }
 
   .footer-bottom {
@@ -168,6 +173,8 @@ import Container from "./Container.astro";
     line-height: var(--leading-tight);
     margin: 0;
   }
+
+  /* || RESPONSIVE */
 
   @media (max-width: 880px) {
     .footer-content {

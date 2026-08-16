@@ -3,7 +3,7 @@ title: "Home Lab"
 summary: "A Proxmox home server with an isolated lab for hands-on IT experience and ethical hacking, plus self-hosting."
 tag: "Systems Administration"
 category: "it"
-cover: "../../assets/images/homelab-cover10.svg"
+cover: "../../assets/images/home-lab/homelab-cover10.svg"
 coverAlt: "Home lab diagram project cover"
 featured: true
 featuredOrder: 2
@@ -21,13 +21,19 @@ To isolate the hacking lab from my main network, I virtualized pfSense, serving 
 
 ### Network Topology
 
-![Home Lab topology diagram](../../assets/images/homelab-topology-diagram4.svg)
+![Home Lab topology diagram](../../assets/images/home-lab/homelab-topology-diagram4.svg)
 
 ## Implementation
 
-### More info coming soon...
+### Proxmox Configuration
 
-<!-- ![Proxmox dashboard screenshot](../../assets/images/proxmox-dash-temp.jpg) -->
+![Proxmox dashboard screenshot](../../assets/images/home-lab/proxmox-dash.png)
+
+### Virtual pfSense Firewall
+
+![pfSense firewall rules page](../../assets/images/home-lab/pfsense-fw-rules2.png)
+
+### More info will be added soon...
 
 ## Future Improvements
 

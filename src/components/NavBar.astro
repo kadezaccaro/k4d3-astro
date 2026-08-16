@@ -135,7 +135,7 @@ import Container from "../components/Container.astro";
     gap: var(--space-md);
     width: 100%;
     margin: 0 auto;
-    /* add 2px padding to account for height of top line gradient */
+    /* add 2px to account for height of top line gradient */
     padding-top: calc(var(--space-sm) + 2px);
     padding-bottom: var(--space-sm);
   }
@@ -204,7 +204,8 @@ import Container from "../components/Container.astro";
     }
 
     .nav {
-      --nav-height: 76px;
+      /* add 2px to account for height of top line gradient */
+      --nav-height: calc(76px + 2px);
 
       display: flex;
       align-items: center;

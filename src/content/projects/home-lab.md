@@ -1,7 +1,7 @@
 ---
 title: "Home Lab"
 summary: "A Proxmox home server with an isolated lab for hands-on IT experience and ethical hacking, plus self-hosting."
-tag: "Systems Administration"
+tag: "Systems Admin"
 category: "it"
 cover: "../../assets/images/home-lab/homelab-cover10.svg"
 coverAlt: "Home lab diagram project cover"

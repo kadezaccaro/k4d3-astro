@@ -135,7 +135,9 @@ import Container from "../components/Container.astro";
     gap: var(--space-md);
     width: 100%;
     margin: 0 auto;
-    padding-block: var(--space-sm);
+    /* add 2px padding to account for height of top line gradient */
+    padding-top: calc(var(--space-sm) + 2px);
+    padding-bottom: var(--space-sm);
   }
 
   .logo {

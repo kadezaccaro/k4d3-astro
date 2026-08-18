@@ -270,32 +270,13 @@ p {
   margin: 0;
   margin-bottom: var(--space-md);
   text-wrap: pretty;
-
   /* text-align: justify; */
   /* hyphens: auto; */
 }
-p:last-of-type {
+
+p:last-child {
   margin-bottom: 0;
 }
-
-.caption {
-}
-.label {
-}
-
-p,
-li,
-figcaption {
-  /* max-width: 45ch; */
-  /* max-width: 50ch; */
-  /* text-wrap: pretty; */
-}
-
-/* a {
-  color: var(--color-text-level-1);
-  text-decoration: underline;
-  font-weight: 500;
-} */
 
 nav a {
   font-family: "Roboto Mono", monospace;

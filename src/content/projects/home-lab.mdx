@@ -1,0 +1,84 @@
+---
+title: "Home Lab"
+summary: "A Proxmox home server with an isolated lab for hands-on IT experience and ethical hacking, plus self-hosting."
+tag: "Systems Admin"
+category: "it"
+cover: "../../assets/images/home-lab/homelab-cover10.svg"
+coverAlt: "Home lab diagram project cover"
+featured: true
+featuredOrder: 2
+---
+
+import ProjectGallery from "../../components/ProjectGallery.astro";
+// IMPORT IMAGES
+import labTopology from "../../assets/images/home-lab/homelab-topology-diagram4.svg";
+import miniPC from "../../assets/images/home-lab/minipc-merge5.png";
+import proxDash from "../../assets/images/home-lab/proxmox-dash.png";
+import pfsenseRules from "../../assets/images/home-lab/pfsense-fw-rules2.png";
+
+## Project Overview
+
+The goal was to build a home server that serves as both a learning environment and a platform for self-hosting various apps. This lab will assist in my journey as I learn more about ethical hacking, sys admin, and more.
+
+## Lab Architecture
+
+I wanted to create a more real-world IT environment&mdash;not simply a few virtual machines (like a Kali attacker and a victim machine).
+
+To isolate the hacking lab from my main network, I virtualized pfSense, serving as a nested firewall/router for the lab. I also configured VLANs to segment various systems from each other.
+
+### Network Topology
+
+<ProjectGallery
+  images={[
+    {
+      src: labTopology,
+      alt: "Home Lab topology diagram",
+    },
+  ]}
+/>
+
+## Implementation
+
+### Hardware
+
+I installed Proxmox hypervisor on a power-efficient mini PC. To run more VMs simultaneously, I upgraded the system with a second memory chip (32GB total) and a second SSD for more storage and backups:
+
+<ProjectGallery
+  images={[
+    {
+      src: miniPC,
+      alt: "Mini PC hardware setup",
+    },
+  ]}
+/>
+
+### Proxmox Configuration
+
+<ProjectGallery
+  images={[
+    {
+      src: proxDash,
+      alt: "Proxmox dashboard showing various virtual machines and system specs",
+    },
+  ]}
+/>
+
+### Virtual pfSense Firewall
+
+While I prefer OPNsense and use it for my main network, I chose pfSense for this lab to gain experience using both.
+
+<ProjectGallery
+  images={[
+    {
+      src: pfsenseRules,
+      alt: "pfSense firewall rules page",
+    },
+  ]}
+/>
+
+### More info will be added soon...
+
+## Future Improvements
+
+- Set up Wazuh to practice using SIEM (Security Information and Event Management).
+- Add a NAS (Network Attached Storage) for an improved backup solution and self-hosted cloud storage.

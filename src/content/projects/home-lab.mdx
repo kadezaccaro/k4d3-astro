@@ -41,7 +41,7 @@ To isolate the hacking lab from my main network, I virtualized pfSense, serving 
 
 ### Hardware
 
-I installed Proxmox hypervisor on a power-efficient mini PC. To run more VMs simultaneously, I upgraded the system with a second memory chip (32GB total) and a second SSD for more storage and backups:
+I installed Proxmox hypervisor on a power-efficient mini PC. To run more VMs simultaneously, I upgraded the system with a second memory chip (32GB total) and a second SSD for more storage and backups. I hope to set up network-attached storage (NAS) eventually, however.
 
 <ProjectGallery
   images={[
@@ -63,9 +63,11 @@ I installed Proxmox hypervisor on a power-efficient mini PC. To run more VMs sim
   ]}
 />
 
-### Virtual pfSense Firewall
+### pfSense Firewall (Virtualized)
 
-While I prefer OPNsense and use it for my main network, I chose pfSense for this lab to gain experience using both.
+While I prefer and use OPNsense for my main network, I chose pfSense for this lab to gain experience using both.
+
+I segmented the machines into VLANs and established firewall rules to control communication between them. I'm currently allowing the Attack VLAN access to the vulnerable device VLANs as well as the Internet:
 
 <ProjectGallery
   images={[
@@ -76,9 +78,10 @@ While I prefer OPNsense and use it for my main network, I chose pfSense for this
   ]}
 />
 
-### More info will be added soon...
-
 ## Future Improvements
 
 - Set up Wazuh to practice using SIEM (Security Information and Event Management).
-- Add a NAS (Network Attached Storage) for an improved backup solution and self-hosted cloud storage.
+- Experiment with tools like Infection Monkey to simulate/test an attacker's lateral movement within a network.
+- Add network-attached storage (NAS) for an improved backup solution and self-hosted cloud storage.
+
+### Note: This case study will improve over time as I continue to build out my home lab!

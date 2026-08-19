@@ -14,11 +14,7 @@ const { tag, title, subtitle, background, cover, coverAlt } = Astro.props;
 ---
 
 <header class="case-hero">
-  {
-    background && (
-      <img id="background" src={background.src} fetchpriority="high" />
-    )
-  }
+  {background && <img id="background" src={background.src} alt="" />}
 
   {tag && <span class="case-hero__tag">{tag}</span>}
 
@@ -29,13 +25,7 @@ const { tag, title, subtitle, background, cover, coverAlt } = Astro.props;
   {
     cover && (
       <div class="case-hero__image">
-        <Image
-          src={cover}
-          alt={coverAlt ?? title}
-          loading="eager"
-          fetchpriority="high"
-          class="case-cover"
-        />
+        <Image src={cover} alt={coverAlt ?? title} priority />
       </div>
     )
   }

@@ -25,7 +25,12 @@ const { Content } = await render(post);
   <article>
     <Container>
       <header>
-        <Image src={post.data.cover} alt={post.data.coverAlt} />
+        <Image
+          src={post.data.cover}
+          alt={post.data.coverAlt}
+          widths={[400, 800, 1280]}
+          priority
+        />
 
         <div class="header-text">
           <h1 class="article-h1">{post.data.title}</h1>

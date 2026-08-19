@@ -16,11 +16,7 @@ import { achievementData } from "../data/achievementData";
   <Container>
     <header class="home-hero">
       <div class="portrait-container">
-        <Image
-          src={selfPortraitSmall}
-          alt="temp self portrait"
-          loading="eager"
-        />
+        <Image src={selfPortraitSmall} alt="temp self portrait" priority />
       </div>
 
       <h1>
@@ -80,7 +76,11 @@ import { achievementData } from "../data/achievementData";
 
         <aside>
           <div class="self-port__wrapper">
-            <Image src={selfPortrait} alt="temp self portrait" />
+            <Image
+              src={selfPortrait}
+              alt="temp self portrait"
+              widths={[320, 640]}
+            />
           </div>
         </aside>
       </div>

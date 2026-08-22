@@ -22,7 +22,7 @@ import { achievementData } from "../data/achievementData";
       <h1>
         I'm Kade, a <strong>Designer</strong> with a passion for
         {" "}
-        <strong>IT/Cybersecurity.</strong>
+        <strong class="long-text">IT/Cybersecurity.</strong>
       </h1>
 
       <p>
@@ -109,6 +109,12 @@ import { achievementData } from "../data/achievementData";
 
   strong {
     font-weight: 900;
+  }
+
+  .long-text {
+    overflow-wrap: break-word;
+
+    /* hyphens: auto; */
   }
 
   .portrait-container {

@@ -1,6 +1,6 @@
 ---
 title: "Lettering Collection"
-summary: "Select hand-lettering pieces refined through careful iteration for technical precision."
+summary: "Select hand-lettering pieces carefully refined for technical precision."
 tag: "Custom Type"
 category: "design"
 cover: "../../assets/images/lettering/lettering-cover-v3.svg"

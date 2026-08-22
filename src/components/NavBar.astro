@@ -28,7 +28,7 @@ import Container from "../components/Container.astro";
         <span></span>
       </button>
 
-      <nav id="primary-nav" class="nav">
+      <nav id="primary-nav" class="nav" aria-label="Primary navigation">
         <ul>
           {
             links.map((link) => (
@@ -40,6 +40,12 @@ import Container from "../components/Container.astro";
                       pathname === link.href ||
                       (link.href !== "/" && pathname.startsWith(link.href)),
                   }}
+                  aria-current={
+                    pathname === link.href ||
+                    (link.href !== "/" && pathname.startsWith(link.href))
+                      ? "page"
+                      : undefined
+                  }
                 >
                   {link.label}
                 </a>
@@ -61,11 +67,13 @@ import Container from "../components/Container.astro";
 
     const openMenu = () => {
       button.setAttribute("aria-expanded", "true");
+      button.setAttribute("aria-label", "Close navigation");
       nav.classList.add("open");
     };
 
     const closeMenu = () => {
       button.setAttribute("aria-expanded", "false");
+      button.setAttribute("aria-label", "Open navigation");
       nav.classList.remove("open");
     };
 
